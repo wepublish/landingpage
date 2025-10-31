@@ -1,4 +1,4 @@
-import NewBriefing, { BriefingProperties } from "../briefingNew/page";
+import NewBriefing, { BriefingProperties } from "../../components/landingPage";
 
 export default function TestBriefing() {
   const briefingProps = {
@@ -34,6 +34,26 @@ export default function TestBriefing() {
     subscribetextBackground:
       "linear-gradient(to right, var(--gradient-orange-dark), var(--gradient-orange-bright))",
     interests: ["47ed10ad9f", "22b72061f1"],
+    steps: [
+      {
+        stepId: "step1",
+        inputs: [
+          {
+            name: "email",
+            type: "email",
+            required: true,
+          },
+        ],
+      },
+    ],
+    listId: "851436c80e",
+    urlData: [
+      { param: "utm_source", input: "UTM_SOURCE" },
+      { param: "utm_medium", input: "UTM_MEDIUM" },
+      { param: "utm_campaign", input: "UTM_CAMPAIGN" },
+      { param: "email", input: "EMAIL" },
+    ],
+    successUrl: "https://bajour.ch/newsletter-thank-you-basel-briefing",
   } as BriefingProperties;
 
   return <NewBriefing {...briefingProps} />;

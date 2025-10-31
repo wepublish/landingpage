@@ -1,4 +1,4 @@
-import DynamicMailChimpForm from "./dynamicMailChimpForm";
+import MailChimpForm from "./mailChimpForm";
 
 // hier service importiern
 
@@ -19,10 +19,18 @@ export interface BriefingProperties {
   blobBackground: string;
   subscribetextBackground: string;
   deliveryBackground: string;
+
+  listId: string;
   interests: string[];
+  urlData: { param: string; input: string }[];
+  steps: {
+    stepId: string;
+    inputs: { name: string; required: boolean; type: string }[];
+  }[];
+  successUrl: string;
 }
 
-export default function NewBriefing(props: BriefingProperties) {
+export default function LandingPage(props: BriefingProperties) {
   return (
     <>
       <head>
@@ -114,21 +122,16 @@ export default function NewBriefing(props: BriefingProperties) {
           style={{ backgroundImage: `url(${props.footerBackgroundImage})` }}
         >
           {/* Hier dann die services an client component runter geben */}
-          <DynamicMailChimpForm
-            listId="1234"
+          <MailChimpForm
+            listId={props.listId}
             interests={
               Object.fromEntries(
                 props.interests.map((i) => [i, true])
               ) as Record<string, boolean>
             }
-            urlData={[{ param: "SOURCE", input: "BriefingPage" }]}
-            steps={[
-              {
-                stepId: "step1",
-                inputs: [{ name: "email", required: true, type: "email" }],
-              },
-            ]}
-            successUrl="/thank-you"
+            urlData={props.urlData}
+            steps={props.steps}
+            successUrl={props.successUrl}
           />
         </footer>
       </body>
