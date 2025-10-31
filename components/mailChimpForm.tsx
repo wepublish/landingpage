@@ -2,17 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { addContact, getGroupIds } from "@/services/mailchimp.service";
+import { addContact } from "@/services/mailchimp.service";
+import { ContactData, FormConfig } from "@/types/types";
 
-async function fetchGroups() {
-  const listId = "851436c80e";
-
-  const response = await getGroupIds(listId);
-
-  return response;
-}
-
-function DynamicMailChimpForm(props: FormConfig) {
+function MailChimpForm(props: FormConfig) {
   const searchParams = useSearchParams();
   const [formConfig, setFormConfig] = useState<FormConfig>(props);
 
@@ -26,13 +19,10 @@ function DynamicMailChimpForm(props: FormConfig) {
   // welche daten sollen wenn vorahden an den json body angefügt werden
 
   useEffect(() => {
-    console.log(props.interests);
-    fetchGroups();
+    // check if urlData params are there and set default values in formConfig if so
   }, []);
 
   async function handleSubmit(formEvent: React.FormEvent<HTMLFormElement>) {
-    const listId = "851436c80e";
-
     formEvent.preventDefault();
     const formData = new FormData(formEvent.currentTarget);
 
@@ -49,7 +39,7 @@ function DynamicMailChimpForm(props: FormConfig) {
       },
     };
 
-    const response = await addContact(listId, contactData);
+    const response = await addContact(props.listId, contactData);
   }
 
   return (
@@ -75,4 +65,4 @@ function DynamicMailChimpForm(props: FormConfig) {
   );
 }
 
-export default DynamicMailChimpForm;
+export default MailChimpForm;

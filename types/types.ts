@@ -1,25 +1,25 @@
-interface urlData {
+export interface urlData {
   param: string;
   input: string;
 }
 
-interface Input {
+export interface Input {
   name: string;
   required: boolean;
   type: string;
 }
 
-interface HideIf {
+export interface HideIf {
   condition: string;
   inputs: Input[];
 }
 
-interface Step {
+export interface Step {
   stepId: string;
   inputs: Input[];
 }
 
-interface FormConfig {
+export interface FormConfig {
   listId: string;
   interests?: Record<string, boolean>;
   urlData: urlData[];
@@ -27,7 +27,7 @@ interface FormConfig {
   successUrl: string;
 }
 
-interface ContactData {
+export interface ContactData {
   email_address: string;
   status: "subscribed" | "pending";
   merge_fields?: {
@@ -39,12 +39,13 @@ interface ContactData {
   };
   interests?: Record<string, boolean>;
 }
-interface MailChimpGroup {
+
+export interface MailChimpGroup {
   id: string;
   name: string;
 }
 
-interface MailchimpMergeField {
+export interface MailchimpMergeField {
   id: number;
   tag: string;
   name: string;
