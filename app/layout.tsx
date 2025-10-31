@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Bajour Labs",
-  description: "Bajour React Labs",
+  description: "Bajour Labs Newsletter Landing Page",
 };
 
 export default function RootLayout({
