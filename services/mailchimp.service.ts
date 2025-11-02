@@ -1,5 +1,10 @@
 "use server";
 import mailchimp from "@/app/mailChimpClient";
+import {
+  ContactData,
+  MailChimpGroup,
+  MailchimpMergeField,
+} from "@/types/types";
 
 async function getInterestCategories(listId: string) {
   const response = await mailchimp.lists.getListInterestCategories(listId);

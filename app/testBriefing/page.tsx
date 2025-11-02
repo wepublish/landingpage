@@ -40,7 +40,30 @@ export default function TestBriefing() {
         inputs: [
           {
             name: "email",
+            label: "E-Mail",
             type: "email",
+            required: true,
+          },
+        ],
+      },
+      {
+        stepId: "step2",
+        inputs: [
+          {
+            name: "lname",
+            label: "Nachname",
+            type: "text",
+            required: true,
+          },
+        ],
+      },
+      {
+        stepId: "step3",
+        inputs: [
+          {
+            name: "fname",
+            label: "Vorname",
+            type: "text",
             required: true,
           },
         ],
@@ -51,7 +74,9 @@ export default function TestBriefing() {
       { param: "utm_source", input: "UTM_SOURCE" },
       { param: "utm_medium", input: "UTM_MEDIUM" },
       { param: "utm_campaign", input: "UTM_CAMPAIGN" },
-      { param: "email", input: "EMAIL" },
+      { param: "email", input: "email" },
+      { param: "fname", input: "fname" },
+      { param: "lname", input: "lname" },
     ],
     successUrl: "https://bajour.ch/newsletter-thank-you-basel-briefing",
   } as BriefingProperties;
