@@ -1,9 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { addContact } from "@/services/mailchimp.service";
 import { ContactData, FormConfig } from "@/types/types";
+import { useRouter } from "next/router";
 
 function MailChimpForm(props: FormConfig) {
   const searchParams = useSearchParams();
