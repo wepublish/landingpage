@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { addContact } from "@/services/mailchimp.service";
 import { ContactData, FormConfig } from "@/types/types";
@@ -8,29 +8,24 @@ import { ContactData, FormConfig } from "@/types/types";
 function MailChimpForm(props: FormConfig) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const utmSource = searchParams?.get("utm_source") || "";
-  const utmMedium = searchParams?.get("utm_medium") || "";
-  const utmCampaign = searchParams?.get("utm_campaign") || "";
 
   // creating an object from url params
   const defaultsByInput = props.urlData.reduce<Record<string, string>>(
     (acc, data) => {
       const urlParameterValue = searchParams.get(data.param);
       if (urlParameterValue) {
-        acc[data.input] = urlParameterValue;
+        acc[data.param] = urlParameterValue;
       }
       return acc;
     },
     {}
   );
 
-  console.log("defaultsByInput", defaultsByInput);
-
   const stepsWithDefaults = props.steps.map((step) => {
     let changed = false;
 
     const inputs = step.inputs.map((input) => {
-      const defaultValue = defaultsByInput[input.type];
+      const defaultValue = defaultsByInput[input.name];
 
       if (!defaultValue || input.defaultValue === defaultValue) return input;
 
@@ -57,17 +52,27 @@ function MailChimpForm(props: FormConfig) {
     const formData = new FormData(formEvent.currentTarget);
     const dataObject = Object.fromEntries(formData.entries());
 
+    const dynamicMergeFields = props.urlData.reduce<Record<string, any>>(
+      (acc, data) => {
+        if (dataObject[data.param]) {
+          // email is never in mergefileds syntax from mailchimp...
+          if (data.param.toUpperCase() === "EMAIL") return acc;
+          acc[data.param.toUpperCase()] = dataObject[data.param];
+        } else {
+          // add meta data from url params (data not from form only from url-params)
+          const urlParam = searchParams.get(data.param);
+          if (urlParam) acc[data.input] = urlParam;
+        }
+        return acc;
+      },
+      {}
+    );
+
     const contactData: ContactData = {
       email_address: (dataObject.email as string) || "",
       status: "subscribed",
       interests: props.interests,
-      merge_fields: {
-        UTM_SOURCE: utmSource,
-        UTM_MEDIUM: utmMedium,
-        UTM_CAMPAIGN: utmCampaign,
-        FNAME: (dataObject.fname as string) || "",
-        LNAME: (dataObject.lname as string) || "",
-      },
+      merge_fields: dynamicMergeFields,
     };
 
     const response = await addContact(props.listId, contactData);

@@ -45,11 +45,8 @@ export async function getGroupIds(listId: string) {
 }
 
 export async function addContact(listId: string, data: ContactData) {
-  console.log("Adding contact to Mailchimp:", data);
-
   try {
     const response = await mailchimp.lists.addListMember(listId, data);
-    console.log("Mailchimp response:", response);
     return response;
   } catch (error: any) {
     console.error("Mailchimp API error", error.response.body);

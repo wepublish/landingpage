@@ -33,13 +33,7 @@ export interface ContactData {
   email_address: string;
 
   status: "subscribed" | "pending";
-  merge_fields: {
-    FNAME: string;
-    LNAME: string;
-    UTM_SOURCE?: string;
-    UTM_MEDIUM?: string;
-    UTM_CAMPAIGN?: string;
-  };
+  merge_fields: Record<string, boolean>;
   interests?: Record<string, boolean>;
 }
 
