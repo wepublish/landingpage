@@ -12,28 +12,35 @@ function MailChimpForm(props: FormConfig) {
   const utmMedium = searchParams?.get("utm_medium") || "";
   const utmCampaign = searchParams?.get("utm_campaign") || "";
 
-  const defaultsByInput = useMemo(() => {
-    if (!props.urlData?.length) return {};
-    return props.urlData.reduce<Record<string, string>>((acc, data) => {
-      const value = searchParams.get(data.param);
-      if (value) acc[data.input] = value;
+  // creating an object from url params
+  const defaultsByInput = props.urlData.reduce<Record<string, string>>(
+    (acc, data) => {
+      const urlParameterValue = searchParams.get(data.param);
+      if (urlParameterValue) {
+        acc[data.input] = urlParameterValue;
+      }
       return acc;
-    }, {});
-  }, [props.urlData, searchParams]);
+    },
+    {}
+  );
 
-  const stepsWithDefaults = useMemo(() => {
-    if (!Object.keys(defaultsByInput).length) return props.steps;
-    return props.steps.map((step) => {
-      let changed = false;
-      const inputs = step.inputs.map((input) => {
-        const defaultValue = defaultsByInput[input.name];
-        if (!defaultValue || input.defaultValue === defaultValue) return input;
-        changed = true;
-        return { ...input, defaultValue };
-      });
-      return changed ? { ...step, inputs } : step;
+  console.log("defaultsByInput", defaultsByInput);
+
+  const stepsWithDefaults = props.steps.map((step) => {
+    let changed = false;
+
+    const inputs = step.inputs.map((input) => {
+      const defaultValue = defaultsByInput[input.type];
+
+      if (!defaultValue || input.defaultValue === defaultValue) return input;
+
+      changed = true;
+
+      return { ...input, defaultValue };
     });
-  }, [props.steps, defaultsByInput]);
+
+    return changed ? { ...step, inputs } : step;
+  });
 
   const [i, setI] = useState(0);
   const last =
@@ -41,8 +48,9 @@ function MailChimpForm(props: FormConfig) {
 
   async function handleSubmit(formEvent: React.FormEvent<HTMLFormElement>) {
     formEvent.preventDefault();
+
     if (!last) {
-      setI((x) => Math.min(x + 1, Math.max(stepsWithDefaults.length - 1, 0)));
+      setI((x) => Math.min(stepsWithDefaults.length - 1, x + 1));
       return;
     }
 
@@ -111,6 +119,7 @@ function MailChimpForm(props: FormConfig) {
           </button>
 
           {!last ? (
+            // button is submit so the browser validates required fields
             <button type="submit">Weiter</button>
           ) : (
             <button type="submit">Abonnieren</button>
