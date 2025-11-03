@@ -40,20 +40,53 @@ export default function TestBriefing() {
         inputs: [
           {
             name: "email",
+            label: "E-Mail",
             type: "email",
+            required: true,
+          },
+        ],
+      },
+      {
+        stepId: "step2",
+        inputs: [
+          {
+            name: "lname",
+            label: "Nachname",
+            type: "text",
+            required: true,
+          },
+          {
+            name: "fname",
+            label: "Vorname",
+            type: "text",
+            required: true,
+          },
+        ],
+      },
+      {
+        stepId: "step3",
+        inputs: [
+          {
+            name: "plz",
+            label: "Postleitzahl",
+            type: "number",
             required: true,
           },
         ],
       },
     ],
     listId: "851436c80e",
+    // input muss mit mailchimp Zielgruppenfelder übereinstimmen
     urlData: [
       { param: "utm_source", input: "UTM_SOURCE" },
       { param: "utm_medium", input: "UTM_MEDIUM" },
-      { param: "utm_campaign", input: "UTM_CAMPAIGN" },
+      { param: "utm_campaign", input: "UTM_CAMP" },
       { param: "email", input: "EMAIL" },
+      { param: "fname", input: "FNAME" },
+      { param: "lname", input: "LNAME" },
+      { param: "plz", input: "PLZ" },
     ],
-    successUrl: "https://bajour.ch/newsletter-thank-you-basel-briefing",
+    successUrl: "",
   } as BriefingProperties;
 
   return <NewBriefing {...briefingProps} />;

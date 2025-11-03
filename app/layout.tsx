@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -13,5 +14,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <html lang="en">{children}</html>;
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+      </body>
+    </html>
+  );
 }

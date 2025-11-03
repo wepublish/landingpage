@@ -1,4 +1,5 @@
 import MailChimpForm from "./mailChimpForm";
+import { Step, urlData } from "@/types/types";
 
 // hier service importiern
 
@@ -22,11 +23,8 @@ export interface BriefingProperties {
 
   listId: string;
   interests: string[];
-  urlData: { param: string; input: string }[];
-  steps: {
-    stepId: string;
-    inputs: { name: string; required: boolean; type: string }[];
-  }[];
+  urlData: urlData[];
+  steps: Step[];
   successUrl: string;
 }
 
