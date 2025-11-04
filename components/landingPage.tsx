@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import MailChimpForm from "./mailChimpForm";
 import { Step, urlData } from "@/types/types";
 
@@ -23,7 +24,7 @@ export interface BriefingProperties {
 
   listId: string;
   interests: string[];
-  urlData: urlData[];
+  mailChimpProps: urlData[];
   steps: Step[];
   successUrl: string;
 }
@@ -119,18 +120,19 @@ export default function LandingPage(props: BriefingProperties) {
           className="footer"
           style={{ backgroundImage: `url(${props.footerBackgroundImage})` }}
         >
-          {/* Hier dann die services an client component runter geben */}
-          <MailChimpForm
-            listId={props.listId}
-            interests={
-              Object.fromEntries(
-                props.interests.map((i) => [i, true])
-              ) as Record<string, boolean>
-            }
-            urlData={props.urlData}
-            steps={props.steps}
-            successUrl={props.successUrl}
-          />
+          <Suspense fallback={null}>
+            <MailChimpForm
+              listId={props.listId}
+              interests={
+                Object.fromEntries(
+                  props.interests.map((i) => [i, true])
+                ) as Record<string, boolean>
+              }
+              urlData={props.mailChimpProps}
+              steps={props.steps}
+              successUrl={props.successUrl}
+            />
+          </Suspense>
         </footer>
       </body>
     </>
