@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import NewBriefing, { BriefingProperties } from "../../components/landingPage";
 
 export default function TestBriefing() {
@@ -77,7 +78,7 @@ export default function TestBriefing() {
     ],
     listId: "851436c80e",
     // input muss mit mailchimp Zielgruppenfelder übereinstimmen
-    urlData: [
+    mailChimpProps: [
       { param: "utm_source", input: "UTM_SOURCE" },
       { param: "utm_medium", input: "UTM_MEDIUM" },
       { param: "utm_campaign", input: "UTM_CAMP" },
@@ -89,5 +90,10 @@ export default function TestBriefing() {
     successUrl: "",
   } as BriefingProperties;
 
-  return <NewBriefing {...briefingProps} />;
+  return (
+    <>
+      <NewBriefing {...briefingProps} />
+      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+    </>
+  );
 }
