@@ -5,7 +5,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 export default function TestBriefing() {
   const briefingProps: BriefingProperties = {
     // das sind die Gruppen Id's neue Newsletter-Abonennten werden automatisch diesen Gruppen zugewiesen
-    interests: ["47ed10ad9f", "22b72061f1"],
+    interests: ["6d529bb42b"],
     steps: [
       {
         stepId: "step1",
@@ -37,17 +37,6 @@ export default function TestBriefing() {
       },
       {
         stepId: "step3",
-        inputs: [
-          {
-            name: "plz",
-            label: "Postleitzahl",
-            type: "number",
-            required: true,
-          },
-        ],
-      },
-      {
-        stepId: "step4",
         inputs: [
           {
             name: "plz",
