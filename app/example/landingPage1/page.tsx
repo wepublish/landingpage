@@ -11,12 +11,6 @@ export default function TestBriefing() {
         stepId: "step1",
         inputs: [
           {
-            name: "gemeinde_news",
-            label: "Gemeinde news",
-            type: "radio",
-            required: false,
-          },
-          {
             name: "email",
             label: "E-Mail",
             type: "email",
