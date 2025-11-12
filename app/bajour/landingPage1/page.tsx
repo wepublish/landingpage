@@ -40,20 +40,10 @@ export default function TestBriefing() {
         inputs: [
           {
             name: "plz",
-            label: "Postleitzahl",
+            label:
+              "Möchtest du newsletter über deine Region erhalten? Trage hier deine Postleitzahl ein:",
             type: "number",
-            required: true,
-          },
-        ],
-      },
-      {
-        stepId: "step4",
-        inputs: [
-          {
-            name: "plz",
-            label: "Postleitzahl",
-            type: "number",
-            required: true,
+            required: false,
           },
         ],
       },
