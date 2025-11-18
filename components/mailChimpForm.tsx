@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { addContact } from "@/services/mailchimp.service";
 import { ContactData, FormConfig } from "@/types/types";
+import "./MailChimpForm.css"; // ✅ CSS oben verlinkt
 
 function MailChimpForm(props: FormConfig) {
   const searchParams = useSearchParams();
@@ -13,9 +14,7 @@ function MailChimpForm(props: FormConfig) {
   const defaultsByInput = props.mailChimpProps.reduce<Record<string, string>>(
     (acc, data) => {
       const urlParameterValue = searchParams.get(data.param);
-      if (urlParameterValue) {
-        acc[data.param] = urlParameterValue;
-      }
+      if (urlParameterValue) acc[data.param] = urlParameterValue;
       return acc;
     },
     {}
@@ -26,11 +25,8 @@ function MailChimpForm(props: FormConfig) {
 
     const inputs = step.inputs.map((input) => {
       const defaultValue = defaultsByInput[input.name];
-
       if (!defaultValue || input.defaultValue === defaultValue) return input;
-
       changed = true;
-
       return { ...input, defaultValue };
     });
 
@@ -52,14 +48,12 @@ function MailChimpForm(props: FormConfig) {
     const formData = new FormData(formEvent.currentTarget);
     const dataObject = Object.fromEntries(formData.entries());
 
-    const dynamicMergeFields = props.urlData.reduce<Record<string, any>>(
+    const dynamicMergeFields = props.mailChimpProps.reduce<Record<string, any>>(
       (acc, data) => {
         if (dataObject[data.param]) {
-          // email is never in mergefileds syntax from mailchimp...
           if (data.param.toUpperCase() === "EMAIL") return acc;
           acc[data.param.toUpperCase()] = dataObject[data.param];
         } else {
-          // add meta data from url params (data not from form only from url-params)
           const urlParam = searchParams.get(data.param);
           if (urlParam) acc[data.input] = urlParam;
         }
@@ -84,56 +78,63 @@ function MailChimpForm(props: FormConfig) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {stepsWithDefaults.length === 0 ? (
-        <p>Keine Steps konfiguriert.</p>
-      ) : (
-        stepsWithDefaults.map((step, idx) => {
-          const enforceAll = last;
-          return (
-            <div
-              key={step.stepId}
-              style={{ display: idx === i ? "block" : "none" }}
+    <div className="form-background">
+      <form className="mailchimp-form" onSubmit={handleSubmit}>
+        {stepsWithDefaults.length === 0 ? (
+          <p className="mailchimp-no-steps">Keine Steps konfiguriert.</p>
+        ) : (
+          stepsWithDefaults.map((step, idx) => {
+            const enforceAll = last;
+            return (
+              <div
+                key={step.stepId}
+                className={`mailchimp-step ${idx === i ? "active" : "hidden"}`}
+              >
+                {step.inputs.map((input) => (
+                  <div key={input.name} className="mailchimp-input-group">
+                    <label htmlFor={input.name} className="mailchimp-label">
+                      {input.label ?? input.name}
+                    </label>
+                    <input
+                      id={input.name}
+                      type={input.type}
+                      name={input.name}
+                      className="mailchimp-input"
+                      defaultValue={input.defaultValue}
+                      required={(enforceAll || idx === i) && !!input.required}
+                      disabled={!enforceAll && idx !== i}
+                    />
+                  </div>
+                ))}
+              </div>
+            );
+          })
+        )}
+
+        {stepsWithDefaults.length > 0 && (
+          <div className="mailchimp-button-row">
+            <button
+              type="button"
+              className="mailchimp-button back"
+              disabled={i === 0}
+              onClick={() => setI((x) => Math.max(0, x - 1))}
             >
-              {step.inputs.map((input) => (
-                <div key={input.name}>
-                  <label htmlFor={input.name}>
-                    {input.label ?? input.name}
-                  </label>
-                  <input
-                    id={input.name}
-                    type={input.type}
-                    name={input.name}
-                    defaultValue={input.defaultValue}
-                    required={(enforceAll || idx === i) && !!input.required}
-                    disabled={!enforceAll && idx !== i}
-                  />
-                </div>
-              ))}
-            </div>
-          );
-        })
-      )}
+              Zurück
+            </button>
 
-      {stepsWithDefaults.length > 0 && (
-        <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
-          <button
-            type="button"
-            disabled={i === 0}
-            onClick={() => setI((x) => Math.max(0, x - 1))}
-          >
-            Zurueck
-          </button>
-
-          {!last ? (
-            // button is submit so the browser validates required fields
-            <button type="submit">Weiter</button>
-          ) : (
-            <button type="submit">Abonnieren</button>
-          )}
-        </div>
-      )}
-    </form>
+            {!last ? (
+              <button className="mailchimp-button next" type="submit">
+                Weiter
+              </button>
+            ) : (
+              <button className="mailchimp-button submit" type="submit">
+                Abonnieren
+              </button>
+            )}
+          </div>
+        )}
+      </form>
+    </div>
   );
 }
 

@@ -35,13 +35,96 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Landingpages konfigurieren
 
-### 1. Seite anlegen
-- Lege unter `app/<slug>/page.tsx` eine neue Datei an (z. B. `app/testBriefing/page.tsx` kopieren).
-- Passe Inhalte, Farben und Bilder direkt im `briefingProps` Objekt an.
-- Setze `listId` auf die gewünschte Mailchimp Audience.
-- Trage im Array `interests` die IDs der Mailchimp-Interest-Gruppen ein, die automatisch aktiviert werden sollen.
+### 1. Varianten pro Medium pflegen
+- Für jedes Medium gibt es unter `components/<medium>LandingPages/` (z. B. `components/bajourLandingPages/`) bis zu drei vorbereitete Varianten: `landingPage.tsx`, `landingPageLight.tsx` und `landingPageSuperLight.tsx`.
+- Jede Variante exportiert eine React-Komponente, die `BriefingProperties` erwartet und im Footer das gemeinsame `MailChimpForm` rendert. Dadurch kannst du den Formularfluss zentral verwalten und trotzdem pro Variante das Layout frei gestalten.
+- Passe Texte, Farben, Bilder und Struktur direkt im JSX dieser Dateien an. Gestaltung passiert nicht mehr über Props, sondern innerhalb der jeweiligen Komponenten.
+- Für neue Medien kopierst du einen bestehenden Komponenten-Ordner (z. B. `components/exampleLandingPages/`), benennst ihn um (`components/<deinMedium>LandingPages/`) und passt die drei Varianten nach Bedarf an. Achte darauf, Bildpfade, CSS-Klassen und Tracking-Skripte medium-spezifisch zu setzen.
+- Beispiel: `components/bajourLandingPages/landingPage.tsx` importiert `MailChimpForm` aus `components/mailChimpForm.tsx` und verwendet `props.mailChimpProps`, `props.steps` usw., die du im jeweiligen `page.tsx` definierst.
 
-### 2. Formularfelder & URL-Parameter
+### 2. Seite anlegen & Formular konfigurieren
+- Lege für jedes Medium einen eigenen Ordner unter `app/` an (`app/<medium>/`, z. B. `app/bajour/` oder `app/example/`).
+- Innerhalb des Medium-Ordners erzeugst du für jede Variante einen weiteren Ordner, der den Route-Slug widerspiegelt (z. B. `app/bajour/landingPage1/`, `app/bajour/landingPage2/`). In jeden dieser Ordner gehört eine `page.tsx`.
+- Die URL ergibt sich aus der Ordnerstruktur: `app/bajour/landingPage1/page.tsx` wird unter `/bajour/landingPage1` ausgeliefert.
+- Importiere in der jeweiligen `page.tsx` die gewünschte Variante, z. B. `import LandingPage from "@/components/bajourLandingPages/landingPage";`.
+- Typischer Seitenaufbau:
+  ```tsx
+  import type { BriefingProperties } from "@/types/types";
+  import LandingPage from "@/components/bajourLandingPages/landingPage";
+
+  export default function BajourLandingPage1() {
+    const briefingProps: BriefingProperties = { /* ... */ };
+    return <LandingPage {...briefingProps} />;
+  }
+  ```
+- Beispielhafte Struktur:
+  ```text
+  app/
+  ├─ bajour/
+  │  ├─ landingPage1/
+  │  │  └─ page.tsx        → Route /bajour/landingPage1
+  │  └─ landingPage2/
+  │     └─ page.tsx        → Route /bajour/landingPage2
+  └─ example/
+     ├─ landingPage1/
+     │  └─ page.tsx        → Route /example/landingPage1
+     └─ landingPage2/
+        └─ page.tsx        → Route /example/landingPage2
+
+  components/
+  └─ bajourLandingPages/
+     ├─ landingPage.tsx
+     ├─ landingPageLight.tsx
+     └─ landingPageSuperLight.tsx
+  ```
+- Konfiguriere das `briefingProps` Objekt – es enthält nur noch Mailchimp-relevante Einstellungen:
+  ```ts
+  const briefingProps: BriefingProperties = {
+    listId: "MAILCHIMP_LIST_ID",
+    interests: ["groupIdA", "groupIdB"], // optionale Vorauswahl von Gruppen
+    steps: [...],                         // Formular-Schritte
+    mailChimpProps: [...],                // Zuordnung URL/Form -> Merge-Tags
+    successUrl: "/danke",                 // Ziel nach erfolgreichem Submit
+  };
+  ```
+- Übergebe die Props an deine Variante: `<LandingPage {...briefingProps} />`.
+- Beispielkonfiguration mit mehreren Formular-Schritten:
+  ```ts
+  const briefingProps: BriefingProperties = {
+    listId: process.env.NEXT_PUBLIC_MAILCHIMP_LIST_ID!,
+    interests: ["47ed10ad9f", "22b72061f1"],
+    steps: [
+      {
+        stepId: "kontakt",
+        inputs: [
+          { name: "email", label: "E-Mail", type: "email", required: true },
+          { name: "fname", label: "Vorname", type: "text", required: true },
+        ],
+      },
+      {
+        stepId: "details",
+        inputs: [
+          { name: "lname", label: "Nachname", type: "text", required: true },
+          { name: "phone", label: "Telefonnummer", type: "tel", required: false },
+          { name: "birthday", label: "Geburtsdatum", type: "date", required: false },
+          { name: "zip", label: "PLZ", type: "number", required: false },
+        ],
+      },
+    ],
+    mailChimpProps: [
+      { param: "email", input: "EMAIL" },
+      { param: "fname", input: "FNAME" },
+      { param: "lname", input: "LNAME" },
+      { param: "phone", input: "PHONE" },
+      { param: "birthday", input: "BIRTHDAY" },
+      { param: "zip", input: "PLZ" },
+      { param: "utm_source", input: "UTM_SOURCE" },
+    ],
+    successUrl: "/danke",
+  };
+  ```
+
+### 3. Formularfelder & URL-Parameter
 - Alle Formularfelder werden in `steps` gepflegt. Der `name` wird als Feldname, `id` und `FormData`-Key verwendet.
 - Wenn ein Query-Parameter das Feld vorausfüllen soll, muss der Parametername exakt dem `name` entsprechen (`?fname=Max` füllt das Feld mit `name: "fname"`).
 - Für versteckte Felder einfach `type: "hidden"` setzen; das Feld ist dann nicht sichtbar, wird aber wie gewohnt übertragen.
@@ -54,8 +137,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
   ];
   ```
 - Sorge dafür, dass alle verwendeten Merge-Tags (`EMAIL`, `FNAME`, `PLZ`, `UTM_*` usw.) in deiner Mailchimp-Liste existieren – fehlende Tags führen zu API-Fehlern.
+- Mailchimp stellt folgende Feldtypen bereit: Text, Nummer, Radio Buttons (Optionsfelder), Dropdown-Menü, Datum, Geburtsdatum, Adresse, Postleitzahl (nur USA), Telefonnummer, Website, Bild-URL. Im Projekt sind derzeit alle Typen außer Radio Buttons und Dropdown-Menüs einsatzbereit; für diese zwei Varianten müssen noch passende UI-Komponenten ergänzt werden.
+- Über `urlData` kannst du beliebige Kampagnen-Metadaten direkt aus der URL übernehmen, ohne dafür Eingabefelder anzulegen. Beispiel: `{ param: "utm_source", input: "UTM_SOURCE" }`, `{ param: "utm_medium", input: "UTM_MEDIUM" }`, `{ param: "utm_campaign", input: "UTM_CAMP" }`. Sobald die Parameter in der URL stehen, werden die Werte an die hinterlegten Mailchimp Merge-Tags übertragen.
 
-### 3. Mailchimp-Daten prüfen
+### 4. Mailchimp-Daten prüfen
 - Führe `npm run get-all-informartion` aus, um Interest-Gruppen und Merge-Felder der aktuellen Liste einzusehen.
 - Die Ausgabe hilft dir, das `interests` Array und die Merge-Tag-Namen in `urlData` abzugleichen.
 - Beispielausgabe:
@@ -89,7 +174,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - Trage die gewünschten Gruppen-IDs aus dem `get-groups` Abschnitt in `interests` ein (`app/<slug>/page.tsx`). Darüber steuerst du, für welche Mailchimp-Gruppe die Landingpage subscribt.
 - Den Listen-Schlüssel (`listId`) findest du im Mailchimp-Interface (Audience → Settings → Audience name and defaults).
 
-### 4. Testen
+### 5. Testen
 - Starte lokal (`npm run dev`) und öffne deine Seite, z. B. `http://localhost:3000/<slug>`.
 - Hänge Testparameter an die URL (`?email=max@example.org&fname=Max&utm_source=Campaign`), um Prefills zu prüfen.
 - Durchlaufe das Formular einmal komplett; nach erfolgreicher Anmeldung leitet der Client auf `successUrl` weiter.

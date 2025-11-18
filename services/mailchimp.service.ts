@@ -1,4 +1,5 @@
 "use server";
+import { createHash } from "crypto";
 import mailchimp from "@/app/mailChimpClient";
 import {
   ContactData,
@@ -45,11 +46,31 @@ export async function getGroupIds(listId: string) {
 }
 
 export async function addContact(listId: string, data: ContactData) {
+  const trimmedEmail = data.email_address.trim();
+
+  const subscriberHash = createHash("md5")
+    .update(trimmedEmail.toLowerCase())
+    .digest("hex");
+
+  const payload = {
+    email_address: trimmedEmail,
+    status: data.status,
+    status_if_new: data.status,
+    merge_fields: data.merge_fields,
+    interests: data.interests,
+  };
+
+  data.email_address = trimmedEmail;
+
   try {
-    const response = await mailchimp.lists.addListMember(listId, data);
+    const response = await mailchimp.lists.setListMember(
+      listId,
+      subscriberHash,
+      payload
+    );
     return response;
   } catch (error: any) {
-    console.error("Mailchimp API error", error.response.body);
+    console.error("Mailchimp API error", error?.response?.body ?? error);
 
     throw error; // rethrow so callers can handle it
   }

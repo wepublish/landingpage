@@ -1,3 +1,10 @@
+export interface BriefingProperties {
+  listId: string;
+  interests: string[];
+  mailChimpProps: urlData[];
+  steps: Step[];
+  successUrl: string;
+}
 export interface urlData {
   param: string;
   input: string;
