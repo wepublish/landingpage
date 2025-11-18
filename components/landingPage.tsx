@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import MailChimpForm from "./mailChimpForm";
-import { Step, urlData } from "@/types/types";
+import { FormConfig } from "@/types/types";
 
 // hier service importiern
 
-export interface BriefingProperties {
+export interface BriefingProperties extends FormConfig {
   title: string;
   subtitle: string;
   lead: string;
@@ -21,12 +21,6 @@ export interface BriefingProperties {
   blobBackground: string;
   subscribetextBackground: string;
   deliveryBackground: string;
-
-  listId: string;
-  interests: string[];
-  mailChimpProps: urlData[];
-  steps: Step[];
-  successUrl: string;
 }
 
 export default function LandingPage(props: BriefingProperties) {
@@ -123,12 +117,8 @@ export default function LandingPage(props: BriefingProperties) {
           <Suspense fallback={null}>
             <MailChimpForm
               listId={props.listId}
-              interests={
-                Object.fromEntries(
-                  props.interests.map((i) => [i, true])
-                ) as Record<string, boolean>
-              }
-              urlData={props.mailChimpProps}
+              interests={props.interests}
+              mailChimpProps={props.mailChimpProps}
               steps={props.steps}
               successUrl={props.successUrl}
             />

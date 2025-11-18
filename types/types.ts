@@ -23,8 +23,8 @@ export interface Step {
 
 export interface FormConfig {
   listId: string;
-  interests?: Record<string, boolean>;
-  urlData: { param: string; input: string }[];
+  interests: string[];
+  mailChimpProps: { param: string; input: string }[];
   steps: Step[];
   successUrl: string;
 }

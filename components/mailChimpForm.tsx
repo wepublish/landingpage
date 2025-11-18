@@ -71,7 +71,9 @@ function MailChimpForm(props: FormConfig) {
     const contactData: ContactData = {
       email_address: (dataObject.email as string) || "",
       status: "subscribed",
-      interests: props.interests,
+      interests: Object.fromEntries(
+        props.interests.map((i) => [i, true])
+      ) as Record<string, boolean>,
       merge_fields: dynamicMergeFields,
     };
 

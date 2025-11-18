@@ -88,7 +88,7 @@ export default function TestBriefing() {
       { param: "plz", input: "PLZ" },
     ],
     successUrl: "",
-  } as BriefingProperties;
+  };
 
   return (
     <>
