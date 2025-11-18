@@ -10,7 +10,7 @@ function MailChimpForm(props: FormConfig) {
   const router = useRouter();
 
   // creating an object from url params
-  const defaultsByInput = props.urlData.reduce<Record<string, string>>(
+  const defaultsByInput = props.mailChimpProps.reduce<Record<string, string>>(
     (acc, data) => {
       const urlParameterValue = searchParams.get(data.param);
       if (urlParameterValue) {
