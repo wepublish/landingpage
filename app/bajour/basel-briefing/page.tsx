@@ -5,6 +5,7 @@ import HeaderImage from "./bb-header.jpg";
 import ReadyImage from "./bb-ready.jpg";
 import IndependentImage from "./bb-independent.jpg";
 import FooterImage from "./bb-footer.jpg";
+import { MetaPixel } from "@/components/MetaPixel";
 
 export default function TestBriefing() {
   const briefingProps = {
@@ -98,6 +99,9 @@ export default function TestBriefing() {
     <>
       <Briefing {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+      <MetaPixel
+        pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID_BAJOUR_BASEL_BRIEFING!}
+      />
     </>
   );
 }
