@@ -3,6 +3,11 @@ import MailchimpForm from "../../../components/mailchimp-form";
 import { FormConfig } from "@/types/types";
 import Image, { StaticImageData } from "next/image";
 import logo from "./logo_black.svg"
+import { Roboto_Condensed } from "next/font/google";
+
+const robotoCondensed = Roboto_Condensed({
+    subsets: ["latin"]
+});
 
 export interface BaselBriefingSuperlightProps extends FormConfig {
   title: string;
@@ -12,7 +17,7 @@ export interface BaselBriefingSuperlightProps extends FormConfig {
 
 export default function BaselBriefingSuperlight(props: BaselBriefingSuperlightProps) {
     return (
-        <main className="container mx-auto p-4">
+        <main className={`${robotoCondensed.className} container mx-auto p-4`}>
             <Image src={logo} alt="Logo Bajour" className="w-1/3 mx-auto mb-4" />
             <section className="grid gap-6 lg:grid-cols-2 mb-4">
                 <section className="lg:col-span-2">

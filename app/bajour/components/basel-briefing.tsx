@@ -4,6 +4,15 @@ import { FormConfig, HtmlContent } from "@/types/types";
 import Image, { StaticImageData } from 'next/image';
 import logoWhite from "./logo_white.svg";
 import styles from "./style.module.css";
+import { Roboto, Roboto_Condensed } from "next/font/google";
+
+const roboto = Roboto({
+    subsets: ["latin"]
+});
+
+const robotoCondensed = Roboto_Condensed({
+    subsets: ["latin"]
+});
 
 // hier service importiern
 
@@ -28,8 +37,8 @@ export interface BaselBriefingProps extends FormConfig {
 
 export default function BaselBriefing(props: BaselBriefingProps) {
   return (
-    <div className={styles.scope}>
-      <header className={styles.header}>
+    <div className={`${styles.scope} ${robotoCondensed.className}`}>
+      <header className={`z-1 ${styles.header}`}>
         <Image src={props.headerBackgroundImage} alt="" fill className="-z-10" />
         <Image src={logoWhite} alt="Logo White" className="w-16 absolute inset-6" />
         <div className={styles.header__content}>
@@ -38,21 +47,21 @@ export default function BaselBriefing(props: BaselBriefingProps) {
         </div>
       </header>
       <main className={`${styles.main} bg-[${props.mainBackground}]`}>
-        <div className={`${styles.pinkblob} ${styles["pinkblob--topleft"]} bg-[${props.blobBackground}]`} />
-        <div className={`${styles.pinkblob} ${styles["pinkblob--topright"]} bg-[${props.blobBackground}]`} />
-        <section className={`${styles.leadtext} text-[${props.leadColor}]`}>
+        <div className={`z-2 ${styles.pinkblob} ${styles["pinkblob--topleft"]} bg-[${props.blobBackground}]`} />
+        <div className={`z-2 ${styles.pinkblob} ${styles["pinkblob--topright"]} bg-[${props.blobBackground}]`} />
+        <section className={`z-3 ${styles.leadtext} text-[${props.leadColor}]`}>
           <p className={styles.leadtext__text}>{props.lead}</p>
         </section>
-        <section className={styles.wakeuptext}>
+        <section className={`z-4 ${styles.wakeuptext}`}>
           <div dangerouslySetInnerHTML={props.wakeup} />
         </section>
-        <div className={`${styles.pinkblob} ${styles["pinkblob--bottomleft"]} bg-[${props.blobBackground}]`} />
-        <div className={`${styles.pinkblob} ${styles["pinkblob--bottomright"]} bg-[${props.blobBackground}]`} />
-        <section className={styles.readytext}>
+        <div className={`z-2 ${styles.pinkblob} ${styles["pinkblob--bottomleft"]} bg-[${props.blobBackground}]`} />
+        <div className={`z-2 ${styles.pinkblob} ${styles["pinkblob--bottomright"]} bg-[${props.blobBackground}]`} />
+        <section className={`z-5 ${styles.readytext}`}>
           <Image src={props.readyBackgroundImage} alt="" fill className="-z-10" />
           <div dangerouslySetInnerHTML={props.ready} />
         </section>
-        <section className={styles.independenttext}>
+        <section className={`z-6 ${styles.independenttext}`}>
           <Image src={props.independentBackgroundImage} alt="" fill className="-z-10" />
           <p>
             <span className={styles["independenttext--independent"]}>
@@ -62,14 +71,14 @@ export default function BaselBriefing(props: BaselBriefingProps) {
             <span className={styles["independenttext--free"]}>kostenlos</span>
           </p>
         </section>
-        <section className={`${styles.deliverytext} bg-[${props.deliveryBackground}]`} >
+        <section className={`z-7 ${styles.deliverytext} bg-[${props.deliveryBackground}]`} >
           <div dangerouslySetInnerHTML={props.delivery} />
         </section>
-        <section className={`${styles.subscribetext} bg-[${props.subscribetextBackground}]`}>
+        <section className={`z-7 ${styles.subscribetext} bg-[${props.subscribetextBackground}]`}>
           <div dangerouslySetInnerHTML={props.subscribe} />
         </section>
       </main>
-      <footer className={styles.footer} >
+      <footer className={styles.footer}>
         <Image src={props.footerBackgroundImage} alt="" fill className="-z-10" />
         <Suspense fallback={null}>
           <MailchimpForm
