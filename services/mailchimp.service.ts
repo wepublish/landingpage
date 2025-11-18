@@ -1,9 +1,9 @@
 "use server";
 import { createHash } from "crypto";
-import mailchimp from "@/app/mailChimpClient";
+import mailchimp from "@/app/mailchimp-client";
 import {
   ContactData,
-  MailChimpGroup,
+  MailchimpGroup,
   MailchimpMergeField,
 } from "@/types/types";
 
@@ -37,7 +37,7 @@ export async function getGroupIds(listId: string) {
     throw new Error("Fehler beim Abrufen der Interests");
   }
 
-  const interest: MailChimpGroup[] = interests.interests.map((i) => ({
+  const interest: MailchimpGroup[] = interests.interests.map((i) => ({
     id: i.id,
     name: i.name,
   }));

@@ -1,0 +1,44 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
+import BaselBriefingSuperlight from "../components/basel-briefing-superlight";
+import bajourIphone from "./bajour-iphone.png"
+
+export default function TestBriefingSuperlight() {
+  const briefingProps = {
+    title: "Das Wichtigste aus Basel",
+    subtitle: "Hol dir bajour.ch in deinen Posteingang! Wähle die Newsletter, die dich interessieren.",
+    image: bajourIphone,
+    interests: ["47ed10ad9f", "22b72061f1"],
+    steps: [
+      {
+        stepId: "step1",
+        inputs: [
+          {
+            name: "email",
+            label: "E-Mail",
+            type: "email",
+            required: true,
+          },
+        ],
+      },
+    ],
+    listId: "851436c80e",
+    // input muss mit mailchimp Zielgruppenfelder übereinstimmen
+    mailChimpProps: [
+      { param: "utm_source", input: "UTM_SOURCE" },
+      { param: "utm_medium", input: "UTM_MEDIUM" },
+      { param: "utm_campaign", input: "UTM_CAMP" },
+      { param: "email", input: "EMAIL" },
+      { param: "fname", input: "FNAME" },
+      { param: "lname", input: "LNAME" },
+      { param: "plz", input: "PLZ" },
+    ],
+    successUrl: "",
+  };
+
+  return (
+    <>
+      <BaselBriefingSuperlight {...briefingProps} />
+      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+    </>
+  );
+}

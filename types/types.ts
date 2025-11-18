@@ -1,15 +1,3 @@
-export interface BriefingProperties {
-  listId: string;
-  interests: string[];
-  mailChimpProps: urlData[];
-  steps: Step[];
-  successUrl: string;
-}
-export interface urlData {
-  param: string;
-  input: string;
-}
-
 export interface Input {
   name: string;
   required: boolean;
@@ -28,6 +16,10 @@ export interface Step {
   inputs: Input[];
 }
 
+export interface HtmlContent {
+  __html: string;
+}
+
 export interface FormConfig {
   listId: string;
   interests: string[];
@@ -44,7 +36,7 @@ export interface ContactData {
   interests?: Record<string, boolean>;
 }
 
-export interface MailChimpGroup {
+export interface MailchimpGroup {
   id: string;
   name: string;
 }
