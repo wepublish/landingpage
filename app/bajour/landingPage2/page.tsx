@@ -1,6 +1,10 @@
 import LandingPage from "@/components/bajourLandingPages/landingPage";
+import { MetaPixel } from "@/components/MetaPixel";
 import { BriefingProperties } from "@/types/types";
 import { GoogleAnalytics } from "@next/third-parties/google";
+
+const META_PIXEL_ID =
+  process.env.NEXT_PUBLIC_META_PIXEL_ID_BAJOUR_LANDING_PAGE_2;
 
 export default function TestBriefing() {
   const briefingProps: BriefingProperties = {
@@ -65,6 +69,7 @@ export default function TestBriefing() {
     <>
       <LandingPage {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+      <MetaPixel pixelId={META_PIXEL_ID} />
     </>
   );
 }
