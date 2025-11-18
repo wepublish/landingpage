@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import BaselBriefingLight from "@/app/bajour/components/basel-briefing-light";
+import BriefingLight from "@/app/bajour/components/briefing-light";
 import bajourIphone from "./bajour-iphone.png"
 
 export default function TestBriefingLight() {
@@ -65,7 +65,7 @@ export default function TestBriefingLight() {
 
   return (
     <>
-      <BaselBriefingLight {...briefingProps} />
+      <BriefingLight {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );

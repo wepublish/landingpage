@@ -4,11 +4,7 @@ import { FormConfig, HtmlContent } from "@/types/types";
 import Image, { StaticImageData } from 'next/image';
 import logoWhite from "./logo_white.svg";
 import styles from "./style.module.css";
-import { Roboto, Roboto_Condensed } from "next/font/google";
-
-const roboto = Roboto({
-    subsets: ["latin"]
-});
+import { Roboto_Condensed } from "next/font/google";
 
 const robotoCondensed = Roboto_Condensed({
     subsets: ["latin"]
@@ -16,7 +12,7 @@ const robotoCondensed = Roboto_Condensed({
 
 // hier service importiern
 
-export interface BaselBriefingProps extends FormConfig {
+export interface BriefingProps extends FormConfig {
   title: string;
   subtitle: string;
   lead: string;
@@ -35,7 +31,7 @@ export interface BaselBriefingProps extends FormConfig {
   deliveryBackground: string;
 }
 
-export default function BaselBriefing(props: BaselBriefingProps) {
+export default function Briefing(props: BriefingProps) {
   return (
     <div className={`${styles.scope} ${robotoCondensed.className}`}>
       <header className={`z-1 ${styles.header}`}>

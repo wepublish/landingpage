@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import NewBriefing from "../components/basel-briefing";
+import Briefing from "../components/briefing";
 
 import HeaderImage from "./bb-header.jpg";
 import ReadyImage from "./bb-ready.jpg";
@@ -96,7 +96,7 @@ export default function TestBriefing() {
 
   return (
     <>
-      <NewBriefing {...briefingProps} />
+      <Briefing {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );

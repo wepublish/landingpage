@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import BaselBriefingSuperlight from "../components/basel-briefing-superlight";
+import BriefingSuperlight from "../components/briefing-superlight";
 import bajourIphone from "./bajour-iphone.png"
 
 export default function TestBriefingSuperlight() {
@@ -37,7 +37,7 @@ export default function TestBriefingSuperlight() {
 
   return (
     <>
-      <BaselBriefingSuperlight {...briefingProps} />
+      <BriefingSuperlight {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );
