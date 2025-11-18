@@ -232,30 +232,6 @@
   }
 }
 
-@font-face {
-  font-family: Roboto;
-  font-weight: 400;
-  src: url(/baselbriefing/fonts/Roboto-Regular.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: Roboto;
-  font-weight: 700;
-  src: url(/baselbriefing/fonts/Roboto-Bold.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: RobotoCondensed;
-  font-weight: 400;
-  src: url(/baselbriefing/fonts/RobotoCondensed-Regular.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: RobotoCondensed;
-  font-weight: 700;
-  src: url(/baselbriefing/fonts/RobotoCondensed-Bold.ttf) format("truetype");
-}
-
 .scope * {
   margin: 0;
   padding: 0;
@@ -276,9 +252,6 @@ body {
   height: var(--header-height);
   margin: 0 auto;
   padding: 1.5rem 2rem;
-  background-image: url(/baselbriefing/images/bb-header-scaled.webp);
-  background-size: cover;
-  background-position: center;
 
   color: white;
   text-transform: uppercase;
@@ -336,9 +309,6 @@ body {
   top: var(--readytext-offsety);
   height: var(--readytext-height);
   width: var(--readytext-width);
-  background-image: url(/baselbriefing/images/bb-ready-scaled.webp);
-  background-size: cover;
-  background-position: center;
   color: white;
   text-transform: uppercase;
   line-height: 2.3em;
@@ -402,9 +372,6 @@ body {
   height: var(--independenttext-height);
   left: var(--independenttext-offsetx);
   width: var(--independenttext-width);
-  background-image: url(/baselbriefing/images/bb-independent-scaled.webp);
-  background-size: cover;
-  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -474,9 +441,6 @@ body {
 .footer {
   width: min(var(--footer-width), 100%);
   height: var(--footer-height);
-  background-image: url(/baselbriefing/images/bb-footer-scaled.webp);
-  background-position: center;
-  background-size: cover;
   padding: min(5vw, 100px) 3vw;
   margin: 0 auto;
 
