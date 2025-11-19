@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { addContact } from "@/services/mailchimp.service";
 import { ContactData, FormConfig } from "@/types/types";
-import "./mailchimp-form.css"; // ✅ CSS oben verlinkt
+import "./mailchimp-form.css";
 
 function MailchimpForm(props: FormConfig) {
   const searchParams = useSearchParams();
