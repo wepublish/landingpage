@@ -60,7 +60,7 @@ export default function Briefing(props: BriefingContentProps) {
     <div className="text-[#1a1a1a] overflow-x-hidden">
 
       {/* HEADER */}
-      <header className={`${roboto.className} relative w-full h-[200px] sm:h-[420px] lg:h-[400px] 2xl:h-[920px] flex flex-col justify-center items-center text-white uppercase p-6`}>
+      <header className={`${roboto.className} relative w-full h-[50vw] lg:h-[33vw] flex flex-col justify-center items-center text-white uppercase`}>
         <Image
           src={props.images.header}
           alt="Header Background"
@@ -68,10 +68,10 @@ export default function Briefing(props: BriefingContentProps) {
           className="object-cover -z-10"
           priority
         />
-        <Image src={logoWhite} alt="Logo White" className="w-16 md:w-32 absolute inset-6" />
-        <div className="z-10 text-center">
-          <h1 className="text-3xl md:text-6xl lg:text-8xl pt-4 tracking-tight font-bold">{props.title}</h1>
-          <h2 className="mt-4 text-lg md:text-2xl lg:text-4xl tracking-tight font-bold leading-none">{props.subtitle}</h2>
+        <Image src={logoWhite} alt="Logo White" className="w-[24vw] lg:w-[12vw] absolute inset-6" />
+        <div className="z-10 text-center font-bold leading-none">
+          <h1 className="text-[7vw] pt-4 tracking-tight">{props.title}</h1>
+          <h2 className="mt-2 text-[4vw] lg:text-[3vw] tracking-tight ">{props.subtitle}</h2>
         </div>
       </header>
 
