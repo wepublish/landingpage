@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { addContact } from "@/services/mailchimp.service";
 import { ContactData, FormConfig } from "@/types/types";
 import MailchimpSuccessPage from "./mailchimp-success-page";
+import MailchimpError from "./mailchimp-error";
 import "./mailchimp-form.css";
 
 function MailchimpForm(props: FormConfig) {
@@ -96,79 +97,61 @@ function MailchimpForm(props: FormConfig) {
     return <MailchimpSuccessPage successPage={props.successPage} />;
   }
 
+  const currentStep = stepsWithDefaults[i];
+  const isLastStep = i === stepsWithDefaults.length - 1;
+  const hasSteps = stepsWithDefaults.length > 0;
+
   return (
     <div className="form-background">
       <form className="mailchimp-form" onSubmit={handleSubmit}>
-        {error && (
-          <div className="mailchimp-error" style={{ 
-            background: "#fee", 
-            border: "1px solid #fcc", 
-            padding: "12px", 
-            borderRadius: "4px", 
-            marginBottom: "16px",
-            color: "#c00"
-          }}>
-            {error}
-          </div>
-        )}
-        
-        {stepsWithDefaults.length === 0 ? (
-          <p className="mailchimp-no-steps">Keine Steps konfiguriert.</p>
-        ) : (
-          stepsWithDefaults.map((step, idx) => {
-            const enforceAll = last;
-            return (
-              <div
-                key={step.stepId}
-                className={`mailchimp-step ${idx === i ? "active" : "hidden"}`}
+        {error && <MailchimpError message={error} />}
+
+        {hasSteps && (
+          <>
+            <div className="mailchimp-step">
+              {currentStep.inputs.map((input) => (
+                <div key={input.name} className="mailchimp-input-group">
+                  {input.description && (
+                    <p className="mailchimp-input-description">
+                      {input.description}
+                    </p>
+                  )}
+                  <label htmlFor={input.name} className="mailchimp-label">
+                    {input.label ?? input.name}
+                  </label>
+                  <input
+                    id={input.name}
+                    type={input.type}
+                    name={input.name}
+                    className="mailchimp-input"
+                    defaultValue={input.defaultValue}
+                    required={input.required}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="mailchimp-button-row">
+              <button
+                type="button"
+                className="mailchimp-button back"
+                disabled={i === 0 || isSubmitting}
+                onClick={() => setI((x) => Math.max(0, x - 1))}
               >
-                {step.inputs.map((input) => (
-                  <div key={input.name} className="mailchimp-input-group">
-                    {input.description && (
-                      <p className="mailchimp-input-description">
-                        {input.description}
-                      </p>
-                    )}
-                    <label htmlFor={input.name} className="mailchimp-label">
-                      {input.label ?? input.name}
-                    </label>
-                    <input
-                      id={input.name}
-                      type={input.type}
-                      name={input.name}
-                      className="mailchimp-input"
-                      defaultValue={input.defaultValue}
-                      required={(enforceAll || idx === i) && !!input.required}
-                      disabled={!enforceAll && idx !== i}
-                    />
-                  </div>
-                ))}
-              </div>
-            );
-          })
-        )}
-
-        {stepsWithDefaults.length > 0 && (
-          <div className="mailchimp-button-row">
-            <button
-              type="button"
-              className="mailchimp-button back"
-              disabled={i === 0 || isSubmitting}
-              onClick={() => setI((x) => Math.max(0, x - 1))}
-            >
-              Zurück
-            </button>
-
-            {!last ? (
-              <button className="mailchimp-button next" type="submit" disabled={isSubmitting}>
-                Weiter
+                Zurück
               </button>
-            ) : (
-              <button className="mailchimp-button submit" type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Wird gesendet..." : "Abonnieren"}
-              </button>
-            )}
-          </div>
+
+              {!isLastStep ? (
+                <button className="mailchimp-button next" type="submit" disabled={isSubmitting}>
+                  Weiter
+                </button>
+              ) : (
+                <button className="mailchimp-button submit" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Wird gesendet..." : "Abonnieren"}
+                </button>
+              )}
+            </div>
+          </>
         )}
       </form>
     </div>

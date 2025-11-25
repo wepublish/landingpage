@@ -5,6 +5,16 @@
     border-radius: 10px;
     width: 100%;
 }
+
+.mailchimp-error {
+    background: #fee;
+    border: 1px solid #fcc;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    color: #c00;
+}
+
 .mailchimp-form {
     display: flex;
     flex-direction: column;
