@@ -16,88 +16,72 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // creating an object from url params
-  const defaultsByInput = formConfig.mailChimpProps.reduce<Record<string, string>>(
-    (acc, data) => {
-      const urlParameterValue = searchParams.get(data.param);
-      if (urlParameterValue) acc[data.param] = urlParameterValue;
-      return acc;
-    },
-    {}
-  );
-
-  const stepsWithDefaults = formConfig.steps.map((step) => {
-    let changed = false;
-
-    const inputs = step.inputs.map((input) => {
-      const defaultValue = defaultsByInput[input.name];
-      if (!defaultValue || input.defaultValue === defaultValue) return input;
-      changed = true;
-      return { ...input, defaultValue };
-    });
-
-    return changed ? { ...step, inputs } : step;
-  });
-
-  const [i, setI] = useState(0);
+  const [formData, setFormData] = useState<Record<string, string>>(formConfig.mailchimpFields.reduce<Record<string, string>>((acc, field) => {
+    const urlParam = searchParams.get(field.urlParam);
+    acc[field.name] = urlParam ? urlParam : "";
+    return acc;
+  }, {}));
+  const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const last =
-    stepsWithDefaults.length > 0 && i === stepsWithDefaults.length - 1;
 
-  const currentStep = stepsWithDefaults[i];
-  const isLastStep = i === stepsWithDefaults.length - 1;
-  const hasSteps = stepsWithDefaults.length > 0;
+  const steps = formConfig.steps;
+
+  const first = currentStep === 0;
+  const last = steps.length > 0 && currentStep === steps.length - 1;
+
+  const isLastStep = currentStep === steps.length - 1;
+  const hasSteps = steps.length > 0;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const goBack = () => {
+    setCurrentStep((x) => Math.max(0, x - 1));
+  };
+
+  const goForward = () => {
+    setCurrentStep((x) => Math.min(steps.length - 1, x + 1));
+  };
 
   async function handleSubmit(formEvent: React.FormEvent<HTMLFormElement>) {
     formEvent.preventDefault();
+
     setError(null);
-
-    if (!last) {
-      setI((x) => Math.min(stepsWithDefaults.length - 1, x + 1));
-      return;
-    }
-
     setIsSubmitting(true);
 
-    const formData = new FormData(formEvent.currentTarget);
-    const dataObject = Object.fromEntries(formData.entries());
-
-    const dynamicMergeFields = formConfig.mailChimpProps.reduce<Record<string, any>>(
-      (acc, data) => {
-        if (dataObject[data.param]) {
-          if (data.param.toUpperCase() === "EMAIL") return acc;
-          acc[data.param.toUpperCase()] = dataObject[data.param];
-        } else {
-          const urlParam = searchParams.get(data.param);
-          if (urlParam) acc[data.input] = urlParam;
-        }
-        return acc;
-      },
-      {}
-    );
-
     const contactData: ContactData = {
-      email_address: (dataObject.email as string) || "",
+      email_address: formData["EMAIL"],
       status: "subscribed",
-      interests: Object.fromEntries(
-        formConfig.interests.map((i) => [i, true])
-      ) as Record<string, boolean>,
-      merge_fields: dynamicMergeFields,
+      interests: Object.fromEntries(Object.entries(formConfig.interests).map(([_, v]) => [v, true])),
+      merge_fields: Object.fromEntries(Object.entries(formData).filter(([k, _]) => k !== "EMAIL")),
     };
 
     const response = await addContact(formConfig.listId, contactData);
+
     setIsSubmitting(false);
 
-    if (response.success && response.data?.status === "subscribed") {
-      if (formConfig.successPage) {
-        setIsSubmitted(true);
-      } else {
-        router.push(formConfig.successUrl);
-      }
-    } else {
+    if (response.error || (response.data?.status !== "subscribed")) {
       setError(response.error || "Ein unbekannter Fehler ist aufgetreten.");
+      return;
+    }
+
+    if(!last) {
+      goForward();
+      return;
+    }
+
+    if (formConfig.successPage) {
+      setIsSubmitted(true);
+    } else {
+      router.push(formConfig.successUrl);
     }
   }
 
@@ -113,7 +97,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
         {hasSteps && (
           <>
             <div className="mailchimp-step">
-              {currentStep.inputs.map((input) => (
+              {steps[currentStep].inputs.map((input) => (
                 <div key={input.name} className="mailchimp-input-group">
                   {input.description && (
                     <p className="mailchimp-input-description">
@@ -121,15 +105,16 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
                     </p>
                   )}
                   <label htmlFor={input.name} className="mailchimp-label">
-                    {input.label ?? input.name}
+                    {input.label}
                   </label>
                   <input
                     id={input.name}
-                    type={input.type}
+                    type={input.type || "text"}
                     name={input.name}
                     className="mailchimp-input"
-                    defaultValue={input.defaultValue}
-                    required={input.required}
+                    required={input.required ?? false}
+                    onChange={handleChange}
+                    value={formData[input.name]}
                   />
                 </div>
               ))}
@@ -139,8 +124,8 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
               <button
                 type="button"
                 className="mailchimp-button back"
-                disabled={i === 0 || isSubmitting}
-                onClick={() => setI((x) => Math.max(0, x - 1))}
+                disabled={first || isSubmitting}
+                onClick={goBack}
               >
                 Zurück
               </button>

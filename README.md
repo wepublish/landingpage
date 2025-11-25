@@ -40,7 +40,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - Jede Variante exportiert eine React-Komponente, die `BriefingProperties` erwartet und im Footer das gemeinsame `MailChimpForm` rendert. Dadurch kannst du den Formularfluss zentral verwalten und trotzdem pro Variante das Layout frei gestalten.
 - Passe Texte, Farben, Bilder und Struktur direkt im JSX dieser Dateien an. Gestaltung passiert nicht mehr über Props, sondern innerhalb der jeweiligen Komponenten.
 - Für neue Medien kopierst du einen bestehenden Komponenten-Ordner (z. B. `components/exampleLandingPages/`), benennst ihn um (`components/<deinMedium>LandingPages/`) und passt die drei Varianten nach Bedarf an. Achte darauf, Bildpfade, CSS-Klassen und Tracking-Skripte medium-spezifisch zu setzen.
-- Beispiel: `components/bajourLandingPages/landingPage.tsx` importiert `MailChimpForm` aus `components/mailChimpForm.tsx` und verwendet `props.mailChimpProps`, `props.steps` usw., die du im jeweiligen `page.tsx` definierst.
+- Beispiel: `components/bajourLandingPages/landingPage.tsx` importiert `MailChimpForm` aus `components/mailChimpForm.tsx` und verwendet `props.mailchimpFields`, `props.steps` usw., die du im jeweiligen `page.tsx` definierst.
 
 ### 2. Seite anlegen & Formular konfigurieren
 - Lege für jedes Medium einen eigenen Ordner unter `app/` an (`app/<medium>/`, z. B. `app/bajour/` oder `app/example/`).
@@ -83,7 +83,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
     listId: "MAILCHIMP_LIST_ID",
     interests: ["groupIdA", "groupIdB"], // optionale Vorauswahl von Gruppen
     steps: [...],                         // Formular-Schritte
-    mailChimpProps: [...],                // Zuordnung URL/Form -> Merge-Tags
+    mailchimpFields: [...],                // Zuordnung URL/Form -> Merge-Tags
     successUrl: "/danke",                 // Ziel nach erfolgreichem Submit
   };
   ```
@@ -111,7 +111,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
         ],
       },
     ],
-    mailChimpProps: [
+    mailchimpFields: [
       { param: "email", input: "EMAIL" },
       { param: "fname", input: "FNAME" },
       { param: "lname", input: "LNAME" },

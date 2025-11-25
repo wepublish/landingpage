@@ -14,7 +14,7 @@ export default function TestBriefingLight() {
           stepId: "step1",
           inputs: [
             {
-              name: "email",
+              name: "EMAIL",
               label: "E-Mail",
               type: "email",
               required: true,
@@ -25,15 +25,13 @@ export default function TestBriefingLight() {
           stepId: "step2",
           inputs: [
             {
-              name: "lname",
+              name: "LNAME",
               label: "Nachname",
-              type: "text",
               required: true,
             },
             {
-              name: "fname",
+              name: "FNAME",
               label: "Vorname",
-              type: "text",
               required: true,
             },
           ],
@@ -43,7 +41,7 @@ export default function TestBriefingLight() {
           inputs: [
             {
               description: "Interesse an Gemeindenews? Trage hier deine PLZ ein.",
-              name: "plz",
+              name: "PLZ",
               label: "Postleitzahl",
               type: "number",
               required: true,
@@ -53,16 +51,15 @@ export default function TestBriefingLight() {
       ],
       listId: "851436c80e",
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
-      mailChimpProps: [
-        { param: "utm_source", input: "UTM_SOURCE" },
-        { param: "utm_medium", input: "UTM_MEDIUM" },
-        { param: "utm_campaign", input: "UTM_CAMP" },
-        { param: "email", input: "EMAIL" },
-        { param: "fname", input: "FNAME" },
-        { param: "lname", input: "LNAME" },
-        { param: "plz", input: "PLZ" },
+      mailchimpFields: [
+        { name: "UTM_SOURCE", urlParam: "utm_source" },
+        { name: "UTM_MEDIUM", urlParam: "utm_medium" },
+        { name: "UTM_CAMP", urlParam: "utm_campaign" },
+        { name: "EMAIL", urlParam: "email" },
+        { name: "FNAME", urlParam: "fname" },
+        { name: "LNAME", urlParam: "lname" },
+        { name: "PLZ", urlParam: "plz" },
       ],
-      successUrl: "https://bajour.ch/mitmachen",
       successPage: {
         description: "Danke fürs Abonnieren! Möchtest du unabhängingen Journalismus finanziell unterstützen?",
         options: [

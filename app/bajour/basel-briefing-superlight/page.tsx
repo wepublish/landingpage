@@ -14,7 +14,7 @@ export default function TestBriefingSuperlight() {
           stepId: "step1",
           inputs: [
             {
-              name: "email",
+              name: "EMAIL",
               label: "E-Mail",
               type: "email",
               required: true,
@@ -24,31 +24,16 @@ export default function TestBriefingSuperlight() {
       ],
       listId: "851436c80e",
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
-      mailChimpProps: [
-        { param: "utm_source", input: "UTM_SOURCE" },
-        { param: "utm_medium", input: "UTM_MEDIUM" },
-        { param: "utm_campaign", input: "UTM_CAMP" },
-        { param: "email", input: "EMAIL" },
-        { param: "fname", input: "FNAME" },
-        { param: "lname", input: "LNAME" },
-        { param: "plz", input: "PLZ" },
+      mailchimpFields: [
+        { name: "UTM_SOURCE", urlParam: "utm_source" },
+        { name: "UTM_MEDIUM", urlParam: "utm_medium" },
+        { name: "UTM_CAMP", urlParam: "utm_campaign" },
+        { name: "EMAIL", urlParam: "email" },
+        { name: "FNAME", urlParam: "fname" },
+        { name: "LNAME", urlParam: "lname" },
+        { name: "PLZ", urlParam: "plz" },
       ],
-      successUrl: "https://bajour.ch/mitmachen",
-      successPage: {
-        description: "Danke fürs Abonnieren! Möchtest du unabhängingen Journalismus finanziell unterstützen?",
-        options: [
-          {
-            label: "Ja!",
-            background: "#008b0eff",
-            url: "https://bajour.ch/mitmachen",
-          },
-          {
-            label: "Zur Startseite",
-            background: "#bfbfbfff",
-            url: "https://bajour.ch",
-          },
-        ],
-      },
+      successUrl: "https://bajour.ch/mitmachen"
     },
   };
 

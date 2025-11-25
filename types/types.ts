@@ -1,36 +1,33 @@
-export interface Input {
-  description?: string;
-  name: string;
-  required: boolean;
-  type: string;
-  label?: string;
-  defaultValue?: string;
-}
-
-export interface HideIf {
-  condition: string;
-  inputs: Input[];
-}
-
-export interface Step {
-  stepId: string;
-  inputs: Input[];
-}
-
 export interface HtmlContent {
   __html: string;
 }
 
-export interface FormConfig {
-  listId: string;
-  interests: string[];
-  mailChimpProps: { param: string; input: string }[];
-  steps: Step[];
-  successUrl: string;
-  successPage?: SuccessPageConfig;
+interface MailchimpField {
+  name: string;
+  urlParam: string;
 }
 
-export interface SuccessPageConfig {
+interface Input {
+  description?: string;
+  name: string;
+  required?: boolean;
+  type?: string;
+  label?: string;
+}
+
+interface Step {
+  stepId: string;
+  inputs: Input[];
+}
+
+interface BaseFormConfig {
+  listId: string;
+  interests: string[];
+  mailchimpFields: MailchimpField[];
+  steps: Step[];
+}
+
+interface SuccessPageConfig {
   description: string;
   options: RedirectConfig[];
 }
@@ -41,11 +38,17 @@ interface RedirectConfig {
   url: string;
 }
 
+type SuccessOptions =
+  | { successUrl: string; successPage?: never }
+  | { successPage: SuccessPageConfig; successUrl?: never };
+
+export type FormConfig = BaseFormConfig & SuccessOptions;
+
 export interface ContactData {
   email_address: string;
 
   status: "subscribed" | "pending";
-  merge_fields: Record<string, boolean>;
+  merge_fields: Record<string, string>;
   interests?: Record<string, boolean>;
 }
 
