@@ -42,6 +42,10 @@ function MailchimpForm(props: FormConfig) {
   const last =
     stepsWithDefaults.length > 0 && i === stepsWithDefaults.length - 1;
 
+  const currentStep = stepsWithDefaults[i];
+  const isLastStep = i === stepsWithDefaults.length - 1;
+  const hasSteps = stepsWithDefaults.length > 0;
+
   async function handleSubmit(formEvent: React.FormEvent<HTMLFormElement>) {
     formEvent.preventDefault();
     setError(null);
@@ -96,10 +100,6 @@ function MailchimpForm(props: FormConfig) {
   if (isSubmitted && props.successPage) {
     return <MailchimpSuccessPage successPage={props.successPage} />;
   }
-
-  const currentStep = stepsWithDefaults[i];
-  const isLastStep = i === stepsWithDefaults.length - 1;
-  const hasSteps = stepsWithDefaults.length > 0;
 
   return (
     <div className="form-background">

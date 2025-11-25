@@ -27,18 +27,6 @@
     margin-top: 1rem;
 }
 
-.mailchimp-step {
-    display: none;
-}
-
-.mailchimp-step.active {
-    display: block;
-}
-
-.mailchimp-step.hidden {
-    display: none;
-}
-
 .mailchimp-input-group {
     display: flex;
     flex-direction: column;
