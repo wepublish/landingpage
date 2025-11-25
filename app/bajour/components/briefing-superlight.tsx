@@ -9,7 +9,7 @@ const robotoCondensed = Roboto_Condensed({
     subsets: ["latin"]
 });
 
-export interface BriefingSuperlightProps {
+interface BriefingSuperlightProps {
   title: string;
   subtitle: string;
   image: StaticImageData;

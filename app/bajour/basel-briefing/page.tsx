@@ -13,32 +13,30 @@ export default function TestBriefing() {
     subtitle: "Das Wichtigste für den Start in den Tag",
     lead: "Du willst wissen, was in Basel läuft, hast aber keine Lust, dich durch die Zeitungen und Online-Portale zu pflügen?",
     wakeup: {
-      __html:
-        'Wir von Bajour nehmen<br />dir diese Arbeit ab.<br />Wir stehen für dich werktags<br />um <span class="wakeuptext--time">3:00</span> Uhr auf',
+      intro: "Wir von Bajour nehmen dir diese Arbeit ab.",
+      leadup: "Wir stehen für dich werktags um",
+      time: "3:00",
+      context: "Uhr auf"
     },
     ready: {
-      __html:
-        '<span class="readytext--everyday">Jeden Morgen ab</span><br /><span class="readytext--time">06:00</span><br /><span class="readytext--ready">für dich bereit</span>',
+      intro: "Jeden Morgen ab",
+      time: "06:00",
+      outro: "für dich bereit"
     },
     delivery: {
-      __html:
-        'und schicken dir<br />um <span class="deliverytext--time">6 Uhr</span> die wichtigsten<br />regionalen Tagesnews<br />plus unseren Senf dazu<br />per Mail.',
+      intro: "und schicken dir um",
+      time: "6 Uhr",
+      text: "die wichtigsten regionalen Tagesnews plus unseren Senf dazu per Mail."
     },
-    subscribe: {
-      __html: "jetzt anmelden und immer<br />bestens informiert sein!",
-    },
-    mainBackground: "#feeae3",
+    subscribeText: "jetzt anmelden und immer<br />bestens informiert sein!",
+    mainBackgroundColor: "#feeae3",
     leadColor: "black",
-    headerBackgroundImage: HeaderImage,
-    readyBackgroundImage: ReadyImage,
-    independentBackgroundImage: IndependentImage,
-    footerBackgroundImage: FooterImage,
-    blobBackground:
-      "linear-gradient(to right top, var(--gradient-pink-dark), var(--gradient-pink-bright))",
-    deliveryBackground:
-      "linear-gradient(to top right, #00304b, #2161a6, #ffbaba)",
-    subscribetextBackground:
-      "linear-gradient(to right, var(--gradient-orange-dark), var(--gradient-orange-bright))",
+    images: {
+      header: HeaderImage,
+      ready: ReadyImage,
+      independent: IndependentImage,
+      footer: FooterImage,
+    },
     formConfig: {
       interests: ["47ed10ad9f", "22b72061f1"],
       steps: [
@@ -62,7 +60,12 @@ export default function TestBriefing() {
               label: "Vorname",
               type: "text",
               required: true,
-            },
+            }
+          ],
+        },
+        {
+          stepId: "step2",
+          inputs: [
             {
               description: "Interesse an Gemeindenews? Trage hier deine PLZ ein.",
               name: "PLZ",
