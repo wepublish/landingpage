@@ -36,16 +36,21 @@ function MailchimpForm(props: FormConfig) {
 
   const [i, setI] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const last =
     stepsWithDefaults.length > 0 && i === stepsWithDefaults.length - 1;
 
   async function handleSubmit(formEvent: React.FormEvent<HTMLFormElement>) {
     formEvent.preventDefault();
+    setError(null);
 
     if (!last) {
       setI((x) => Math.min(stepsWithDefaults.length - 1, x + 1));
       return;
     }
+
+    setIsSubmitting(true);
 
     const formData = new FormData(formEvent.currentTarget);
     const dataObject = Object.fromEntries(formData.entries());
@@ -74,13 +79,16 @@ function MailchimpForm(props: FormConfig) {
     };
 
     const response = await addContact(props.listId, contactData);
-    if (response.status === "subscribed") {
+    setIsSubmitting(false);
+
+    if (response.success && response.data?.status === "subscribed") {
       if (props.successPage) {
         setIsSubmitted(true);
       } else {
-        console.log(props.successUrl)
         router.push(props.successUrl);
       }
+    } else {
+      setError(response.error || "Ein unbekannter Fehler ist aufgetreten.");
     }
   }
 
@@ -91,6 +99,19 @@ function MailchimpForm(props: FormConfig) {
   return (
     <div className="form-background">
       <form className="mailchimp-form" onSubmit={handleSubmit}>
+        {error && (
+          <div className="mailchimp-error" style={{ 
+            background: "#fee", 
+            border: "1px solid #fcc", 
+            padding: "12px", 
+            borderRadius: "4px", 
+            marginBottom: "16px",
+            color: "#c00"
+          }}>
+            {error}
+          </div>
+        )}
+        
         {stepsWithDefaults.length === 0 ? (
           <p className="mailchimp-no-steps">Keine Steps konfiguriert.</p>
         ) : (
@@ -132,19 +153,19 @@ function MailchimpForm(props: FormConfig) {
             <button
               type="button"
               className="mailchimp-button back"
-              disabled={i === 0}
+              disabled={i === 0 || isSubmitting}
               onClick={() => setI((x) => Math.max(0, x - 1))}
             >
               Zurück
             </button>
 
             {!last ? (
-              <button className="mailchimp-button next" type="submit">
+              <button className="mailchimp-button next" type="submit" disabled={isSubmitting}>
                 Weiter
               </button>
             ) : (
-              <button className="mailchimp-button submit" type="submit">
-                Abonnieren
+              <button className="mailchimp-button submit" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Wird gesendet..." : "Abonnieren"}
               </button>
             )}
           </div>

@@ -68,11 +68,15 @@ export async function addContact(listId: string, data: ContactData) {
       subscriberHash,
       payload
     );
-    return response;
+    return { success: true, data: response };
   } catch (error: any) {
     console.error("Mailchimp API error", error?.response?.body ?? error);
 
-    throw error; // rethrow so callers can handle it
+    const errorBody = error?.response?.body;
+    const errorMessage =
+      errorBody?.detail || errorBody?.title || "Ein Fehler ist aufgetreten. Bitte versuche es später erneut.";
+
+    return { success: false, error: errorMessage };
   }
 }
 
