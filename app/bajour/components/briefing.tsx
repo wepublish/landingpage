@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Roboto, Roboto_Condensed } from "next/font/google";
 import { FormConfig } from "@/types/types";
 import logoWhite from "./logo_white.svg";
@@ -46,10 +46,10 @@ interface BriefingContentProps {
   mainBackgroundColor: string;
   leadColor: string;
   images: {
-    header: string;
-    ready: string;
-    independent: string;
-    footer: string;
+    header: StaticImageData;
+    ready: StaticImageData;
+    independent: StaticImageData;
+    footer: StaticImageData;
   };
 
   formConfig: FormConfig;
