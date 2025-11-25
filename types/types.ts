@@ -27,7 +27,7 @@ interface BaseFormConfig {
   steps: Step[];
 }
 
-interface SuccessPageConfig {
+export interface SuccessPageConfig {
   description: string;
   options: RedirectConfig[];
 }
