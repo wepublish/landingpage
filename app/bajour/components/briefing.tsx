@@ -83,6 +83,7 @@ export default function Briefing(props: BriefingProps) {
             mailChimpProps={props.mailChimpProps}
             steps={props.steps}
             successUrl={props.successUrl}
+            successPage={props.successPage}
           />
         </Suspense>
       </footer>

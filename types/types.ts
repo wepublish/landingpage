@@ -27,6 +27,18 @@ export interface FormConfig {
   mailChimpProps: { param: string; input: string }[];
   steps: Step[];
   successUrl: string;
+  successPage?: SuccessPageConfig;
+}
+
+export interface SuccessPageConfig {
+  description: string;
+  options: RedirectConfig[];
+}
+
+interface RedirectConfig {
+  label: string;
+  background: string;
+  url: string;
 }
 
 export interface ContactData {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { addContact } from "@/services/mailchimp.service";
 import { ContactData, FormConfig } from "@/types/types";
+import MailchimpSuccessPage from "./mailchimp-success-page";
 import "./mailchimp-form.css";
 
 function MailchimpForm(props: FormConfig) {
@@ -34,6 +35,7 @@ function MailchimpForm(props: FormConfig) {
   });
 
   const [i, setI] = useState(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const last =
     stepsWithDefaults.length > 0 && i === stepsWithDefaults.length - 1;
 
@@ -73,8 +75,17 @@ function MailchimpForm(props: FormConfig) {
 
     const response = await addContact(props.listId, contactData);
     if (response.status === "subscribed") {
-      router.push(props.successUrl);
+      if (props.successPage) {
+        setIsSubmitted(true);
+      } else {
+        console.log(props.successUrl)
+        router.push(props.successUrl);
+      }
     }
+  }
+
+  if (isSubmitted && props.successPage) {
+    return <MailchimpSuccessPage successPage={props.successPage} />;
   }
 
   return (

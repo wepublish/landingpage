@@ -35,6 +35,7 @@ export default function BriefingSuperlight(props: BriefingSuperlightProps) {
                             mailChimpProps={props.mailChimpProps}
                             steps={props.steps}
                             successUrl={props.successUrl}
+                            successPage={props.successPage}
                             />
                     </Suspense>
                 </section>

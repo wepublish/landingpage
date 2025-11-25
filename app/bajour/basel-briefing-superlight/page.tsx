@@ -32,7 +32,22 @@ export default function TestBriefingSuperlight() {
       { param: "lname", input: "LNAME" },
       { param: "plz", input: "PLZ" },
     ],
-    successUrl: "",
+    successUrl: "https://bajour.ch/mitmachen",
+    successPage: {
+      description: "Danke fürs Abonnieren! Möchtest du unabhängingen Journalismus finanziell unterstützen?",
+      options: [
+        {
+          label: "Ja!",
+          background: "#008b0eff",
+          url: "https://bajour.ch/mitmachen",
+        },
+        {
+          label: "Zur Startseite",
+          background: "#bfbfbfff",
+          url: "https://bajour.ch",
+        },
+      ],
+    }
   };
 
   return (
