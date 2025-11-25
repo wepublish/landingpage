@@ -8,12 +8,16 @@ import MailchimpSuccessPage from "./mailchimp-success-page";
 import MailchimpError from "./mailchimp-error";
 import "./mailchimp-form.css";
 
-function MailchimpForm(props: FormConfig) {
+interface MailchimpFormProps {
+  formConfig: FormConfig;
+}
+
+function MailchimpForm({ formConfig }: MailchimpFormProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
   // creating an object from url params
-  const defaultsByInput = props.mailChimpProps.reduce<Record<string, string>>(
+  const defaultsByInput = formConfig.mailChimpProps.reduce<Record<string, string>>(
     (acc, data) => {
       const urlParameterValue = searchParams.get(data.param);
       if (urlParameterValue) acc[data.param] = urlParameterValue;
@@ -22,7 +26,7 @@ function MailchimpForm(props: FormConfig) {
     {}
   );
 
-  const stepsWithDefaults = props.steps.map((step) => {
+  const stepsWithDefaults = formConfig.steps.map((step) => {
     let changed = false;
 
     const inputs = step.inputs.map((input) => {
@@ -60,7 +64,7 @@ function MailchimpForm(props: FormConfig) {
     const formData = new FormData(formEvent.currentTarget);
     const dataObject = Object.fromEntries(formData.entries());
 
-    const dynamicMergeFields = props.mailChimpProps.reduce<Record<string, any>>(
+    const dynamicMergeFields = formConfig.mailChimpProps.reduce<Record<string, any>>(
       (acc, data) => {
         if (dataObject[data.param]) {
           if (data.param.toUpperCase() === "EMAIL") return acc;
@@ -78,27 +82,27 @@ function MailchimpForm(props: FormConfig) {
       email_address: (dataObject.email as string) || "",
       status: "subscribed",
       interests: Object.fromEntries(
-        props.interests.map((i) => [i, true])
+        formConfig.interests.map((i) => [i, true])
       ) as Record<string, boolean>,
       merge_fields: dynamicMergeFields,
     };
 
-    const response = await addContact(props.listId, contactData);
+    const response = await addContact(formConfig.listId, contactData);
     setIsSubmitting(false);
 
     if (response.success && response.data?.status === "subscribed") {
-      if (props.successPage) {
+      if (formConfig.successPage) {
         setIsSubmitted(true);
       } else {
-        router.push(props.successUrl);
+        router.push(formConfig.successUrl);
       }
     } else {
       setError(response.error || "Ein unbekannter Fehler ist aufgetreten.");
     }
   }
 
-  if (isSubmitted && props.successPage) {
-    return <MailchimpSuccessPage successPage={props.successPage} />;
+  if (isSubmitted && formConfig.successPage) {
+    return <MailchimpSuccessPage successPage={formConfig.successPage} />;
   }
 
   return (

@@ -39,61 +39,63 @@ export default function TestBriefing() {
       "linear-gradient(to top right, #00304b, #2161a6, #ffbaba)",
     subscribetextBackground:
       "linear-gradient(to right, var(--gradient-orange-dark), var(--gradient-orange-bright))",
-    interests: ["47ed10ad9f", "22b72061f1"],
-    steps: [
-      {
-        stepId: "step1",
-        inputs: [
-          {
-            name: "email",
-            label: "E-Mail",
-            type: "email",
-            required: true,
-          },
-        ],
-      },
-      {
-        stepId: "step2",
-        inputs: [
-          {
-            name: "lname",
-            label: "Nachname",
-            type: "text",
-            required: true,
-          },
-          {
-            name: "fname",
-            label: "Vorname",
-            type: "text",
-            required: true,
-          },
-        ],
-      },
-      {
-        stepId: "step3",
-        inputs: [
-          {
-            description: "Interesse an Gemeindenews? Trage hier deine PLZ ein.",
-            name: "plz",
-            label: "Postleitzahl",
-            type: "number",
-            required: true,
-          },
-        ],
-      },
-    ],
-    listId: "851436c80e",
-    // input muss mit mailchimp Zielgruppenfelder übereinstimmen
-    mailChimpProps: [
-      { param: "utm_source", input: "UTM_SOURCE" },
-      { param: "utm_medium", input: "UTM_MEDIUM" },
-      { param: "utm_campaign", input: "UTM_CAMP" },
-      { param: "email", input: "EMAIL" },
-      { param: "fname", input: "FNAME" },
-      { param: "lname", input: "LNAME" },
-      { param: "plz", input: "PLZ" },
-    ],
-    successUrl: "",
+    formConfig: {
+      interests: ["47ed10ad9f", "22b72061f1"],
+      steps: [
+        {
+          stepId: "step1",
+          inputs: [
+            {
+              name: "email",
+              label: "E-Mail",
+              type: "email",
+              required: true,
+            },
+          ],
+        },
+        {
+          stepId: "step2",
+          inputs: [
+            {
+              name: "lname",
+              label: "Nachname",
+              type: "text",
+              required: true,
+            },
+            {
+              name: "fname",
+              label: "Vorname",
+              type: "text",
+              required: true,
+            },
+          ],
+        },
+        {
+          stepId: "step3",
+          inputs: [
+            {
+              description: "Interesse an Gemeindenews? Trage hier deine PLZ ein.",
+              name: "plz",
+              label: "Postleitzahl",
+              type: "number",
+              required: true,
+            },
+          ],
+        },
+      ],
+      listId: "851436c80e",
+      // input muss mit mailchimp Zielgruppenfelder übereinstimmen
+      mailChimpProps: [
+        { param: "utm_source", input: "UTM_SOURCE" },
+        { param: "utm_medium", input: "UTM_MEDIUM" },
+        { param: "utm_campaign", input: "UTM_CAMP" },
+        { param: "email", input: "EMAIL" },
+        { param: "fname", input: "FNAME" },
+        { param: "lname", input: "LNAME" },
+        { param: "plz", input: "PLZ" },
+      ],
+      successUrl: "",
+    },
   };
 
   return (

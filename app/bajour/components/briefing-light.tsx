@@ -9,10 +9,11 @@ const robotoCondensed = Roboto_Condensed({
     subsets: ["latin"]
 });
 
-export interface BriefingLightProps extends FormConfig {
+export interface BriefingLightProps {
   title: string;
   subtitle: string;
   image: StaticImageData;
+  formConfig: FormConfig;
 }
 
 export default function BriefingLight(props: BriefingLightProps) {
@@ -30,14 +31,7 @@ export default function BriefingLight(props: BriefingLightProps) {
 
                 <section className="w-full">
                     <Suspense fallback={null}>
-                        <MailchimpForm
-                            listId={props.listId}
-                            interests={props.interests}
-                            mailChimpProps={props.mailChimpProps}
-                            steps={props.steps}
-                            successUrl={props.successUrl}
-                            successPage={props.successPage}
-                            />
+                        <MailchimpForm formConfig={props.formConfig} />
                     </Suspense>
                 </section>
             </div>

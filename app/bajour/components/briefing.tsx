@@ -12,7 +12,7 @@ const robotoCondensed = Roboto_Condensed({
 
 // hier service importiern
 
-export interface BriefingProps extends FormConfig {
+export interface BriefingProps {
   title: string;
   subtitle: string;
   lead: string;
@@ -29,6 +29,7 @@ export interface BriefingProps extends FormConfig {
   blobBackground: string;
   subscribetextBackground: string;
   deliveryBackground: string;
+  formConfig: FormConfig;
 }
 
 export default function Briefing(props: BriefingProps) {
@@ -77,14 +78,7 @@ export default function Briefing(props: BriefingProps) {
       <footer className={styles.footer}>
         <Image src={props.footerBackgroundImage} alt="" fill className="-z-10" />
         <Suspense fallback={null}>
-          <MailchimpForm
-            listId={props.listId}
-            interests={props.interests}
-            mailChimpProps={props.mailChimpProps}
-            steps={props.steps}
-            successUrl={props.successUrl}
-            successPage={props.successPage}
-          />
+          <MailchimpForm formConfig={props.formConfig} />
         </Suspense>
       </footer>
     </div>
