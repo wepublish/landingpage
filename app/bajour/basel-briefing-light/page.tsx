@@ -41,6 +41,7 @@ export default function TestBriefingLight() {
         stepId: "step3",
         inputs: [
           {
+            description: "Interesse an Gemeindenews? Trage hier deine PLZ ein.",
             name: "plz",
             label: "Postleitzahl",
             type: "number",

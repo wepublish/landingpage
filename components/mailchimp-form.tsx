@@ -92,6 +92,11 @@ function MailchimpForm(props: FormConfig) {
               >
                 {step.inputs.map((input) => (
                   <div key={input.name} className="mailchimp-input-group">
+                    {input.description && (
+                      <p className="mailchimp-input-description">
+                        {input.description}
+                      </p>
+                    )}
                     <label htmlFor={input.name} className="mailchimp-label">
                       {input.label ?? input.name}
                     </label>

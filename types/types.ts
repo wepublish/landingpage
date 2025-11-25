@@ -1,4 +1,5 @@
 export interface Input {
+  description?: string;
   name: string;
   required: boolean;
   type: string;
