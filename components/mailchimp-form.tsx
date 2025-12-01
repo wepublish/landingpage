@@ -32,6 +32,8 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
   const last = steps.length > 0 && currentStep === steps.length - 1;
 
   const isLastStep = currentStep === steps.length - 1;
+  const isFirstStep = currentStep === 0;
+  const isMiddleStep = !isFirstStep && !isLastStep;
   const hasSteps = steps.length > 0;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,22 +123,32 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
             </div>
 
             <div className="mailchimp-button-row">
-              <button
-                type="button"
-                className="mailchimp-button back"
-                disabled={first || isSubmitting}
-                onClick={goBack}
-              >
-                Zurück
-              </button>
-
-              {!isLastStep ? (
-                <button className="mailchimp-button next" type="submit" disabled={isSubmitting}>
-                  Weiter
+              {!isFirstStep && (
+                <button
+                  type="button"
+                  className="mailchimp-button back"
+                  disabled={isSubmitting}
+                  onClick={goBack}
+                >
+                  Zurück
                 </button>
-              ) : (
+              )}
+
+              {isFirstStep && (
+                <button className="mailchimp-button next" type="submit" disabled={isSubmitting}>
+                  Abonnieren
+                </button>
+              )}
+
+              {isMiddleStep && (
+                <button className="mailchimp-button next" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Wird gesendet..." : "Weiter"}
+                </button>
+              )}
+
+              {isLastStep && (
                 <button className="mailchimp-button submit" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? "Wird gesendet..." : "Abonnieren"}
+                  {isSubmitting ? "Wird gesendet..." : "Abschliessen"}
                 </button>
               )}
             </div>
