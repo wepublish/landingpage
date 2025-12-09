@@ -6,7 +6,6 @@ import { addContact } from "@/services/mailchimp.service";
 import { ContactData, FormConfig } from "@/types/types";
 import MailchimpSuccessPage from "./mailchimp-success-page";
 import MailchimpError from "./mailchimp-error";
-import "./mailchimp-form.css";
 
 interface MailchimpFormProps {
   formConfig: FormConfig;
@@ -92,62 +91,55 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
   }
 
   return (
-    <div className="form-background">
-      <form className="mailchimp-form" onSubmit={handleSubmit}>
+    <div className="bg-white/50 backdrop-blur-md p-6 rounded-md">
+      <form onSubmit={handleSubmit} className="space-y-5">
         {error && <MailchimpError message={error} />}
 
         {hasSteps && (
           <>
-            <div className="mailchimp-step">
-              {steps[currentStep].inputs.map((input) => (
-                <div key={input.name} className="mailchimp-input-group">
-                  {input.description && (
-                    <p className="mailchimp-input-description">
-                      {input.description}
-                    </p>
-                  )}
-                  <label htmlFor={input.name} className="mailchimp-label">
-                    {input.label}
-                  </label>
-                  <input
-                    id={input.name}
-                    type={input.type || "text"}
-                    name={input.name}
-                    className="mailchimp-input"
-                    required={input.required ?? false}
-                    onChange={handleChange}
-                    value={formData[input.name]}
-                  />
-                </div>
-              ))}
-            </div>
+            {steps[currentStep].inputs.map((input) => (
+              <div key={input.name} className="flex flex-col gap-1.5">
+                {input.description && (
+                  <p className="text-md text-gray-800 mb-1">
+                    {input.description}
+                  </p>
+                )}
+                <label htmlFor={input.name} className="text-sm font-medium text-gray-700">
+                  {input.label}
+                </label>
+                <input
+                  id={input.name}
+                  type={input.type || "text"}
+                  name={input.name}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none placeholder:text-gray-400"
+                  required={input.required ?? false}
+                  onChange={handleChange}
+                  value={formData[input.name]}
+                />
+              </div>
+            ))}
 
-            <div className="mailchimp-button-row">
+            <div className="flex justify-between items-center pt-4 gap-3">
               {!isFirstStep && (
-                <button
-                  type="button"
-                  className="mailchimp-button back"
-                  disabled={isSubmitting}
-                  onClick={goBack}
-                >
+                <button type="button" className="px-5 py-2.5 text-gray-600 bg-gray-100 hover:opacity-90 rounded-lg font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" disabled={isSubmitting} onClick={goBack}>
                   Zurück
                 </button>
               )}
 
               {isFirstStep && (
-                <button className="mailchimp-button next" type="submit" disabled={isSubmitting}>
-                  Abonnieren
+                <button className="w-full px-6 py-3 text-white font-semibold bg-green-600 hover:opacity-90 active:bg-green-800 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
+                  Jetzt kostenlos abonnieren
                 </button>
               )}
 
               {isMiddleStep && (
-                <button className="mailchimp-button next" type="submit" disabled={isSubmitting}>
+                <button className="ml-auto px-6 py-2.5 text-white font-medium bg-green-600 hover:opacity-90 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
                   {isSubmitting ? "Wird gesendet..." : "Weiter"}
                 </button>
               )}
 
               {isLastStep && (
-                <button className="mailchimp-button submit" type="submit" disabled={isSubmitting}>
+                <button className="ml-auto px-6 py-2.5 text-white font-medium bg-green-600 hover:opacity-90 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
                   {isSubmitting ? "Wird gesendet..." : "Abschliessen"}
                 </button>
               )}
