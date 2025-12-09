@@ -27,9 +27,6 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
 
   const steps = formConfig.steps;
 
-  const first = currentStep === 0;
-  const last = steps.length > 0 && currentStep === steps.length - 1;
-
   const isLastStep = currentStep === steps.length - 1;
   const isFirstStep = currentStep === 0;
   const isMiddleStep = !isFirstStep && !isLastStep;
@@ -83,7 +80,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
       return;
     }
 
-    if(!last) {
+    if(!isLastStep) {
       goForward();
       return;
     }
