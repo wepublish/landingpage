@@ -60,12 +60,50 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
     console.log(interests);
   }
 
-  const goBack = () => {
-    setCurrentStep((x) => Math.max(0, x - 1));
+  const goForward = () => {
+    let nextStep = currentStep + 1;
+
+    // Skip steps where specified fields or interests are already filled
+    while (nextStep < steps.length && (steps[nextStep].skipIfFieldsFilled || steps[nextStep].skipIfInterestsFilled)) {
+      const fieldsToCheck = steps[nextStep].skipIfFieldsFilled || [];
+      const allFieldsFilled = fieldsToCheck.every(field => formData[field]);
+
+      const interestsToCheck = steps[nextStep].skipIfInterestsFilled || [];
+      const allInterestsFilled = interestsToCheck.every(interest =>
+        formConfig.interests.includes(interest) || interests.includes(interest)
+      );
+
+      if (allFieldsFilled && allInterestsFilled) {
+        nextStep++;
+      } else {
+        break;
+      }
+    }
+
+    setCurrentStep(Math.min(steps.length - 1, nextStep));
   };
 
-  const goForward = () => {
-    setCurrentStep((x) => Math.min(steps.length - 1, x + 1));
+  const goBack = () => {
+    let prevStep = currentStep - 1;
+
+    // Skip steps where specified fields or interests are already filled when going back
+    while (prevStep >= 0 && (steps[prevStep].skipIfFieldsFilled || steps[prevStep].skipIfInterestsFilled)) {
+      const fieldsToCheck = steps[prevStep].skipIfFieldsFilled || [];
+      const allFieldsFilled = fieldsToCheck.every(field => formData[field]);
+
+      const interestsToCheck = steps[prevStep].skipIfInterestsFilled || [];
+      const allInterestsFilled = interestsToCheck.every(interest =>
+        formConfig.interests.includes(interest) || interests.includes(interest)
+      );
+
+      if (allFieldsFilled && allInterestsFilled) {
+        prevStep--;
+      } else {
+        break;
+      }
+    }
+
+    setCurrentStep(Math.max(0, prevStep));
   };
 
   const replacePlaceholders = (url: string): string => {

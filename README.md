@@ -79,11 +79,24 @@ mailchimpFields: [
 ]
 ```
 
+### interests
+
+Hier kann angegeben werden, zu welcher/n Interessensgruppen die Besucher/innen
+automatisch hinzugefügt werden sollen, unabhängig davon, welche allenfalls
+gegenteiligen Auswahlen die Besucher/innen später im Formular noch treffen.
+
+```js
+interests: ["47ed10ad9f", "22b72061f1"],
+```
+
 ### steps
 
-Definition der Schritte des Formulars. Jeder Schritt besteht aus einem oder
-mehreren Eingabefeldern. Die Eingabefelder müssen die folgenden Angaben
-enthalten:
+Definition der Schritte des Formulars. Schritte können mit
+[skipIfFieldsFilled](#skipiffieldsfilled) und
+[skipIfInterestsFilled](#skipifinterestsfilled) übersprungen werden.
+
+Jeder Schritt besteht aus einem oder mehreren Eingabefeldern. Die Eingabefelder
+müssen die folgenden Angaben enthalten:
 
 * name: Der Name des Zielgruppenfeldes.
 
@@ -109,6 +122,66 @@ steps: [
     ]
   }
 ]
+```
+
+Der Eingabetyp "groups" ist den Interessensgruppen vorbehalten. Damit kann eine
+Liste von Interessensgruppen angezeigt werden, die die Besucher aktivieren und
+deaktivieren können. Für eine Liste der möglichen Interessensgruppen die
+Anleitung unter [Mailchimp-Integration](#mailchimp-integration) befolgen.
+
+```js
+{
+  inputs: [
+    {
+      description: "Bist du an weiteren News interessiert?",
+      name: "Interessen",
+      type: "groups" as const,
+      options: [
+        { id: '47ed10ad9f', name: 'Gruppe A', description: "Weitere Neuigkeiten zu deiner Stadt" },
+        { id: '22b72061f1', name: 'Gruppe B', description: "Partyanlässe" },
+        { id: '6d529bb42b', name: 'Gruppe C', description: "News zu Physik und Mathematik" }
+      ]
+    }
+  ]
+}
+```
+
+### skipIfFieldsFilled
+
+Definiert, ob der Schritt übersprungen werden soll, wenn die angegebenen Felder
+schon gefüllt sind. Dabei wird nicht unterschieden, ob sie via URL-Parameter
+oder in einem früheren Schritt gefüllt wurden.
+
+Kann in Kombination mit [skipIfInterestsFilled](#skipifinterestsfilled)
+verwendet werden.
+
+```js
+{
+  skipIfFieldsFilled: ["FNAME", "LNAME"],
+  inputs: [
+    { name: "LNAME", label: "Nachname", required: true },
+    { name: "FNAME", label: "Vorname", required: true },
+  ],
+}
+```
+
+### skipIfInterestsFilled
+
+Definiert, ob der Schritt übersprungen werden soll, wenn die angegebenen
+Interessensgruppen schon aktiviert sind. Dabei wird nicht unterschieden, ob sie
+via Formularkonfiguration oder in einem früheren Schritt gefüllt wurden.
+
+Kann in Kombination mit [skipIfFieldsFilled](#skipiffieldsfilled) verwendet
+werden.
+
+```js
+{
+  skipIfInterestsFilled: ["6d529bb42b"],
+  inputs: [
+    { name: "LNAME", label: "Nachname", required: true },
+    { name: "FNAME", label: "Vorname", required: true },
+  ],
+}
 ```
 
 ### successUrl
@@ -159,18 +232,16 @@ successPage: {
 {
   interests: ["47ed10ad9f", "22b72061f1"],
   steps: [{
-    inputs: [{
-      name: "EMAIL",
-      label: "E-Mail",
-      type: "email",
-      required: true,
-    }, {
-      name: "FNAME",
-      label: "Vorname",
-      type: "text",
-      required: true,
-    }
-  ]}, {
+    inputs: [
+      { name: "EMAIL", label: "E-Mail", type: "email", required: true }
+    ]
+  }, {
+    skipIfFieldsFilled: ["FNAME", "LNAME"],
+    inputs: [
+      { name: "LNAME", label: "Nachname", required: true },
+      { name: "FNAME", label: "Vorname", required: true },
+    ],
+  }, {
     inputs: [{
       description: "Interesse an Gemeindenews? Trage hier deine PLZ ein.",
       name: "PLZ",

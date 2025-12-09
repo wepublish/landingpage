@@ -31,6 +31,8 @@ type Input = GroupsInput | RegularInput;
 
 interface Step {
   inputs: Input[];
+  skipIfFieldsFilled?: string[];
+  skipIfInterestsFilled?: string[];
 }
 
 interface BaseFormConfig {

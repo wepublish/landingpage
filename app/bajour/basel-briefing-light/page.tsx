@@ -21,21 +21,7 @@ export default function TestBriefingLight() {
           ],
         },
         {
-          inputs: [
-            {
-              description: "Bist du an weiteren News interessiert?",
-              name: "Interessen",
-              type: "groups",
-              required: true,
-              options: [
-                { id: '47ed10ad9f', name: 'Gruppe A', description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi" },
-                { id: '22b72061f1', name: 'Gruppe B', description: "Beschreibung Gruppe B" },
-                { id: '6d529bb42b', name: 'Gruppe C', description: "Beschreibung Gruppe C" }
-              ]
-            }
-          ]
-        },
-        {
+          skipIfFieldsFilled: ["FNAME", "LNAME"],
           inputs: [
             {
               name: "LNAME",
@@ -48,6 +34,21 @@ export default function TestBriefingLight() {
               required: true,
             },
           ],
+        },
+        {
+          skipIfInterestsFilled: ["6d529bb42b"],
+          inputs: [
+            {
+              description: "Bist du an weiteren News interessiert?",
+              name: "Interessen",
+              type: "groups" as const,
+              options: [
+                { id: '47ed10ad9f', name: 'Gruppe A', description: "Weitere Neuigkeiten zu deiner Stadt" },
+                { id: '22b72061f1', name: 'Gruppe B', description: "Partyanlässe" },
+                { id: '6d529bb42b', name: 'Gruppe C', description: "News zu Physik und Mathematik" }
+              ]
+            }
+          ]
         },
         {
           inputs: [
