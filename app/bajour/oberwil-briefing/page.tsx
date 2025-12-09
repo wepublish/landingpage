@@ -38,7 +38,7 @@ export default function OberwilBriefing() {
       footer: FooterImage,
     },
     formConfig: {
-      interests: ["47ed10ad9f", "22b72061f1"],
+      interests: [],
       steps: [
         {
           inputs: [
@@ -80,9 +80,9 @@ export default function OberwilBriefing() {
               description: "Möchtest du weitere Briefings abonnieren?",
               type: "groups" as const,
               options: [
-                { id: '47ed10ad9f', name: 'Gruppe A', description: "Weitere Neuigkeiten zu deiner Stadt" },
-                { id: '22b72061f1', name: 'Gruppe B', description: "Partyanlässe" },
-                { id: '6d529bb42b', name: 'Gruppe C', description: "News zu Physik und Mathematik" }
+                { id: '47ed10ad9f', name: 'Basel-Briefing', description: "Weitere Neuigkeiten zu deiner Stadt" },
+                { id: '22b72061f1', name: 'Party-Briefing', description: "Partyanlässe" },
+                { id: '6d529bb42b', name: 'Physik-Briefing', description: "News zu Physik und Mathematik" }
               ]
             }
           ]

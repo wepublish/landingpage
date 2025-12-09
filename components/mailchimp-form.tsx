@@ -92,7 +92,18 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
       nextStep++;
     }
 
-    setCurrentStep(Math.min(steps.length - 1, nextStep));
+    // If we've skipped past all remaining steps, go to success
+    if (nextStep >= steps.length) {
+      if (formConfig.successPage) {
+        setIsSubmitted(true);
+      } else {
+        const processedUrl = replacePlaceholders(formConfig.successUrl);
+        router.push(processedUrl);
+      }
+      return;
+    }
+
+    setCurrentStep(nextStep);
   };
 
   const goBack = () => {
