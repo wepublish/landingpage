@@ -110,7 +110,7 @@ export default function OberwilBriefing() {
           {
             label: "Zur Startseite",
             background: "#bfbfbfff",
-            url: "https://www.instagram.com/bajourbasel/?hl=en",
+            url: "https://www.instagram.com/bajourbasel",
           },
         ],
       },

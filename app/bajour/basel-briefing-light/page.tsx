@@ -81,9 +81,9 @@ export default function TestBriefingLight() {
             url: "https://bajour.ch/mitmachen",
           },
           {
-            label: "Zur Startseite",
+            label: "Auf Insta folgen",
             background: "#bfbfbfff",
-            url: "https://bajour.ch",
+            url: "https://www.instagram.com/bajourbasel",
           },
         ],
       },
