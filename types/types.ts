@@ -5,7 +5,6 @@ interface MailchimpField {
 
 interface BaseInput {
   description?: string;
-  name: string;
   label?: string;
 }
 
@@ -16,12 +15,14 @@ interface InterestGroup {
 }
 
 interface GroupsInput extends BaseInput {
+  name?: never;
   type: "groups";
   options: InterestGroup[];
   required?: never;
 }
 
 interface RegularInput extends BaseInput {
+  name: string;
   type?: string;
   options?: never;
   required?: boolean;
