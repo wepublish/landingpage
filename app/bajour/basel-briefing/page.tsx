@@ -41,7 +41,6 @@ export default function TestBriefing() {
       interests: ["47ed10ad9f", "22b72061f1"],
       steps: [
         {
-          stepId: "step1",
           inputs: [
             {
               name: "EMAIL",
@@ -64,7 +63,6 @@ export default function TestBriefing() {
           ],
         },
         {
-          stepId: "step2",
           inputs: [
             {
               description: "Interesse an Gemeindenews? Trage hier deine PLZ ein.",

@@ -11,7 +11,6 @@ export default function TestBriefingSuperlight() {
       interests: ["47ed10ad9f", "22b72061f1"],
       steps: [
         {
-          stepId: "step1",
           inputs: [
             {
               name: "EMAIL",
@@ -33,7 +32,7 @@ export default function TestBriefingSuperlight() {
         { name: "LNAME", urlParam: "lname" },
         { name: "PLZ", urlParam: "plz" },
       ],
-      successUrl: "https://bajour.ch/mitmachen"
+      successUrl: "https://bajour.ch/mitmachen?mail=|*EMAIL*|"
     },
   };
 

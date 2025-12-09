@@ -42,6 +42,8 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
       ...prev,
       [name]: value
     }));
+
+    console.log(formData);
   };
 
   const goBack = () => {
@@ -50,6 +52,13 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
 
   const goForward = () => {
     setCurrentStep((x) => Math.min(steps.length - 1, x + 1));
+  };
+
+  const replacePlaceholders = (url: string): string => {
+    return url.replace(/\|\*(\w+)\*\|/g, (_, fieldName) => {
+      const value = formData[fieldName.toUpperCase()];
+      return value ? encodeURIComponent(value) : '';
+    });
   };
 
   async function handleSubmit(formEvent: React.FormEvent<HTMLFormElement>) {
@@ -82,12 +91,20 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
     if (formConfig.successPage) {
       setIsSubmitted(true);
     } else {
-      router.push(formConfig.successUrl);
+      const processedUrl = replacePlaceholders(formConfig.successUrl);
+      router.push(processedUrl);
     }
   }
 
   if (isSubmitted && formConfig.successPage) {
-    return <MailchimpSuccessPage successPage={formConfig.successPage} />;
+    const processedSuccessPage = {
+      ...formConfig.successPage,
+      options: formConfig.successPage.options.map(option => ({
+        ...option,
+        url: replacePlaceholders(option.url)
+      }))
+    };
+    return <MailchimpSuccessPage successPage={processedSuccessPage} />;
   }
 
   return (
@@ -138,7 +155,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
                 </button>
               )}
 
-              {isLastStep && (
+              {isLastStep && !isFirstStep && (
                 <button className="ml-auto px-6 py-2.5 text-white font-medium bg-green-600 hover:opacity-90 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
                   {isSubmitting ? "Wird gesendet..." : "Abschliessen"}
                 </button>

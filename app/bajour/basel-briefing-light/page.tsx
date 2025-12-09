@@ -11,7 +11,6 @@ export default function TestBriefingLight() {
       interests: ["47ed10ad9f", "22b72061f1"],
       steps: [
         {
-          stepId: "step1",
           inputs: [
             {
               name: "EMAIL",
@@ -22,7 +21,6 @@ export default function TestBriefingLight() {
           ],
         },
         {
-          stepId: "step2",
           inputs: [
             {
               name: "LNAME",
@@ -37,7 +35,6 @@ export default function TestBriefingLight() {
           ],
         },
         {
-          stepId: "step3",
           inputs: [
             {
               description: "Interesse an Gemeindenews? Trage hier deine PLZ ein.",

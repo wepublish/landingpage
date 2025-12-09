@@ -1,7 +1,3 @@
-export interface HtmlContent {
-  __html: string;
-}
-
 interface MailchimpField {
   name: string;
   urlParam: string;
@@ -16,7 +12,6 @@ interface Input {
 }
 
 interface Step {
-  stepId: string;
   inputs: Input[];
 }
 

@@ -9,7 +9,7 @@
     "lint": "eslint",
     "get-groups": "node scripts/get-group.js",
     "get-merge-fields": "node scripts/get-merge-fields.js",
-    "get-all-informartion": "npm run get-groups && npm run get-merge-fields"
+    "get-all-information": "npm run get-groups && npm run get-merge-fields"
   },
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.80",
