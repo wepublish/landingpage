@@ -215,7 +215,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none placeholder:text-gray-400"
                     required={input.required ?? false}
                     onChange={handleChange}
-                    value={formData[input.name]}
+                    value={input.name ? formData[input.name] : ""}
                   />
                 )}
               </div>

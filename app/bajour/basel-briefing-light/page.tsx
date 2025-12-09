@@ -40,7 +40,6 @@ export default function TestBriefingLight() {
           inputs: [
             {
               description: "Bist du an weiteren News interessiert?",
-              name: "Interessen",
               type: "groups" as const,
               options: [
                 { id: '47ed10ad9f', name: 'Gruppe A', description: "Weitere Neuigkeiten zu deiner Stadt" },
