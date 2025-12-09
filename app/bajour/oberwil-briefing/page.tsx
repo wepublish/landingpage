@@ -108,7 +108,7 @@ export default function OberwilBriefing() {
             url: "https://bajour.ch/mitmachen?mail=|*EMAIL*|&firstName=|*FNAME*|&lastName=|*LNAME*|",
           },
           {
-            label: "Zur Startseite",
+            label: "Auf Instagram folgen",
             background: "#bfbfbfff",
             url: "https://www.instagram.com/bajourbasel",
           },

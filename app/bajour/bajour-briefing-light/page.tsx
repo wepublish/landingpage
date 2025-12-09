@@ -71,9 +71,9 @@ export default function BajourBriefingLight() {
             url: "https://bajour.ch/mitmachen?firstName=|*FNAME*|&mail=|*EMAIL*|",
           },
           {
-            label: "Zur Startseite",
+            label: "Auf Instagram folgen",
             background: "#bfbfbfff",
-            url: "https://bajour.ch",
+            url: "https://www.instagram.com/bajourbasel",
           },
         ],
       },
