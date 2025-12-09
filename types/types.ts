@@ -3,13 +3,31 @@ interface MailchimpField {
   urlParam: string;
 }
 
-interface Input {
+interface BaseInput {
   description?: string;
   name: string;
-  required?: boolean;
-  type?: string;
   label?: string;
 }
+
+interface InterestGroup {
+  id: string;
+  name: string;
+  description?: string;
+}
+
+interface GroupsInput extends BaseInput {
+  type: "groups";
+  options: InterestGroup[];
+  required?: never;
+}
+
+interface RegularInput extends BaseInput {
+  type?: string;
+  options?: never;
+  required?: boolean;
+}
+
+type Input = GroupsInput | RegularInput;
 
 interface Step {
   inputs: Input[];

@@ -23,6 +23,21 @@ export default function TestBriefingLight() {
         {
           inputs: [
             {
+              description: "Bist du an weiteren News interessiert?",
+              name: "Interessen",
+              type: "groups",
+              required: true,
+              options: [
+                { id: '47ed10ad9f', name: 'Gruppe A', description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi" },
+                { id: '22b72061f1', name: 'Gruppe B', description: "Beschreibung Gruppe B" },
+                { id: '6d529bb42b', name: 'Gruppe C', description: "Beschreibung Gruppe C" }
+              ]
+            }
+          ]
+        },
+        {
+          inputs: [
+            {
               name: "LNAME",
               label: "Nachname",
               required: true,

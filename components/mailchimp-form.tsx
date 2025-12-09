@@ -20,6 +20,9 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
     acc[field.name] = urlParam ? urlParam : "";
     return acc;
   }, {}));
+
+  const [interests, setInterests] = useState<string[]>([]);
+
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -42,6 +45,20 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
 
     console.log(formData);
   };
+
+  const handleInterestChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    setInterests((prev) => {
+      if (e.target.checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter(v => v !== value);
+      }
+    });
+
+    console.log(interests);
+  }
 
   const goBack = () => {
     setCurrentStep((x) => Math.max(0, x - 1));
@@ -67,7 +84,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
     const contactData: ContactData = {
       email_address: formData["EMAIL"],
       status: "subscribed",
-      interests: Object.fromEntries(Object.entries(formConfig.interests).map(([_, v]) => [v, true])),
+      interests: Object.fromEntries(Object.entries(formConfig.interests.concat(interests)).map(([_, v]) => [v, true])),
       merge_fields: Object.fromEntries(Object.entries(formData).filter(([k, _]) => k !== "EMAIL")),
     };
 
@@ -121,15 +138,38 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
                 <label htmlFor={input.name} className="text-sm font-medium text-gray-700">
                   {input.label}
                 </label>
-                <input
-                  id={input.name}
-                  type={input.type || "text"}
-                  name={input.name}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none placeholder:text-gray-400"
-                  required={input.required ?? false}
-                  onChange={handleChange}
-                  value={formData[input.name]}
-                />
+                {input.type === "groups" ? (
+                  <div className="flex flex-col gap-2">
+                    {input.options?.map((option) => (
+                      <label key={option.id} className="inline-flex items-baseline gap-2">
+                        <input
+                          type="checkbox"
+                          name={input.name}
+                          value={option.id}
+                          required={false}
+                          onChange={handleInterestChange}
+                          checked={interests.includes(option.id)}
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-gray-700">{option.name}</span>
+                          {option.description && (
+                            <p className="text-gray-600 text-sm">{option.description}</p>
+                          )}
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                ) : (
+                  <input
+                    id={input.name}
+                    type={input.type || "text"}
+                    name={input.name}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none placeholder:text-gray-400"
+                    required={input.required ?? false}
+                    onChange={handleChange}
+                    value={formData[input.name]}
+                  />
+                )}
               </div>
             ))}
 
