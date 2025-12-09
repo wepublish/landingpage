@@ -146,14 +146,33 @@ Anleitung unter [Mailchimp-Integration](#mailchimp-integration) befolgen.
 }
 ```
 
+### showIfInterestsFilled
+
+Definiert, ob der Schritt angezeigt werden soll, basierend auf den ausgewählten
+Interessensgruppen. Andernfalls wird der Schritt übersprungen.
+
+Alternativen:
+* [skipIfInterestsFilled](#skipifinterestsfilled)
+* [skipIfFieldsFilled](#skipiffieldsfilled)
+
+```js
+{
+  showIfInterestsFilled: ["6d529bb42b"],
+  inputs: [
+    { name: "LNAME", label: "Nachname", required: true },
+    { name: "FNAME", label: "Vorname", required: true },
+  ],
+}
+```
+
 ### skipIfFieldsFilled
 
 Definiert, ob der Schritt übersprungen werden soll, wenn die angegebenen Felder
 schon gefüllt sind. Dabei wird nicht unterschieden, ob sie via URL-Parameter
 oder in einem früheren Schritt gefüllt wurden.
 
-Kann in Kombination mit [skipIfInterestsFilled](#skipifinterestsfilled)
-verwendet werden.
+* [skipIfInterestsFilled](#skipifinterestsfilled)
+* [showIfInterestsFilled](#showifinterestsfilled)
 
 ```js
 {
@@ -171,8 +190,8 @@ Definiert, ob der Schritt übersprungen werden soll, wenn die angegebenen
 Interessensgruppen schon aktiviert sind. Dabei wird nicht unterschieden, ob sie
 via Formularkonfiguration oder in einem früheren Schritt gefüllt wurden.
 
-Kann in Kombination mit [skipIfFieldsFilled](#skipiffieldsfilled) verwendet
-werden.
+* [skipIfFieldsFilled](#skipiffieldsfilled)
+* [showIfInterestsFilled](#showifinterestsfilled)
 
 ```js
 {

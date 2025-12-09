@@ -30,11 +30,39 @@ interface RegularInput extends BaseInput {
 
 type Input = GroupsInput | RegularInput;
 
-interface Step {
+interface BaseStep {
   inputs: Input[];
-  skipIfFieldsFilled?: string[];
-  skipIfInterestsFilled?: string[];
 }
+
+interface StepWithSkipIfFieldsFilled extends BaseStep {
+  skipIfFieldsFilled: string[];
+  skipIfInterestsFilled?: never;
+  showIfInterestsFilled?: never;
+}
+
+interface StepWithSkipIfInterestsFilled extends BaseStep {
+  skipIfFieldsFilled?: never;
+  skipIfInterestsFilled: string[];
+  showIfInterestsFilled?: never;
+}
+
+interface StepWithShowIfInterestsFilled extends BaseStep {
+  skipIfFieldsFilled?: never;
+  skipIfInterestsFilled?: never;
+  showIfInterestsFilled: string[];
+}
+
+interface StepWithNoConditions extends BaseStep {
+  skipIfFieldsFilled?: never;
+  skipIfInterestsFilled?: never;
+  showIfInterestsFilled?: never;
+}
+
+type Step =
+  | StepWithSkipIfFieldsFilled
+  | StepWithSkipIfInterestsFilled
+  | StepWithShowIfInterestsFilled
+  | StepWithNoConditions;
 
 interface BaseFormConfig {
   listId: string;
