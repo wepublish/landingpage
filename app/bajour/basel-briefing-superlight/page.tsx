@@ -5,7 +5,7 @@ import bajourIphone from "./bajour-iphone.png"
 export default function TestBriefingSuperlight() {
   const briefingProps = {
     title: "Das Wichtigste aus Basel",
-    subtitle: "Hol dir bajour.ch in deinen Posteingang! Wähle die Newsletter, die dich interessieren.",
+    subtitle: "Damit du weisst, was in deiner Stadt passiert: Hol dir das Basel Briefing mit den wichtigsten News, Geschichten und Tipps. Kuratiert bis spät in die Nacht – gelesen in 5 Minuten. Montag bis Freitag um 6 Uhr in deinem Postfach.",
     image: bajourIphone,
     formConfig: {
       interests: ["47ed10ad9f", "22b72061f1"],

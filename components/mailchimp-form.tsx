@@ -229,23 +229,25 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
               )}
 
               {isFirstStep && (
-                <button className="w-full px-6 py-3 text-white font-semibold bg-green-600 hover:opacity-90 active:bg-green-800 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
+                <button className="w-full px-6 py-3 text-gray-900 font-semibold bg-[#FFD60A] hover:bg-[#E6C009] active:bg-[#CCA007] rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
                   Jetzt kostenlos abonnieren
                 </button>
               )}
 
               {isMiddleStep && (
-                <button className="ml-auto px-6 py-2.5 text-white font-medium bg-green-600 hover:opacity-90 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
+                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium bg-[#FFD60A] hover:bg-[#E6C009] rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
                   {isSubmitting ? "Wird gesendet..." : "Weiter"}
                 </button>
               )}
 
               {isLastStep && !isFirstStep && (
-                <button className="ml-auto px-6 py-2.5 text-white font-medium bg-green-600 hover:opacity-90 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
+                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium bg-[#FFD60A] hover:bg-[#E6C009] rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
                   {isSubmitting ? "Wird gesendet..." : "Abschliessen"}
                 </button>
               )}
             </div>
+
+            
           </>
         )}
       </form>
