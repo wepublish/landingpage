@@ -22,9 +22,8 @@ export default function BajourBriefingLight() {
               description: "An welchen Briefings bist du interessiert?",
               type: "groups" as const,
               options: [
-                { id: '47ed10ad9f', name: 'Basel-Briefing', description: "Weitere Neuigkeiten zu deiner Stadt" },
-                { id: '22b72061f1', name: 'Party-Briefing', description: "Partyanlässe" },
-                { id: '6d529bb42b', name: 'Physik-Briefing', description: "News zu Physik und Mathematik" }
+                { id: '47ed10ad9f', name: 'FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
+                { id: '22b72061f1', name: 'Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
               ]
             }
           ],

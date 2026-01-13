@@ -17,6 +17,41 @@ export default function TestBriefingSuperlight() {
               label: "E-Mail",
               type: "email",
               required: true,
+            }
+          ],
+        },
+        
+        {skipIfFieldsFilled: ["FNAME"],
+          inputs: [
+            {
+              name: "FNAME",
+              label: "Wie dürfen wir dich ansprechen (Vorname)?",
+              required: true,
+            },
+          ],
+        },
+        {
+          inputs: [
+            {
+              description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
+              type: "groups" as const,
+              options: [
+                { id: '47ed10ad9f', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
+                { id: '22b72061f1', name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
+              ]
+            }
+          ],
+        },
+        {
+          skipIfFieldsFilled: ["PLZ"],
+
+          inputs: [
+            {
+              description: "Für gewisse Gemeinden ergänzen wir das Briefing mit Lokalnachrichten. Trage hier deine Postleitzahl ein und lass dich überraschen!",
+              name: "PLZ",
+              label: "Postleitzahl",
+              type: "number",
+              required: true,
             },
           ],
         },
@@ -32,7 +67,21 @@ export default function TestBriefingSuperlight() {
         { name: "LNAME", urlParam: "lname" },
         { name: "PLZ", urlParam: "plz" },
       ],
-      successUrl: "https://bajour.ch/mitmachen?mail=|*EMAIL*|"
+      successPage: {
+        description: "Nun noch eine letzte Frage: Findest du, dass unabhängiger Lokal-Journalismus etwas Kosten sollte?",
+        options: [
+          {
+            label: "Ja",
+            background: "#FFD60A",
+            url: "https://bajour.ch/mitmachen?firstName=|*FNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
+          },
+          {
+            label: "Nein",
+            background: "#bfbfbfff",
+            url: "https://www.instagram.com/bajourbasel",
+          },
+        ],
+      },
     },
   };
 
