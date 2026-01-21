@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import Briefing from "../components/briefing";
+import BajourLayout from "../components/bajour-layout";
 
 import HeaderImage from "./header.jpg";
 import ReadyImage from "./ready.jpg";
@@ -119,7 +119,7 @@ export default function OberwilBriefing() {
 
   return (
     <>
-      <Briefing {...briefingProps} />
+      <BajourLayout {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
       <MetaPixel
         pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID_BAJOUR_BASEL_BRIEFING!}

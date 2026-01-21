@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import Briefing from "../components/briefing";
+import BajourLayout from "../components/bajour-layout";
 
 import HeaderImage from "./bb-header.jpg";
 import ReadyImage from "./bb-ready.jpg";
@@ -7,7 +7,7 @@ import IndependentImage from "./bb-independent.jpg";
 import FooterImage from "./bb-footer.jpg";
 import { MetaPixel } from "@/components/MetaPixel";
 
-export default function TestBriefing() {
+export default function BaselBriefing() {
   const briefingProps = {
     title: "Basel Briefing",
     subtitle: "Das Wichtigste für den Start in den Tag",
@@ -91,7 +91,7 @@ export default function TestBriefing() {
 
   return (
     <>
-      <Briefing {...briefingProps} />
+      <BajourLayout {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
       <MetaPixel
         pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID_BAJOUR_BASEL_BRIEFING!}

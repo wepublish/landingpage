@@ -1,8 +1,8 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import BriefingLight from "@/app/bajour/components/briefing-light";
+import BajourLayoutLight from "@/app/bajour/components/bajour-layout-light";
 import bajourIphone from "./bajour-iphone.png"
 
-export default function TestBriefingLight() {
+export default function BaselBriefingLight() {
   const briefingProps = {
     title: "Das Wichtigste aus Basel!",
     subtitle: "Hol dir bajour.ch in deinen Posteingang! Wähle die Newsletter, die dich interessieren.",
@@ -92,7 +92,7 @@ export default function TestBriefingLight() {
 
   return (
     <>
-      <BriefingLight {...briefingProps} />
+      <BajourLayoutLight {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );

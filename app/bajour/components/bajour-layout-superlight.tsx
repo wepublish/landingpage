@@ -9,14 +9,14 @@ const robotoCondensed = Roboto_Condensed({
     subsets: ["latin"]
 });
 
-interface BriefingSuperlightProps {
+interface BajourLayoutSuperlightProps {
   title: string;
   subtitle: string;
   image: StaticImageData;
   formConfig: FormConfig;
 }
 
-export default function BriefingSuperlight(props: BriefingSuperlightProps) {
+export default function BajourLayoutSuperlight(props: BajourLayoutSuperlightProps) {
     return (
         <main className={`${robotoCondensed.className} min-h-screen bg-[#feeae3]`}>
             <div className="px-4 mx-auto lg:w-1/3 flex flex-col items-center">
@@ -36,7 +36,7 @@ export default function BriefingSuperlight(props: BriefingSuperlightProps) {
                     </Suspense>
                     <div className="mt-3 text-center">
                         <p className="text-xs text-gray-600">Abmeldung jederzeit möglich!</p>
-                        <p className="mt-2 text-lg md:text-xl text-gray-900"><span className="font-bold">14'907</span> Basler*innen lesen schon mit.</p>
+                        <p className="mt-2 text-lg md:text-xl text-gray-900"><span className="font-bold">14&apos;907</span> Basler*innen lesen schon mit.</p>
                     </div>
                 </section>
 

@@ -1,8 +1,8 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import BriefingSuperlight from "../components/briefing-superlight";
+import BajourLayoutSuperlight from "../components/bajour-layout-superlight";
 import bajourIphone from "./bajour-iphone.png"
 
-export default function TestBriefingSuperlight() {
+export default function BaselBriefingSuperlight() {
   const briefingProps = {
     title: "Das Wichtigste aus Basel",
     subtitle: "Damit du weisst, was in deiner Stadt passiert: Hol dir das Basel Briefing mit den wichtigsten News, Geschichten und Tipps. Kuratiert bis spät in die Nacht – gelesen in 5 Minuten. Montag bis Freitag um 6 Uhr in deinem Postfach.",
@@ -87,7 +87,7 @@ export default function TestBriefingSuperlight() {
 
   return (
     <>
-      <BriefingSuperlight {...briefingProps} />
+      <BajourLayoutSuperlight {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );

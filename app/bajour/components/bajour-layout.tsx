@@ -19,7 +19,7 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 // Props Definition (No raw HTML)
-interface BriefingContentProps {
+interface BajourLayoutContentProps {
   title: string;
   subtitle: string;
   lead: string;
@@ -55,7 +55,7 @@ interface BriefingContentProps {
   formConfig: FormConfig;
 }
 
-export default function Briefing(props: BriefingContentProps) {
+export default function BajourLayout(props: BajourLayoutContentProps) {
   return (
     <div className="text-[#1a1a1a] overflow-x-hidden">
 
