@@ -32,12 +32,14 @@ Jedes Medium hat seinen eigenen Unterordner im Ordner `app`.
 Die Seiten können die Komponente `MailchimpForm` verwenden, um das MC-Formular
 einzubinden. Die möglichen Konfigurationsoptionen sind unten aufgelistet.
 
-### Bajour
+## Layouts und Pages
 
-Der Bajour-Ordner enthält Komponenten für das Briefing, das Light-Briefing und
-das Superlight-Briefing. Diese werden von den effektiven Briefingseiten
-verwendet und erlauben die Nutzung des gleichen Layouts mit sehr wenig nötiger
-Konfiguration.
+Das Frontend ist jeweils in ein Layout und eine Seite aufgeteilt. Im Layout wird
+die Struktur der Seite mit Platzhaltern definiert. Die Seite enthält den Inhalt
+der Seite und verwendet eines der Layouts.
+
+Das erlaubt, ein Layout für verschiedene Briefings zu verwenden, ohne Code allzu
+stark duplizieren zu müssen.
 
 ## Mailchimp-Integration
 
