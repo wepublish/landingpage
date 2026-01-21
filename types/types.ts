@@ -87,24 +87,3 @@ type SuccessOptions =
   | { successPage: SuccessPageConfig; successUrl?: never };
 
 export type FormConfig = BaseFormConfig & SuccessOptions;
-
-export interface ContactData {
-  email_address: string;
-
-  status: "subscribed" | "pending";
-  merge_fields: Record<string, string>;
-  interests?: Record<string, boolean>;
-}
-
-export interface MailchimpGroup {
-  id: string;
-  name: string;
-}
-
-export interface MailchimpMergeField {
-  id: number;
-  tag: string;
-  name: string;
-  type: string;
-  required: boolean;
-}

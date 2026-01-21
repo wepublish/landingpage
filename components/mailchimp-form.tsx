@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { addContact } from "@/services/mailchimp.service";
-import { ContactData, FormConfig } from "@/types/types";
+import { FormConfig } from "@/types/types";
 import MailchimpSuccessPage from "./mailchimp-success-page";
 import MailchimpError from "./mailchimp-error";
+import { addMailchimpContact } from "@/app/actions/mailchimp";
+import Image from "next/image";
+import spinner from "@/app/spinner.svg";
 
 interface MailchimpFormProps {
   formConfig: FormConfig;
@@ -129,20 +131,25 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
     setError(null);
     setIsSubmitting(true);
 
-    const contactData: ContactData = {
-      email_address: formData["EMAIL"],
-      status: "subscribed",
+    const contactData = {
+      email: formData["EMAIL"],
+      status: "subscribed" as const,
       interests: Object.fromEntries(Object.entries(formConfig.interests.concat(interests)).map(([_, v]) => [v, true])),
-      merge_fields: Object.fromEntries(Object.entries(formData).filter(([k, _]) => k !== "EMAIL")),
+      mergeFields: Object.fromEntries(Object.entries(formData).filter(([k, _]) => k !== "EMAIL")),
     };
 
-    const response = await addContact(formConfig.listId, contactData);
-
-    setIsSubmitting(false);
-
-    if (response.error || (response.data?.status !== "subscribed")) {
-      setError(response.error || "Ein unbekannter Fehler ist aufgetreten.");
+    try {
+      const result = await addMailchimpContact(formConfig.listId, contactData);
+      if (!result.success) {
+        setError(result.error || "Ein unbekannter Fehler ist aufgetreten.");
+        return;
+      }
+    } catch(error) {
+      console.log(error);
+      setError("Ein unbekannter Fehler ist aufgetreten.");
       return;
+    } finally {
+      setIsSubmitting(false);
     }
 
     if(!isLastStep) {
@@ -229,25 +236,24 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
               )}
 
               {isFirstStep && (
-                <button className="w-full px-6 py-3 text-gray-900 font-semibold bg-[#FFD60A] hover:bg-[#E6C009] active:bg-[#CCA007] rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
-                  Jetzt kostenlos abonnieren
+                <button className="w-full px-6 py-3 text-gray-900 font-semibold bg-[#FFD60A] hover:bg-[#E6C009] active:bg-[#CCA007] rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" type="submit" disabled={isSubmitting}>
+                  Jetzt kostenlos abonnieren {isSubmitting && <Image src={spinner} alt="" width={20} height={20} />}
                 </button>
               )}
 
               {isMiddleStep && (
-                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium bg-[#FFD60A] hover:bg-[#E6C009] rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? "Wird gesendet..." : "Weiter"}
+                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium bg-[#FFD60A] hover:bg-[#E6C009] rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" type="submit" disabled={isSubmitting}>
+                  Weiter {isSubmitting && <Image src={spinner} alt="" width={20} height={20} />}
                 </button>
               )}
 
               {isLastStep && !isFirstStep && (
-                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium bg-[#FFD60A] hover:bg-[#E6C009] rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? "Wird gesendet..." : "Abschliessen"}
+                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium bg-[#FFD60A] hover:bg-[#E6C009] rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" type="submit" disabled={isSubmitting}>
+                  Abschliessen {isSubmitting && <Image src={spinner} alt="" width={20} height={20} />}
                 </button>
               )}
             </div>
 
-            
           </>
         )}
       </form>
