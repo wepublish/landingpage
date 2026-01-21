@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormConfig } from "@/types/types";
 import MailchimpSuccessPage from "./mailchimp-success-page";
@@ -29,6 +29,12 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const firstInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    firstInputRef.current?.focus();
+  }, [currentStep]);
 
   const steps = formConfig.steps;
 
@@ -135,7 +141,17 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
       email: formData["EMAIL"],
       status: "subscribed" as const,
       interests: Object.fromEntries(Object.entries(formConfig.interests.concat(interests)).map(([_, v]) => [v, true])),
-      mergeFields: Object.fromEntries(Object.entries(formData).filter(([k, _]) => k !== "EMAIL")),
+      mergeFields: Object.fromEntries(
+        Object.entries(formData)
+          .filter(([k, _]) => k !== "EMAIL")
+          .map(([k, v]) => {
+            if (!v) {
+              const field = formConfig.mailchimpFields.find(f => f.name === k);
+              return [k, field?.defaultValue || ""];
+            }
+            return [k, v];
+          })
+      ),
     };
 
     try {
@@ -223,6 +239,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
                     required={input.required ?? false}
                     onChange={handleChange}
                     value={input.name ? formData[input.name] : ""}
+                    ref={steps[currentStep].inputs.indexOf(input) === 0 ? firstInputRef : undefined}
                   />
                 )}
               </div>

@@ -29,7 +29,7 @@ export default function BaselBriefingSuperlight() {
       },
     ],
     formConfig: {
-      interests: ["47ed10ad9f", "22b72061f1"],
+      interests: ["5269ccc161"],
       steps: [
         {
           inputs: [
@@ -41,11 +41,10 @@ export default function BaselBriefingSuperlight() {
             }
           ],
         },
-        
-        {skipIfFieldsFilled: ["FNAME"],
+        {skipIfFieldsFilled: ["VORNAME"],
           inputs: [
             {
-              name: "FNAME",
+              name: "VORNAME",
               label: "Wie dürfen wir dich ansprechen (Vorname)?",
               required: true,
             },
@@ -57,8 +56,8 @@ export default function BaselBriefingSuperlight() {
               description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
-                { id: '47ed10ad9f', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
-                { id: '22b72061f1', name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
+                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
+                { id: '49a1cf05fb', name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
               ]
             }
           ],
@@ -77,15 +76,15 @@ export default function BaselBriefingSuperlight() {
           ],
         },
       ],
-      listId: "851436c80e",
+      listId: "bed6b33c61",
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
         { name: "UTM_MEDIUM", urlParam: "utm_medium" },
         { name: "UTM_CAMP", urlParam: "utm_campaign" },
         { name: "EMAIL", urlParam: "email" },
-        { name: "FNAME", urlParam: "fname" },
-        { name: "LNAME", urlParam: "lname" },
+        { name: "VORNAME", urlParam: "vorname", defaultValue: "Leser*in" },
+        { name: "NACHNAME", urlParam: "nachname" },
         { name: "PLZ", urlParam: "plz" },
       ],
       successPage: {
@@ -94,7 +93,7 @@ export default function BaselBriefingSuperlight() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen?firstName=|*FNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
+            url: "https://bajour.ch/mitmachen?firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
           },
           {
             label: "Nein",
