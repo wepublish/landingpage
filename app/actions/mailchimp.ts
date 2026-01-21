@@ -10,7 +10,7 @@ export async function addMailchimpContact(listId: string, contactData: ContactDa
     return { success: true };
   } catch (error) {
     console.error("Mailchimp error:", error);
-    console.error(JSON.stringify(error.response, null, 4));
+    console.error(JSON.stringify(error, null, 4));
     return { success: false, error: "Ein unbekannter Fehler ist aufgetreten." };
   }
 }
