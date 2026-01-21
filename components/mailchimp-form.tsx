@@ -199,8 +199,8 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
 
         {hasSteps && (
           <>
-            {steps[currentStep].inputs.map((input) => (
-              <div key={input.name} className="flex flex-col gap-1.5">
+            {steps[currentStep].inputs.map((input, index) => (
+              <div key={input.name ?? `group-${index}`} className="flex flex-col gap-1.5">
                 {input.description && (
                   <p className="text-md text-gray-800 mb-1">
                     {input.description}
