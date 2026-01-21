@@ -7,6 +7,27 @@ export default function BaselBriefingSuperlight() {
     title: "Das Wichtigste aus Basel",
     subtitle: "Damit du weisst, was in deiner Stadt passiert: Hol dir das Basel Briefing mit den wichtigsten News, Geschichten und Tipps. Kuratiert bis spät in die Nacht – gelesen in 5 Minuten. Montag bis Freitag um 6 Uhr in deinem Postfach.",
     image: bajourIphone,
+    listItems: [
+      "Basel-News des Tages",
+      "unabhängig und kostenlos",
+      "Eventtipps",
+      "Pünktlich um 6 Uhr",
+      "Für Basel-Liebhaber",
+    ],
+    testimonials: [
+      {
+        quote: "Das Basel Briefing ist kurz und prägnant. Sozusagen das Wichtigste in Kürze. Perfekt für die kurze Zugfahrt zur Arbeit!!",
+        author: "Simone (Gundeli)",
+      },
+      {
+        quote: "Ich freue mich jeden Morgen aufs Briefing und bin jedesmal gespannt, was es aus der Region zu berichten gibt.",
+        author: "Dorian (Binningen)",
+      },
+      {
+        quote: "Das Basel Briefing gibt mir die Möglichkeit, mitreden zu können und repräsentiert viele Perspektiven. Die Veranstaltungstipps und aktuellen Diskurse sind super, makes me feel part of Basel.",
+        author: "Lara (St. Johann)",
+      },
+    ],
     formConfig: {
       interests: ["47ed10ad9f", "22b72061f1"],
       steps: [
