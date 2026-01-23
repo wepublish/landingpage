@@ -8,7 +8,7 @@ export default function BaselBriefingLight() {
     subtitle: "Hol dir bajour.ch in deinen Posteingang! Wähle die Newsletter, die dich interessieren.",
     image: bajourIphone,
     formConfig: {
-      interests: ["47ed10ad9f", "22b72061f1"],
+      interests: ["5269ccc161"],
       steps: [
         {
           inputs: [
@@ -17,42 +17,36 @@ export default function BaselBriefingLight() {
               label: "E-Mail",
               type: "email",
               required: true,
-            },
+            }
           ],
         },
-        {
-          skipIfFieldsFilled: ["FNAME", "LNAME"],
+        {skipIfFieldsFilled: ["VORNAME"],
           inputs: [
             {
-              name: "LNAME",
-              label: "Nachname",
-              required: true,
-            },
-            {
-              name: "FNAME",
-              label: "Vorname",
+              name: "VORNAME",
+              label: "Wie dürfen wir dich ansprechen (Vorname)?",
               required: true,
             },
           ],
         },
         {
-          skipIfInterestsFilled: ["6d529bb42b"],
           inputs: [
             {
-              description: "Bist du an weiteren News interessiert?",
+              description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
-                { id: '47ed10ad9f', name: 'Gruppe A', description: "Weitere Neuigkeiten zu deiner Stadt" },
-                { id: '22b72061f1', name: 'Gruppe B', description: "Partyanlässe" },
-                { id: '6d529bb42b', name: 'Gruppe C', description: "News zu Physik und Mathematik" }
+                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
+                { id: '49a1cf05fb', name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
               ]
             }
-          ]
+          ],
         },
         {
+          skipIfFieldsFilled: ["PLZ"],
+
           inputs: [
             {
-              description: "Interesse an Gemeindenews? Trage hier deine PLZ ein.",
+              description: "Für gewisse Gemeinden ergänzen wir das Briefing mit Lokalnachrichten. Trage hier deine Postleitzahl ein und lass dich überraschen!",
               name: "PLZ",
               label: "Postleitzahl",
               type: "number",
@@ -61,27 +55,27 @@ export default function BaselBriefingLight() {
           ],
         },
       ],
-      listId: "851436c80e",
+      listId: "bed6b33c61",
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
         { name: "UTM_MEDIUM", urlParam: "utm_medium" },
         { name: "UTM_CAMP", urlParam: "utm_campaign" },
         { name: "EMAIL", urlParam: "email" },
-        { name: "FNAME", urlParam: "fname" },
-        { name: "LNAME", urlParam: "lname" },
+        { name: "VORNAME", urlParam: "vorname", defaultValue: "Leser*in" },
+        { name: "NACHNAME", urlParam: "nachname" },
         { name: "PLZ", urlParam: "plz" },
       ],
       successPage: {
-        description: "Danke fürs Abonnieren! Möchtest du unabhängingen Journalismus finanziell unterstützen?",
+        description: "Nun noch eine letzte Frage: Findest du, dass unabhängiger Lokal-Journalismus etwas Kosten sollte?",
         options: [
           {
-            label: "Ja!",
-            background: "#008b0eff",
-            url: "https://bajour.ch/mitmachen",
+            label: "Ja",
+            background: "#FFD60A",
+            url: "https://bajour.ch/mitmachen?firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
           },
           {
-            label: "Auf Insta folgen",
+            label: "Nein",
             background: "#bfbfbfff",
             url: "https://www.instagram.com/bajourbasel",
           },
