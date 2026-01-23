@@ -1,6 +1,6 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import BajourLayoutLight from "@/app/bajour/components/bajour-layout-light";
-import bajourIphone from "./bajour-iphone.png"
+import bajourIphone from "../assets/bajour-iphone.png"
+import BajourLayoutLight from "../components/bajour-layout-light";
 
 export default function BaselBriefingLight() {
   const briefingProps = {

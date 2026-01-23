@@ -4,14 +4,14 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/superlight",
+        source: "/:path*",
         has: [
           {
             type: "host",
-            value: "landingpage.bajour.ch",
+            value: "landing.bajour.ch",
           },
         ],
-        destination: "/bajour/basel-briefing-superlight",
+        destination: "/bajour/:path*",
       },
     ];
   },

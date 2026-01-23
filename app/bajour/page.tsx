@@ -1,11 +1,11 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import BajourLayout from "../components/bajour-layout";
 
-import HeaderImage from "./bb-header.jpg";
-import ReadyImage from "./bb-ready.jpg";
-import IndependentImage from "./bb-independent.jpg";
-import FooterImage from "./bb-footer.jpg";
-import { MetaPixel } from "@/components/MetaPixel";
+
+import HeaderImage from "./assets/bb-header.jpg";
+import ReadyImage from "./assets/bb-ready.jpg";
+import IndependentImage from "./assets/bb-independent.jpg";
+import FooterImage from "./assets/bb-footer.jpg";
+import BajourLayout from "./components/bajour-layout";
 
 export default function BaselBriefing() {
   const briefingProps = {
@@ -93,9 +93,6 @@ export default function BaselBriefing() {
     <>
       <BajourLayout {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
-      <MetaPixel
-        pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID_BAJOUR_BASEL_BRIEFING!}
-      />
     </>
   );
 }

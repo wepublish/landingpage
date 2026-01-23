@@ -1,6 +1,6 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import BajourLayoutSuperlight from "../components/bajour-layout-superlight";
-import bajourIphone from "./bajour-iphone.png"
+import bajourIphone from "../assets/bajour-iphone.png";
 
 export default function BaselBriefingSuperlight() {
   const briefingProps = {
