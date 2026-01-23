@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: "host",
-            value: "landing.bajour.ch",
+            value: "briefing.bajour.ch",
           },
         ],
         destination: "/bajour/:path*",
