@@ -8,6 +8,7 @@ export default function BaselBriefingLight() {
     subtitle: "Hol dir bajour.ch in deinen Posteingang! Wähle die Newsletter, die dich interessieren.",
     image: bajourIphone,
     formConfig: {
+      autoFocus: true,
       interests: ["5269ccc161"],
       steps: [
         {

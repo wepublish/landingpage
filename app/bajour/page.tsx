@@ -38,6 +38,7 @@ export default function BaselBriefing() {
       footer: FooterImage,
     },
     formConfig: {
+      autoFocus: false,
       interests: ["47ed10ad9f", "22b72061f1"],
       steps: [
         {

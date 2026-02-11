@@ -29,6 +29,7 @@ export default function BaselBriefingSuperlight() {
       },
     ],
     formConfig: {
+      autoFocus: true,
       interests: ["5269ccc161"],
       steps: [
         {

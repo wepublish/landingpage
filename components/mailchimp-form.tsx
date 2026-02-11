@@ -32,9 +32,13 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
 
   const firstInputRef = useRef<HTMLInputElement>(null);
 
+  const autoFocus = formConfig.autoFocus;
+
   useEffect(() => {
-    firstInputRef.current?.focus();
-  }, [currentStep]);
+    if (currentStep > 0 || autoFocus) {
+      firstInputRef.current?.focus();
+    }
+  }, [currentStep, autoFocus]);
 
   const steps = formConfig.steps;
 
