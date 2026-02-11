@@ -1,7 +1,6 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import BajourLayoutSuperlight from "../components/bajour-layout-superlight";
 import bajourIphone from "../assets/bajour-iphone.png";
-import TikTokPixel from "../../../components/tiktok-pixel";
 
 export default function BaselBriefingSuperlight() {
   const briefingProps = {
@@ -110,7 +109,6 @@ export default function BaselBriefingSuperlight() {
     <>
       <BajourLayoutSuperlight {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
-      <TikTokPixel token="D650C03C77U5GADIKCUG" />
     </>
   );
 }
