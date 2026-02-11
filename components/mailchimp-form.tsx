@@ -160,6 +160,10 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
         setError(result.error || "Ein unbekannter Fehler ist aufgetreten.");
         return;
       }
+
+      if (isFirstStep && typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "CompleteRegistration");
+      }
     } catch(error) {
       console.log(error);
       setError("Ein unbekannter Fehler ist aufgetreten.");
