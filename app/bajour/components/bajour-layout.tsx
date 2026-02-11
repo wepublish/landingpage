@@ -57,117 +57,124 @@ interface BajourLayoutContentProps {
 
 export default function BajourLayout(props: BajourLayoutContentProps) {
   return (
-    <div className="text-[#1a1a1a] overflow-x-hidden">
+    <div className={`${robotoCondensed.className} font-bold tracking-[-0.03rem] overflow-x-hidden`}>
 
-      {/* HEADER */}
-      <header className={`${roboto.className} relative w-full h-[50vw] lg:h-[33vw] flex flex-col justify-center items-center text-white uppercase`}>
+      {/* HEADER - matches template: 200px mobile, 420px sm, 400px lg, 920px 2xl */}
+      <header className="relative w-full h-[200px] sm:h-[420px] lg:h-[400px] 2xl:h-[920px] mx-auto flex flex-col justify-center items-center text-white uppercase">
         <Image
           src={props.images.header}
           alt="Header Background"
           fill
-          className="object-cover -z-10"
+          className="object-cover object-center -z-10"
           priority
         />
-        <Image src={logoWhite} alt="Logo White" className="w-[24vw] lg:w-[12vw] absolute inset-6" />
-        <div className="z-10 text-center font-bold leading-none">
-          <h1 className="text-[7vw] pt-4 tracking-tight">{props.title}</h1>
-          <h2 className="mt-2 text-[4vw] lg:text-[3vw] tracking-tight ">{props.subtitle}</h2>
+        {/* Logo: max(main-width * 0.15, 72px) positioned top-left */}
+        <Image 
+          src={logoWhite} 
+          alt="Logo White" 
+          className="w-[72px] sm:w-[max(calc(100%*0.15),72px)] lg:w-[192px] 2xl:w-[288px] absolute top-6 left-8 lg:left-[max(calc((100%-1280px)/2),2rem)] 2xl:left-[max(calc((100%-1920px)/2),2rem)]"
+        />
+        <div className={`${roboto.className} w-full text-center font-bold`}>
+          <h1 className="text-[4vh] sm:text-[6vh] lg:text-[8vh] pt-[1em]">{props.title}</h1>
+          <h2 className="mt-[1em] text-[1em] sm:text-[1.2em] lg:text-[0.9em]">{props.subtitle}</h2>
         </div>
       </header>
 
-      {/* MAIN CONTENT */}
+      {/* MAIN CONTENT - matches template heights exactly */}
       <main
-        className="relative mx-auto w-full max-w-[1920px] h-[740px] sm:h-[1300px] lg:h-[1375px] xl:h-[1450px] 2xl:h-[1900px]"
+        className="relative mx-auto w-full max-w-full xl:max-w-[1280px] 2xl:max-w-[1920px] h-[740px] sm:h-[1300px] lg:h-[1375px] 2xl:h-[2062px]"
         style={{ backgroundColor: props.mainBackgroundColor }}
       >
         {/* --- DECORATIVE BLOBS --- */}
-        {/* Top Left */}
-        <div className="absolute top-[-25px] sm:top-[-55px] lg:top-[-65px] left-0 xl:left-[-90px] w-[25vw] sm:w-[25vw] xl:w-[220px] 2xl:w-[300px] h-[350px] lg:h-[755px] bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1]" />
+        {/* Top Left Blob */}
+        <div className="absolute top-[-25px] sm:top-[-55px] lg:top-[-65px] 2xl:top-[-97px] left-0 lg:left-[-170px] 2xl:left-[-255px] w-[25vw] lg:w-[380px] 2xl:w-[570px] h-[350px] lg:h-[755px] 2xl:h-[1132px] bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1]" />
 
-        {/* Top Right */}
-        <div className="absolute top-[65px] lg:top-[110px] right-0 xl:right-[-160px] w-[10vw] lg:w-[270px] h-[125px] lg:h-[480px] bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1]" />
+        {/* Top Right Blob */}
+        <div className="absolute top-[65px] lg:top-[110px] 2xl:top-[165px] right-0 lg:right-[-160px] 2xl:right-[-240px] w-[10vw] lg:w-[270px] 2xl:w-[405px] h-[125px] lg:h-[480px] 2xl:h-[720px] bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1]" />
 
-        {/* Bottom Left */}
-        <div className="absolute top-[460px] sm:top-[825px] lg:top-[825px] left-0 lg:left-[-90px] w-[23vw] sm:w-[300px] lg:w-[420px] h-[215px] sm:h-[400px] lg:h-[460px] bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1] xl:to-[#0758a4]" />
+        {/* Bottom Left Blob - gradient changes at xl+ */}
+        <div className="absolute top-[460px] sm:top-[825px] lg:top-[825px] 2xl:top-[1237px] left-0 lg:left-[-90px] 2xl:left-[-135px] w-[23vw] sm:w-[300px] lg:w-[420px] 2xl:w-[630px] h-[215px] sm:h-[400px] lg:h-[460px] 2xl:h-[690px] bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1] xl:to-[#0758a4]" />
 
-        {/* Bottom Right */}
-        <div className="absolute top-[390px] sm:top-[755px] lg:top-[760px] right-0 lg:right-[80px] w-[60px] sm:w-[290px] 2xl:w-[400px] h-[150px] sm:h-[260px] lg:h-[440px] xl:h-[240px] 2xl:h-[400px] bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1]" />
+        {/* Bottom Right Blob */}
+        <div className="absolute top-[390px] sm:top-[755px] lg:top-[760px] 2xl:top-[1140px] right-0 lg:right-[-80px] 2xl:right-[-120px] w-[60px] sm:w-[290px] lg:w-[290px] 2xl:w-[435px] h-[150px] sm:h-[260px] lg:h-[440px] xl:h-[240px] 2xl:h-[360px] bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1]" />
 
         {/* --- CONTENT SECTIONS --- */}
 
         {/* Lead Text */}
-        <section
-          className={`${robotoCondensed.className} z-[10] absolute top-0 left-[24vw] sm:left-[28vw] lg:left-[260px] w-[63vw] sm:w-[50vw] lg:w-[520px] 2xl:w-[800px] p-3 lg:p-6`}>
-          <p className="font-bold tracking-tight leading-none text-xl/5 md:text-3xl/7 lg:text-4xl/9 2xl:text-6xl/15" style={{ color: props.leadColor }}>
+        <section className="absolute top-0 left-[24vw] sm:left-[28vw] lg:left-[260px] 2xl:left-[390px] w-[63vw] sm:w-[50vw] lg:w-[520px] 2xl:w-[780px] p-[0.8em]">
+          <p 
+            className="text-[1.2rem] sm:text-[1.3rem] lg:text-[1.6rem] 2xl:text-[1.9rem] leading-[1.2rem] sm:leading-[1.3rem] lg:leading-[1.6rem] 2xl:leading-[1.9rem]" 
+            style={{ color: props.leadColor }}
+          >
             {props.lead}
           </p>
         </section>
 
-        {/* Wakeup Text */}
-        <section className={`${robotoCondensed.className} z-[20] absolute top-[145px] sm:top-[190px] lg:top-[225px] right-0 w-[65vw] lg:w-[645px] 2xl:w-[800px] h-[170px] sm:h-[295px] lg:h-[320px] 2xl:h-[360px] bg-gradient-to-br from-[#0758a4] to-[#002f49] text-white p-6 pl-8 md:pl-16`}>
-          <p className="text-lg/5 md:text-3xl/7 lg:text-4xl/9 2xl:text-6xl/15 font-bold tracking-tight">
+        {/* Wakeup Text - blue gradient box */}
+        <section className="absolute top-[145px] sm:top-[190px] lg:top-[225px] 2xl:top-[337px] right-0 w-[65vw] lg:w-[645px] 2xl:w-[967px] h-[170px] sm:h-[295px] lg:h-[320px] 2xl:h-[480px] bg-gradient-to-br from-[#0758a4] to-[#002f49] text-white p-[1em] pl-[2em] pb-[4em]">
+          <p className="text-[1.05rem] sm:text-[1.4rem] lg:text-[1.5rem] 2xl:text-[1.8rem] leading-[1.1rem] sm:leading-[1.4rem] lg:leading-[1.4rem] 2xl:leading-[1.6rem]">
             {props.wakeup.intro}
             <br />
             {props.wakeup.leadup}
-            <span className="text-xl md:text-4xl lg:text-5xl 2xl:text-7xl leading-none mx-1">{props.wakeup.time}</span>
+            <span className="text-[1.2em] mx-1">{props.wakeup.time}</span>
             {props.wakeup.context}
           </p>
         </section>
 
         {/* Ready Text (Image Background) */}
-        <section className={`${robotoCondensed.className} z-[30] absolute top-[180px] sm:top-[250px] lg:top-[300px] left-0 lg:left-[160px] w-[40vw] lg:w-[520px] 2xl:w-[600px] h-[215px] sm:h-[450px] lg:h-[690px] 2xl:h-[900px] text-white uppercase leading-none overflow-hidden`}>
+        <section className="absolute top-[180px] sm:top-[250px] lg:top-[300px] 2xl:top-[450px] left-0 lg:left-[160px] 2xl:left-[240px] w-[40vw] lg:w-[520px] 2xl:w-[780px] h-[215px] sm:h-[450px] lg:h-[690px] 2xl:h-[1035px] text-white uppercase overflow-hidden">
           <Image
             src={props.images.ready}
             alt="Ready Background"
             fill
-            className="object-cover -z-10"
+            className="object-cover object-center"
           />
-          <div className="m-4 md:m-6 font-bold">
-            <span className="block text-xs md:text-2xl lg:text-4xl mb-2">{props.ready.intro}</span>
-            <span className="block text-[2.8em] md:text-8xl lg:text-[10rem] font-bold leading-[0.9]">{props.ready.time}</span>
-            <span className="block text-sm md:text-3xl lg:text-5xl mt-2">{props.ready.outro}</span>
+          <div className="relative z-10 mt-[1em] ml-[1em] leading-[2.3em]">
+            <span className="block text-[0.8em] sm:text-[1em] lg:text-[1.1em] 2xl:text-[2rem]">{props.ready.intro}</span>
+            <span className="block text-[2.8em] sm:text-[3.5em] lg:text-[5em] 2xl:text-[8rem] leading-[1em]">{props.ready.time}</span>
+            <span className="block text-[1em] sm:text-[1.2em] lg:text-[1.6em] 2xl:text-[2.5rem]">{props.ready.outro}</span>
           </div>
         </section>
 
-        {/* Delivery Text */}
-        <section className={`${robotoCondensed.className} z-[40] absolute top-[350px] sm:top-[545px] lg:top-[620px] 2xl:top-[800px] left-[8vw] sm:left-[25vw] lg:left-[520px] w-[60vw] sm:w-[405px] lg:w-[440px] 2xl:w-[600px] h-[135px] sm:h-[245px] lg:h-[280px] 2xl:h-[360px] bg-gradient-to-tr from-[#002f49] via-[#0758a4] to-[#ffbaba] text-white p-4 md:p-8 md:pr-24`}>
-          <div className="text-lg/5 md:text-3xl/7 lg:text-4xl/9 2xl:text-5xl/13 font-bold tracking-tight">
+        {/* Delivery Text - multi-color gradient: #00304b -> #2161a6 -> #ffbaba */}
+        <section className="absolute top-[350px] sm:top-[545px] lg:top-[620px] 2xl:top-[930px] left-[8vw] sm:left-[25vw] lg:left-[520px] 2xl:left-[780px] w-[60vw] sm:w-[405px] lg:w-[440px] 2xl:w-[660px] h-[135px] sm:h-[245px] lg:h-[280px] 2xl:h-[420px] bg-gradient-to-tr from-[#00304b] via-[#2161a6] to-[#ffbaba] text-white p-[1em] pl-[1em]">
+          <div className="text-[1.05rem] sm:text-[1.4rem] lg:text-[1.5rem] 2xl:text-[1.8rem] leading-[1.1rem] sm:leading-[1.4rem] lg:leading-[1.4rem] 2xl:leading-[1.6rem]">
             {props.delivery.intro}
-            <span className="mx-1 text-xl/5 md:text-4xl/7 lg:text-5xl/9 2xl:text-6xl/13">{props.delivery.time}</span>
+            <span className="text-[1.2em] mx-1">{props.delivery.time}</span>
             {props.delivery.text}
           </div>
         </section>
 
         {/* Independent Text (Image Background) */}
-        <section className={`${robotoCondensed.className} z-[30] absolute top-[425px] sm:top-[625px] lg:top-[820px] 2xl:top-[1100px] left-[75px] sm:left-[30vw] lg:left-[640px] 2xl:left-[900px] w-[285px] sm:w-[475px] lg:w-[610px] 2xl:w-[700px] h-[215px] sm:h-[450px] lg:h-[460px] 2xl:h-[600px] flex flex-col justify-end items-end p-4 text-white uppercase text-right`}>
+        <section className="absolute top-[425px] sm:top-[625px] lg:top-[820px] 2xl:top-[1230px] left-[75px] sm:left-[30vw] lg:left-[640px] 2xl:left-[960px] w-[285px] sm:w-[475px] lg:w-[610px] 2xl:w-[915px] h-[215px] sm:h-[450px] lg:h-[460px] 2xl:h-[690px] flex flex-col justify-end items-end p-[1em] text-white uppercase text-right overflow-hidden">
           <Image
             src={props.images.independent}
             alt="Independent Background"
             fill
-            className="object-cover z-31"
+            className="object-cover object-center"
           />
-          <div className="z-[32] m-4 font-bold">
-            <span className="block text-normal md:text-2xl lg:text-3xl">Unabhängig und</span>
-            <span className="block text-3xl md:text-5xl lg:text-5xl leading-none">kostenlos</span>
+          <div className="z-10">
+            <span className="block text-[1em] sm:text-[1.2em] lg:text-[1.4em] 2xl:text-[2rem]">Unabhängig und</span>
+            <span className="block text-[1.58em] sm:text-[2em] lg:text-[2.2em] 2xl:text-[3.5rem] leading-[1em]">kostenlos</span>
           </div>
         </section>
 
-        {/* Subscribe Text */}
-        <section className={`${robotoCondensed.className} z-[30] absolute top-[655px] sm:top-[1115px] lg:top-[1190px] 2xl:top-[1600px] left-[8vw] lg:left-[220px] 2xl:left-[15vw] w-[60vw] lg:w-[470px] 2xl:w-[25vw] h-[115px] sm:h-[240px] lg:h-[290px] 2xl:h-[15vw] bg-gradient-to-r from-[#e67964] to-[#fcb4b2] text-white p-4 md:p-8 2xl:p-16`}>
-          <p className="text-base/5 md:text-3xl/7 lg:text-4xl/9 2xl:text-5xl/13 font-bold tracking-tight" dangerouslySetInnerHTML={{ __html: props.subscribeText.replace(/\n/g, '<br/>') }} />
+        {/* Subscribe Text - orange gradient */}
+        <section className="absolute top-[655px] sm:top-[1115px] lg:top-[1190px] 2xl:top-[1785px] left-[8vw] sm:left-[8vw] lg:left-[220px] 2xl:left-[330px] w-[60vw] lg:w-[470px] 2xl:w-[705px] h-[115px] sm:h-[240px] lg:h-[290px] 2xl:h-[435px] bg-gradient-to-r from-[#e67964] to-[#fcb4b2] text-white p-[1em] text-[0.8em] sm:text-[1em] lg:text-[1.1em] 2xl:text-[1.5em]">
+          <p dangerouslySetInnerHTML={{ __html: props.subscribeText.replace(/\n/g, '<br/>') }} />
         </section>
 
       </main>
 
-      {/* FOOTER */}
-      <footer className="z-[20] relative w-full mx-auto h-[450px] sm:h-[725px] lg:h-[610px] flex items-center justify-center">
+      {/* FOOTER - matches template: 355px mobile, 725px sm, 610px lg */}
+      <footer className="relative w-full xl:max-w-[1550px] 2xl:max-w-[2550px] mx-auto h-[355px] sm:h-[725px] lg:h-[610px] 2xl:h-[915px] flex items-center justify-center">
         <Image
           src={props.images.footer}
           alt="Footer Background"
           fill
-          className="object-cover -z-10"
+          className="object-cover object-center -z-10"
         />
-        <div className="w-[90%] max-w-[600px] mt-[5vw]">
+        <div className="w-[90%] max-w-[600px] mt-[5vw] 2xl:mt-[100px]">
           <Suspense fallback={null}>
             <MailchimpForm formConfig={props.formConfig} />
           </Suspense>
