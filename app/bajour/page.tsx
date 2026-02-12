@@ -13,7 +13,7 @@ export default function BaselBriefing() {
     subtitle: "Das Wichtigste für den Start in den Tag",
     lead: "Du willst wissen, was in Basel läuft, hast aber keine Lust, dich durch die Zeitungen und Online-Portale zu pflügen?",
     wakeup: {
-      intro: "Wir von Bajour nehmen dir diese Arbeit ab.",
+      intro: "Wir von Bajour nehmen<br>dir diese Arbeit ab.",
       leadup: "Wir stehen für dich werktags um",
       time: "3:00",
       context: "Uhr auf"
