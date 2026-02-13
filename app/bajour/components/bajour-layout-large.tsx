@@ -18,7 +18,7 @@ const robotoCondensed = Roboto_Condensed({
   variable: "--font-roboto-condensed",
 });
 
-interface BajourLayoutContentProps {
+interface BajourLayoutLargeProps {
   title: string;
   subtitle: string;
   lead: string;
@@ -52,7 +52,7 @@ interface BajourLayoutContentProps {
   formConfig: FormConfig;
 }
 
-export default function BajourLayout(props: BajourLayoutContentProps) {
+export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
   return (
     // ROOT WRAPPER
     // Sets the base font-size and line-height for everything, matching :root variables exactly.

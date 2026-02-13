@@ -9,14 +9,14 @@ const robotoCondensed = Roboto_Condensed({
     subsets: ["latin"]
 });
 
-interface BajourLayoutLightProps {
+interface BajourLayoutMediumProps {
   title: string;
   subtitle: string;
   image: StaticImageData;
   formConfig: FormConfig;
 }
 
-export default function BajourLayoutLight(props: BajourLayoutLightProps) {
+export default function BajourLayoutMedium(props: BajourLayoutMediumProps) {
     return (
         <main className={`${robotoCondensed.className} min-h-screen bg-[#feeae3]`}>
             <div className="px-4 mx-auto lg:w-1/2 flex flex-col items-center">

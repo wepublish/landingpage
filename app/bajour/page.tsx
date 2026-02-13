@@ -5,7 +5,7 @@ import HeaderImage from "./assets/bb-header.jpg";
 import ReadyImage from "./assets/bb-ready.jpg";
 import IndependentImage from "./assets/bb-independent.jpg";
 import FooterImage from "./assets/bb-footer.jpg";
-import BajourLayout from "./components/bajour-layout";
+import BajourLayoutLarge from "./components/bajour-layout-large";
 
 export default function BaselBriefing() {
   const briefingProps = {
@@ -92,7 +92,7 @@ export default function BaselBriefing() {
 
   return (
     <>
-      <BajourLayout {...briefingProps} />
+      <BajourLayoutLarge {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );

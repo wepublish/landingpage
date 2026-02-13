@@ -36,7 +36,8 @@ einzubinden. Die möglichen Konfigurationsoptionen sind unten aufgelistet.
 
 Das Frontend ist jeweils in ein Layout und eine Seite aufgeteilt. Im Layout wird
 die Struktur der Seite mit Platzhaltern definiert. Die Seite enthält den Inhalt
-der Seite und verwendet eines der Layouts.
+der Seite und verwendet eines der Layouts. Die Layouts sind in `bajour-layout-large`,
+`-medium` und `-small` abgelegt.
 
 Das erlaubt, ein Layout für verschiedene Briefings zu verwenden, ohne Code allzu
 stark duplizieren zu müssen.

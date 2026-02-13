@@ -16,7 +16,7 @@ interface Testimonial {
   author: string;
 }
 
-interface BajourLayoutSuperlightProps {
+interface BajourLayoutSmallProps {
   title: string;
   subtitle: string;
   image: StaticImageData;
@@ -25,7 +25,7 @@ interface BajourLayoutSuperlightProps {
   testimonials: Testimonial[];
 }
 
-export default function BajourLayoutSuperlight(props: BajourLayoutSuperlightProps) {
+export default function BajourLayoutSmall(props: BajourLayoutSmallProps) {
     return (
         <>
             <MetaPixel pixelId="2225762180979586" />
