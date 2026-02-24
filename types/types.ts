@@ -70,6 +70,7 @@ interface BaseFormConfig {
   interests: string[];
   mailchimpFields: MailchimpField[];
   steps: Step[];
+  autoFocus: boolean;
 }
 
 export interface SuccessPageConfig {

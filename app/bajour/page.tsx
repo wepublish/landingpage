@@ -5,7 +5,7 @@ import HeaderImage from "./assets/bb-header.jpg";
 import ReadyImage from "./assets/bb-ready.jpg";
 import IndependentImage from "./assets/bb-independent.jpg";
 import FooterImage from "./assets/bb-footer.jpg";
-import BajourLayout from "./components/bajour-layout";
+import BajourLayoutLarge from "./components/bajour-layout-large";
 
 export default function BaselBriefing() {
   const briefingProps = {
@@ -13,7 +13,7 @@ export default function BaselBriefing() {
     subtitle: "Das Wichtigste für den Start in den Tag",
     lead: "Du willst wissen, was in Basel läuft, hast aber keine Lust, dich durch die Zeitungen und Online-Portale zu pflügen?",
     wakeup: {
-      intro: "Wir von Bajour nehmen dir diese Arbeit ab.",
+      intro: "Wir von Bajour nehmen<br>dir diese Arbeit ab.",
       leadup: "Wir stehen für dich werktags um",
       time: "3:00",
       context: "Uhr auf"
@@ -38,6 +38,7 @@ export default function BaselBriefing() {
       footer: FooterImage,
     },
     formConfig: {
+      autoFocus: false,
       interests: ["47ed10ad9f", "22b72061f1"],
       steps: [
         {
@@ -91,7 +92,7 @@ export default function BaselBriefing() {
 
   return (
     <>
-      <BajourLayout {...briefingProps} />
+      <BajourLayoutLarge {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );

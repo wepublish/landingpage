@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import BajourLayoutSuperlight from "../components/bajour-layout-superlight";
+import BajourLayoutSmall from "../components/bajour-layout-small";
 import bajourIphone from "../assets/bajour-iphone.png";
 
 export default function BaselBriefingSuperlight() {
@@ -29,6 +29,7 @@ export default function BaselBriefingSuperlight() {
       },
     ],
     formConfig: {
+      autoFocus: true,
       interests: ["5269ccc161"],
       steps: [
         {
@@ -107,7 +108,7 @@ export default function BaselBriefingSuperlight() {
 
   return (
     <>
-      <BajourLayoutSuperlight {...briefingProps} />
+      <BajourLayoutSmall {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );

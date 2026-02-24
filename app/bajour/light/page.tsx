@@ -1,6 +1,6 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import bajourIphone from "../assets/bajour-iphone.png"
-import BajourLayoutLight from "../components/bajour-layout-light";
+import BajourLayoutMedium from "../components/bajour-layout-medium";
 
 export default function BaselBriefingLight() {
   const briefingProps = {
@@ -8,6 +8,7 @@ export default function BaselBriefingLight() {
     subtitle: "Hol dir bajour.ch in deinen Posteingang! Wähle die Newsletter, die dich interessieren.",
     image: bajourIphone,
     formConfig: {
+      autoFocus: true,
       interests: ["5269ccc161"],
       steps: [
         {
@@ -86,7 +87,7 @@ export default function BaselBriefingLight() {
 
   return (
     <>
-      <BajourLayoutLight {...briefingProps} />
+      <BajourLayoutMedium {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );
