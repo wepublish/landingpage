@@ -74,6 +74,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
         sm:h-[420px]
         lg:h-[400px]
         2xl:h-[920px]
+        3xl:w-[2550px]
       ">
         <Image
           src={props.images.header}
@@ -108,7 +109,9 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           <h2 className="mt-[1em] leading-normal
             text-[1em] lg:text-[2rem]
             sm:text-[1.2em]
-            lg:text-[0.9em]"
+            lg:text-[0.9em]
+            3xl:text-[1.5em]
+            3xl:mt-[2em]"
           >
             {props.subtitle}
           </h2>
@@ -162,6 +165,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           sm:left-[28vw] sm:w-[50vw] sm:text-[1.3rem] sm:leading-[1.3rem]
           lg:left-[260px] lg:w-[520px] lg:text-[1.6rem] lg:leading-[1.6rem]
           2xl:left-[390px] 2xl:w-[780px] 2xl:text-[1.9rem] 2xl:leading-[1.9rem]
+          3xl:text-[3.5rem] 3xl:leading-[3.5rem]
         ">
           <p style={{ color: props.leadColor }}>
             {props.lead}
@@ -171,10 +175,12 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
         {/* Inherits root font size. Time span is 1.2em. */}
         <section className="absolute bg-gradient-to-br from-[#0758a4] to-[#002f49] text-white pl-[2em] lg:pl-[4rem] pt-[1em] pr-[1em] pb-[4em]
           lg:text-[2.3rem] lg:leading-[2.3rem]
+          3xl:text-[3.5rem] 3xl:leading-[3rem]
           right-0 top-[145px] w-[65vw] h-[170px]
           sm:top-[190px] sm:h-[295px]
           lg:top-[225px] lg:w-[645px] lg:h-[320px]
           2xl:top-[337px] 2xl:w-[967px] 2xl:h-[480px]
+          3xl:pl-[6rem]
         ">
           <div className="font-bold">
             <span dangerouslySetInnerHTML={{ __html: props.wakeup.intro }} />
@@ -192,19 +198,22 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           2xl:top-[450px] 2xl:left-[240px] 2xl:w-[780px] 2xl:h-[1035px]
         ">
           <Image src={props.images.ready} alt="Ready Background" fill className="object-cover object-center" />
-          <div className="relative mt-[1em] ml-[1em] lg:mt-[2.5rem] lg:ml-[2.5rem]">
+          <div className="relative mt-[1em] ml-[1em] lg:mt-[2.5rem] lg:ml-[2.5rem] 3xl:mt-[4rem] 3xl:ml-[4rem]">
             <span className="block
               text-[0.8em] lg:text-[2.3rem]
               leading-[1.1rem]
               lg:text-[1.1em]
-              2xl:text-[2rem]"
+              2xl:text-[2rem]
+              3xl:text-[3.5rem]"
             >
               {props.ready.intro}
             </span>
             <span className="block leading-[1em]
               text-[2.8em] lg:text-[11rem]
               lg:text-[5em]
-              2xl:text-[8rem]"
+              2xl:text-[8rem]
+              3xl:text-[14rem]
+              3xl:leading-[1.2em]"
             >
               {props.ready.time}
             </span>
@@ -212,7 +221,8 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
               text-[1em] lg:text-[3.5rem]
               leading-[1.1rem]
               lg:text-[1.6em]
-              2xl:text-[2.5rem]"
+              2xl:text-[2.5rem]
+              3xl:text-[4.5rem]"
             >
               {props.ready.outro}
             </span>
@@ -221,6 +231,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
         {/* Delivery Text */}
         <section className="absolute z-10 bg-gradient-to-tr from-[#00304b] via-[#2161a6] to-[#ffbaba] text-white
           top-[350px] left-[8vw] w-[60vw] h-[135px] lg:text-[2.3rem] lg:leading-[2.3rem]
+          3xl:text-[3.3rem] 3xl:leading-[3.3rem]
           sm:top-[545px] sm:left-[25vw] sm:w-[405px] sm:h-[245px]
           lg:top-[620px] lg:left-[520px] lg:w-[440px] lg:h-[280px]
           2xl:top-[930px] 2xl:left-[780px] 2xl:w-[660px] 2xl:h-[420px]
@@ -238,6 +249,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           sm:top-[625px] sm:left-[30vw] sm:w-[475px] sm:h-[450px]
           lg:top-[820px] lg:left-[640px] lg:w-[610px] lg:h-[460px]
           2xl:top-[1230px] 2xl:left-[960px] 2xl:w-[915px] 2xl:h-[690px]
+          3xl:p-[1.8em]
         ">
           <Image src={props.images.independent} alt="Independent Background" fill className="object-cover object-center" />
           <div className="relative">
@@ -245,7 +257,8 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
               text-[1em]
               sm:text-[1.2em]
               lg:text-[1.4em]
-              2xl:text-[2rem]"
+              2xl:text-[2rem]
+              3xl:text-[3.2rem]"
             >
               Unabhängig und
             </span>
@@ -253,7 +266,9 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
               text-[1.58em]
               sm:text-[2em]
               lg:text-[2.2em]
-              2xl:text-[3.5rem]"
+              2xl:text-[3.5rem]
+              3xl:text-[5rem]
+              3xl:leading-[1.2em]"
             >
               kostenlos
             </span>
@@ -267,6 +282,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           sm:top-[1115px] sm:h-[240px] sm:text-[1em]
           lg:top-[1190px] lg:left-[220px] lg:w-[470px] lg:h-[290px] lg:text-[1.1em]
           2xl:top-[1785px] 2xl:left-[330px] 2xl:w-[705px] 2xl:h-[435px] 2xl:text-[1.5em]
+          3xl:text-[3.2rem] 3xl:leading-[3.2rem]
         ">
           <div dangerouslySetInnerHTML={{ __html: props.subscribeText.replace(/\n/g, '<br/>') }} />
         </section>
