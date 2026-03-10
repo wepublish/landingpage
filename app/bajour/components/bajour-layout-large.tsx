@@ -65,7 +65,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
       text-[1.05rem] leading-[1.1rem]
       sm:text-[1.4rem] sm:leading-[1.4rem]
       lg:text-[1.5rem]
-      2xl:text-[1.8rem] 2xl:leading-[1.6rem]
+      3xl:text-[1.8rem] 3xl:leading-[1.6rem]
     `}>
       {/* HEADER */}
       {/* 200px -> 420px (sm) -> 400px (lg) -> 920px (2xl) */}
@@ -73,7 +73,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
         h-[200px]
         sm:h-[420px]
         lg:h-[400px]
-        2xl:h-[920px]
+        3xl:h-[920px]
         3xl:w-[2550px]
       ">
         <Image
@@ -90,10 +90,10 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           className="absolute top-[1.5rem]
           w-[max(15vw,72px)]
           lg:w-[192px]
-          2xl:w-[288px]
+          3xl:w-[288px]
           left-[2rem]
           lg:left-[max(calc((100%-1280px)/2),2rem)]
-          2xl:left-[max(calc((100%-1920px)/2),2rem)]"
+          3xl:left-[max(calc((100%-1920px)/2),2rem)]"
         />
         {/* Title & Subtitle - Roboto Font */}
         <div className={`${roboto.className} w-full text-center font-bold`}>
@@ -121,11 +121,11 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
       <main
         className="relative mx-auto w-full
         xl:max-w-[1280px]
-        2xl:max-w-[1920px]
+        3xl:max-w-[1920px]
         h-[740px]
         sm:h-[1300px]
         lg:h-[1375px]
-        2xl:h-[2062px]"
+        3xl:h-[2062px]"
         style={{ backgroundColor: props.mainBackgroundColor }}
       >
         {/* Top Left */}
@@ -133,20 +133,20 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           top-[-25px] left-0 w-[25vw] h-[350px]
           sm:top-[-55px]
           lg:top-[-65px] lg:left-[-170px] lg:w-[380px] lg:h-[755px]
-          2xl:top-[-97px] 2xl:left-[-255px] 2xl:w-[570px] 2xl:h-[1132px]"
+          3xl:top-[-97px] 3xl:left-[-255px] 3xl:w-[570px] 3xl:h-[1132px]"
         />
         {/* Top Right */}
         <div className="absolute bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1]
           top-[65px] right-0 w-[10vw] h-[125px]
           lg:top-[110px] lg:right-[-160px] lg:w-[270px] lg:h-[480px]
-          2xl:top-[165px] 2xl:right-[-240px] 2xl:w-[405px] 2xl:h-[720px]"
+          3xl:top-[165px] 3xl:right-[-240px] 3xl:w-[405px] 3xl:h-[720px]"
         />
         {/* Bottom Left */}
         <div className="absolute bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1] xl:to-[#0758a4]
           top-[460px] left-0 w-[23vw] h-[215px]
           sm:top-[825px] sm:w-[300px] sm:h-[400px]
           lg:top-[825px] lg:left-[-90px] lg:w-[420px] lg:h-[460px]
-          2xl:top-[1237px] 2xl:left-[-135px] 2xl:w-[630px] 2xl:h-[690px]"
+          3xl:top-[1237px] 3xl:left-[-135px] 3xl:w-[630px] 3xl:h-[690px]"
         />
         {/* Bottom Right */}
         <div className="absolute bg-gradient-to-tr from-[#ffbaba] to-[#fdddd1]
@@ -154,7 +154,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           sm:top-[755px] sm:w-[290px] sm:h-[260px]
           lg:top-[760px] lg:right-[-80px] lg:h-[440px]
           xl:h-[240px]
-          2xl:top-[1140px] 2xl:right-[-120px] 2xl:w-[435px] 2xl:h-[360px]"
+          3xl:top-[1140px] 3xl:right-[-120px] 3xl:w-[435px] 3xl:h-[360px]"
         />
         {/* --- TEXT SECTIONS --- */}
         {/* Lead Text */}
@@ -164,7 +164,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           left-[24vw] w-[63vw] text-[1.2rem] leading-[1.2rem] lg:text-[2.3rem] lg:leading-[2.3rem]
           sm:left-[28vw] sm:w-[50vw] sm:text-[1.3rem] sm:leading-[1.3rem]
           lg:left-[260px] lg:w-[520px] lg:text-[1.6rem] lg:leading-[1.6rem]
-          2xl:left-[390px] 2xl:w-[780px] 2xl:text-[1.9rem] 2xl:leading-[1.9rem]
+          3xl:left-[390px] 3xl:w-[780px]
           3xl:text-[3.5rem] 3xl:leading-[3.5rem]
         ">
           <p style={{ color: props.leadColor }}>
@@ -179,7 +179,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           right-0 top-[145px] w-[65vw] h-[170px]
           sm:top-[190px] sm:h-[295px]
           lg:top-[225px] lg:w-[645px] lg:h-[320px]
-          2xl:top-[337px] 2xl:w-[967px] 2xl:h-[480px]
+          3xl:top-[337px] 3xl:w-[967px] 3xl:h-[480px]
           3xl:pl-[6rem]
         ">
           <div className="font-bold">
@@ -195,7 +195,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           top-[180px] left-0 w-[40vw] h-[215px]
           sm:top-[250px] sm:h-[450px]
           lg:top-[300px] lg:left-[160px] lg:w-[520px] lg:h-[690px]
-          2xl:top-[450px] 2xl:left-[240px] 2xl:w-[780px] 2xl:h-[1035px]
+          3xl:top-[450px] 3xl:left-[240px] 3xl:w-[780px] 3xl:h-[1035px]
         ">
           <Image src={props.images.ready} alt="Ready Background" fill className="object-cover object-center" />
           <div className="relative mt-[1em] ml-[1em] lg:mt-[2.5rem] lg:ml-[2.5rem] 3xl:mt-[4rem] 3xl:ml-[4rem]">
@@ -203,7 +203,6 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
               text-[0.8em] lg:text-[2.3rem]
               leading-[1.1rem]
               lg:text-[1.1em]
-              2xl:text-[2rem]
               3xl:text-[3.5rem]"
             >
               {props.ready.intro}
@@ -211,7 +210,6 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
             <span className="block leading-[1em]
               text-[2.8em] lg:text-[11rem]
               lg:text-[5em]
-              2xl:text-[8rem]
               3xl:text-[14rem]
               3xl:leading-[1.2em]"
             >
@@ -221,7 +219,6 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
               text-[1em] lg:text-[3.5rem]
               leading-[1.1rem]
               lg:text-[1.6em]
-              2xl:text-[2.5rem]
               3xl:text-[4.5rem]"
             >
               {props.ready.outro}
@@ -234,7 +231,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           3xl:text-[3.3rem] 3xl:leading-[3.3rem]
           sm:top-[545px] sm:left-[25vw] sm:w-[405px] sm:h-[245px]
           lg:top-[620px] lg:left-[520px] lg:w-[440px] lg:h-[280px]
-          2xl:top-[930px] 2xl:left-[780px] 2xl:w-[660px] 2xl:h-[420px]
+          3xl:top-[930px] 3xl:left-[780px] 3xl:w-[660px] 3xl:h-[420px]
         ">
           <div className="mt-[1em] mr-[1em] mb-0 ml-[1em]">
             {props.delivery.intro}
@@ -248,7 +245,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           top-[425px] left-[75px] w-[285px] h-[215px]
           sm:top-[625px] sm:left-[30vw] sm:w-[475px] sm:h-[450px]
           lg:top-[820px] lg:left-[640px] lg:w-[610px] lg:h-[460px]
-          2xl:top-[1230px] 2xl:left-[960px] 2xl:w-[915px] 2xl:h-[690px]
+          3xl:top-[1230px] 3xl:left-[960px] 3xl:w-[915px] 3xl:h-[690px]
           3xl:p-[1.8em]
         ">
           <Image src={props.images.independent} alt="Independent Background" fill className="object-cover object-center" />
@@ -257,7 +254,6 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
               text-[1em]
               sm:text-[1.2em]
               lg:text-[1.4em]
-              2xl:text-[2rem]
               3xl:text-[3.2rem]"
             >
               Unabhängig und
@@ -266,7 +262,6 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
               text-[1.58em]
               sm:text-[2em]
               lg:text-[2.2em]
-              2xl:text-[3.5rem]
               3xl:text-[5rem]
               3xl:leading-[1.2em]"
             >
@@ -277,11 +272,11 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
         {/* Subscribe Text */}
         <section className="absolute bg-gradient-to-r from-[#e67964] to-[#fcb4b2] text-white
           pt-[5vw] pr-[1em] pb-[5em] pl-[1em] lg:text-[2.3rem] lg:leading-[2.3rem]
-          lg:pt-[64px] 2xl:pt-[96px]
+          lg:pt-[64px] 3xl:pt-[96px]
           top-[655px] left-[8vw] w-[60vw] h-[115px] text-[1.1rem]
           sm:top-[1115px] sm:h-[240px] sm:text-[1em]
           lg:top-[1190px] lg:left-[220px] lg:w-[470px] lg:h-[290px] lg:text-[1.1em]
-          2xl:top-[1785px] 2xl:left-[330px] 2xl:w-[705px] 2xl:h-[435px] 2xl:text-[1.5em]
+          3xl:top-[1785px] 3xl:left-[330px] 3xl:w-[705px] 3xl:h-[435px]
           3xl:text-[3.2rem] 3xl:leading-[3.2rem]
         ">
           <div dangerouslySetInnerHTML={{ __html: props.subscribeText.replace(/\n/g, '<br/>') }} />
@@ -290,14 +285,14 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
       {/* FOOTER */}
       <footer className="relative w-full mx-auto flex items-center justify-center p-[min(5vw,100px)] px-[3vw]
         xl:max-w-[1550px]
-        2xl:max-w-[2550px]
+        3xl:max-w-[2550px]
         h-[500px]
         sm:h-[725px]
         lg:h-[610px]
-        2xl:h-[915px]
+        3xl:h-[915px]
       ">
         <Image src={props.images.footer} alt="Footer Background" fill className="object-cover object-center -z-10" />
-        <div className="w-[90%] max-w-[600px] mt-[5vw] 2xl:mt-[100px]">
+        <div className="w-[90%] max-w-[600px] mt-[5vw] 3xl:mt-[100px]">
           <Suspense fallback={null}>
             <MailchimpForm formConfig={props.formConfig} />
           </Suspense>
