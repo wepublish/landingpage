@@ -25,6 +25,33 @@ Einbettung von dynamischen Mailchimp-Formularen.
 
 4. Öffne `http://localhost:3000/basel-briefing`, um die Beispiel-Landingpage zu prüfen.
 
+## Entwicklung
+
+1. Code aktualisieren
+   ```bash
+   git checkout main
+   git pull
+   ```
+
+2. Branch erstellen
+   ```bash
+    git checkout -b mein-neues-feature
+   ```
+
+3. Programmieren
+
+4. Committen und pushen
+   ```bash
+   git add .
+   git commit -m "Meine Änderung"
+   git push
+   ```
+
+5. Auf Github wird automatisch die Aufforderung angezeigt, einen Pull-Request
+   zu öffnen. Sobald dieser eröffnet ist, wird dort auch die Testadresse angezeigt.
+
+6. Wenn alles funktioniert: im Pull-Request auf "Merge" klicken.
+
 ## Konfiguration
 
 Jedes Medium hat seinen eigenen Unterordner im Ordner `app`.
