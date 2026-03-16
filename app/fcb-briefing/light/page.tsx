@@ -4,8 +4,8 @@ import BajourLayoutMedium from "../components/bajour-layout-medium";
 
 export default function BaselBriefingLight() {
   const briefingProps = {
-    title: "Die beliebtesten Newsletter von Basel!",
-    subtitle: "Bestens informiert mit Bajour. Wähle, was dich interessiert.",
+    title: "Das Wichtigste vor jedem Spiel",
+    subtitle: "Gut informiert ins Stadion (oder zumindest in der Kaffeepause mitreden): Hol dir das FCB-Briefing mit den wichtigsten News, Geschichten und Tipps rund um rotblau♥️💙.",
     image: bajourIphone,
     formConfig: {
       autoFocus: true,
@@ -18,21 +18,9 @@ export default function BaselBriefingLight() {
               label: "E-Mail",
               type: "email",
               required: true,
-            },
-            
-            {
-              
-              type: "groups" as const,
-              options: [
-                { id: 'sdfsdfsdf', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel! Jeden Werktag in deinem Posteingang." },
-                { id: '088f8f7a77', name: '⚽FCB--Briefing', description: "Gut informiert ins Stadion. Erscheint vor jedem Spiel." },
-                { id: '49a1cf05fb', name: '🎉Fasnachts-Briefing', description: "Deine Fasnächtliche Grundversorgung." },
-              ]
             }
           ],
-        
         },
-        
         {skipIfFieldsFilled: ["VORNAME"],
           inputs: [
             {
@@ -43,21 +31,21 @@ export default function BaselBriefingLight() {
           ],
         },
         {
-          skipIfFieldsFilled: ["PLZ"],
-
           inputs: [
             {
-              description: "Für gewisse Gemeinden ergänzen wir das Basel-Briefing mit Lokalnachrichten. Trage hier deine Postleitzahl ein und lass dich überraschen!",
-              name: "PLZ",
-              label: "Postleitzahl",
-              type: "number",
-              required: true,
-            },
+              description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
+              type: "groups" as const,
+              options: [
+                { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
+                { id: '49a1cf05fb', name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
+              ]
+            }
           ],
         },
+        
       ],
       listId: "bed6b33c61",
-      // input muss mit mailchimp Zielgruppenfelder übereinstimmen
+      // 
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
         { name: "UTM_MEDIUM", urlParam: "utm_medium" },
@@ -73,7 +61,7 @@ export default function BaselBriefingLight() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen??memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
+            url: "https://bajour.ch/mitmachen?firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=fcb-briefing-member",
           },
           {
             label: "Nein",

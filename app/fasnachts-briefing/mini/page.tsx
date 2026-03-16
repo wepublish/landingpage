@@ -1,12 +1,33 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import bajourIphone from "../assets/bajour-iphone.png"
-import BajourLayoutMedium from "../components/bajour-layout-medium";
+import BajourLayoutSmall from "../components/bajour-layout-small";
+import bajourIphone from "../assets/bajour-iphone.png";
 
-export default function BaselBriefingLight() {
+export default function BaselBriefingSuperlight() {
   const briefingProps = {
-    title: "Die beliebtesten Newsletter von Basel!",
-    subtitle: "Bestens informiert mit Bajour. Wähle, was dich interessiert.",
+    title: "Das Wichtigste zur Fasnacht",
+    subtitle: "Du willst rund ums Jahr übers fasnächtliche Geschehen informiert sein, ohne alle Zeitungen und Online-Portale zu lesen? Dann ist das Fasnachts-Briefing genau das Richtige für dich!",
     image: bajourIphone,
+    listItems: [
+      "Alle Fasnachts-News",
+      "unabhängig und kostenlos",
+      "Nützlich dank Insider-Tipps",
+      "erscheint 12x im Jahr",
+      "Für Aktive und zum Mitreden",
+    ],
+    testimonials: [
+      {
+        quote: "Das Fasnachts-Briefing ist kurz und prägnant. Sozusagen das Wichtigste zur Fasnacht in Kürze. Perfekt für die kurze Zugfahrt zur Arbeit!!",
+        author: "Salome (Bruderholz)",
+      },
+      {
+        quote: "Ich freue mich jedes Mal aufs Briefing und bin gespannt, was es rund um die Fasnacht zu berichten gibt.",
+        author: "Moritz (Gelterkinden)",
+      },
+      {
+        quote: "Das Fasnachts-Briefing gibt mir die Möglichkeit, mitreden zu können – ob Cliquen, Sujets oder Insider-Tipps. Makes me feel part of Basel!",
+        author: "Sarah (Gellert)",
+      },
+    ],
     formConfig: {
       autoFocus: true,
       interests: ["5269ccc161"],
@@ -18,21 +39,9 @@ export default function BaselBriefingLight() {
               label: "E-Mail",
               type: "email",
               required: true,
-            },
-            
-            {
-              
-              type: "groups" as const,
-              options: [
-                { id: 'sdfsdfsdf', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel! Jeden Werktag in deinem Posteingang." },
-                { id: '088f8f7a77', name: '⚽FCB--Briefing', description: "Gut informiert ins Stadion. Erscheint vor jedem Spiel." },
-                { id: '49a1cf05fb', name: '🎉Fasnachts-Briefing', description: "Deine Fasnächtliche Grundversorgung." },
-              ]
             }
           ],
-        
         },
-        
         {skipIfFieldsFilled: ["VORNAME"],
           inputs: [
             {
@@ -43,11 +52,23 @@ export default function BaselBriefingLight() {
           ],
         },
         {
+          inputs: [
+            {
+              description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
+              type: "groups" as const,
+              options: [
+                { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
+                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
+              ]
+            }
+          ],
+        },
+        {
           skipIfFieldsFilled: ["PLZ"],
 
           inputs: [
             {
-              description: "Für gewisse Gemeinden ergänzen wir das Basel-Briefing mit Lokalnachrichten. Trage hier deine Postleitzahl ein und lass dich überraschen!",
+              description: "Für gewisse Gemeinden ergänzen wir das Briefing mit Lokalnachrichten. Trage hier deine Postleitzahl ein und lass dich überraschen!",
               name: "PLZ",
               label: "Postleitzahl",
               type: "number",
@@ -87,7 +108,7 @@ export default function BaselBriefingLight() {
 
   return (
     <>
-      <BajourLayoutMedium {...briefingProps} />
+      <BajourLayoutSmall {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );
