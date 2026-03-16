@@ -14,6 +14,8 @@ export default function BaselBriefingSuperlight() {
       "Pünktlich um 6 Uhr",
       "Für Basel-Liebhaber",
     ],
+    subscriberCountBold: "14'907",
+    subscriberCountText: "Basler*innen lesen schon mit.",
     testimonials: [
       {
         quote: "Das Basel Briefing ist kurz und prägnant. Sozusagen das Wichtigste in Kürze. Perfekt für die kurze Zugfahrt zur Arbeit!!",

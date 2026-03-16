@@ -23,6 +23,8 @@ interface BajourLayoutSmallProps {
   formConfig: FormConfig;
   listItems: string[];
   testimonials: Testimonial[];
+  subscriberCountBold: string;
+  subscriberCountText: string;
 }
 
 export default function BajourLayoutSmall(props: BajourLayoutSmallProps) {
@@ -46,7 +48,7 @@ export default function BajourLayoutSmall(props: BajourLayoutSmallProps) {
                     </Suspense>
                     <div className="mt-3 text-center">
                         <p className="text-xs text-gray-600">Abmeldung jederzeit möglich!</p>
-                        <p className="mt-2 text-lg md:text-xl text-gray-900"><span className="font-bold">14&apos;907</span> Basler*innen lesen schon mit.</p>
+                        <p className="mt-2 text-lg md:text-xl text-gray-900"><span className="font-bold">{props.subscriberCountBold}</span> {props.subscriberCountText}</p>
                     </div>
                 </section>
 
