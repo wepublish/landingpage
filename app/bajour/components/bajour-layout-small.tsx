@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import MailchimpForm from "../../../components/mailchimp-form";
 import { FormConfig } from "@/types/types";
 import Image, { StaticImageData } from "next/image";
-import logo from "./logo_black.svg"
 import { Roboto_Condensed } from "next/font/google";
 import MetaPixel from "@/components/meta-pixel";
 import TikTokPixel from "@/components/tiktok-pixel";
@@ -17,6 +16,7 @@ interface Testimonial {
 }
 
 interface BajourLayoutSmallProps {
+  logo: string;
   title: string;
   subtitle: string;
   image: StaticImageData;
@@ -34,7 +34,7 @@ export default function BajourLayoutSmall(props: BajourLayoutSmallProps) {
             <TikTokPixel token="D650C03C77U5GADIKCUG" />
             <main className={`${robotoCondensed.className} min-h-screen bg-[#feeae3]`}>
             <div className="px-4 mx-auto lg:w-1/3 flex flex-col items-center">
-                <Image src={logo} alt="Logo Bajour" className="w-1/2 my-4" />
+                <Image src={props.logo} alt="Logo" className="w-1/2 my-4" />
                 <section className="mb-4">
                     <section>
                         <h1 className="text-2xl font-bold mb-4 text-center uppercase">{props.title}</h1>

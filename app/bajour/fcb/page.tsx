@@ -1,37 +1,33 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 
+import HeaderImage from "./assets/fcb-header.webp";
+import ReadyImage from "./assets/fcb-time.webp";
+import IndependentImage from "./assets/fcb-independent.webp";
+import FooterImage from "./assets/fcb-footer.webp";
+import fcbLogo from "./assets/fcb_logo_white.svg";
+import BajourLayoutLarge from "../components/bajour-layout-large";
 
-import HeaderImage from "./assets/header.webp";
-import ReadyImage from "./assets/time.webp";
-import IndependentImage from "./assets/independent.webp";
-import FooterImage from "./assets/footer.webp";
-import bajourLogo from "./assets/logo_white.svg";
-import BajourLayoutLarge from "./components/bajour-layout-large";
-import { resolveBajourConfig } from "./config";
-
-export default async function BaselBriefing() {
-  const { listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
-
+export default function BaselBriefing() {
   const briefingProps = {
-    logo: bajourLogo,
-    title: "Basel Briefing",
-    subtitle: "Das Wichtigste für den Start in den Tag",
-    lead: "Du willst wissen, was in Basel läuft, hast aber keine Lust, dich durch die Zeitungen und Online-Portale zu pflügen?",
+    logo: fcbLogo,
+    title: "FCB-Briefing",
+    subtitle: "Das Wichtigste vor jedem Spiel",
+    lead: "Du willst gut informiert an den FCB-Match, hast aber keine Lust, dich durch Zeitungen und Online-Portale zu pflügen?",
     wakeup: {
-      intro: "Wir von Bajour nehmen<br>dir diese Arbeit ab.",
-      leadup: "Wir stehen für dich werktags um",
-      time: "3:00",
-      context: "Uhr auf"
+      intro: "Wir vom FCB-Briefing-Team übernehmen das für dich. Wir lesen jede Zeile und hören jeden Podcast.",
+      leadup: "",
+      time: "",
+      context: ""
     },
     ready: {
-      intro: "Jeden Morgen ab",
-      time: "06:00",
-      outro: "für dich bereit"
+      intro: "",
+      time: "",
+      outro: "Jeden Spieltag"
     },
     delivery: {
-      intro: "und schicken dir um",
-      time: "6 Uhr",
-      text: "die wichtigsten regionalen Tagesnews plus unseren Senf dazu per Mail."
+      intro: "Und schicken dir an jedem Spieltag die Wichtigsten Infos einige Stunden vor Anpfiff per E-Mail zu.",
+      time: "",
+      text: ""
     },
     subscribeText: "jetzt anmelden und immer<br />bestens informiert sein!",
     mainBackgroundColor: "#feeae3",
@@ -44,7 +40,7 @@ export default async function BaselBriefing() {
     },
     formConfig: {
       autoFocus: false,
-      interests: [baselBriefingId],
+      interests: ["851436c80e", "22b72061f1"],
       steps: [
         {
           inputs: [
@@ -74,35 +70,22 @@ export default async function BaselBriefing() {
               description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
-                { id: fcbBriefingId, name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },
-                { id: fasnachtsBriefingId, name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
+                { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
+                { id: '49a1cf05fb', name: '⚽FCB-Briefing', description: "Alles rund um den FCB." },
               ]
             }
           ],
         },
-        {
-          skipIfFieldsFilled: ["PLZ"],
-
-          inputs: [
-            {
-              description: "Für gewisse Gemeinden ergänzen wir das Briefing mit Lokalnachrichten. Trage hier deine Postleitzahl ein und lass dich überraschen!",
-              name: "PLZ",
-              label: "Postleitzahl",
-              type: "number",
-              required: true,
-            },
-          ],
-        },
       ],
-      listId,
+      listId: "47ed10ad9f",
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
         { name: "UTM_MEDIUM", urlParam: "utm_medium" },
         { name: "UTM_CAMP", urlParam: "utm_campaign" },
         { name: "EMAIL", urlParam: "email" },
-        { name: "VORNAME", urlParam: "vorname", defaultValue: "Leser*in" },
-        { name: "NACHNAME", urlParam: "nachname" },
+        { name: "FNAME", urlParam: "fname" },
+        { name: "LNAME", urlParam: "lname" },
         { name: "PLZ", urlParam: "plz" },
       ],
       successPage: {
@@ -111,7 +94,7 @@ export default async function BaselBriefing() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen??memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
+            url: "https://bajour.ch/mitmachen?firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=fcb-briefing-member",
           },
           {
             label: "Nein",

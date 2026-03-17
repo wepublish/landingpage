@@ -1,50 +1,38 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
+import bajourIphone from "../assets/bajour-iphone.png";
+import fasnachtLogo from "../assets/logo_black.svg";
+import BajourLayoutSmall from "../../components/bajour-layout-small";
 
-
-import HeaderImage from "./assets/header.webp";
-import ReadyImage from "./assets/time.webp";
-import IndependentImage from "./assets/independent.webp";
-import FooterImage from "./assets/footer.webp";
-import bajourLogo from "./assets/logo_white.svg";
-import BajourLayoutLarge from "./components/bajour-layout-large";
-import { resolveBajourConfig } from "./config";
-
-export default async function BaselBriefing() {
-  const { listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
-
+export default function BaselBriefingSuperlight() {
   const briefingProps = {
-    logo: bajourLogo,
-    title: "Basel Briefing",
-    subtitle: "Das Wichtigste für den Start in den Tag",
-    lead: "Du willst wissen, was in Basel läuft, hast aber keine Lust, dich durch die Zeitungen und Online-Portale zu pflügen?",
-    wakeup: {
-      intro: "Wir von Bajour nehmen<br>dir diese Arbeit ab.",
-      leadup: "Wir stehen für dich werktags um",
-      time: "3:00",
-      context: "Uhr auf"
-    },
-    ready: {
-      intro: "Jeden Morgen ab",
-      time: "06:00",
-      outro: "für dich bereit"
-    },
-    delivery: {
-      intro: "und schicken dir um",
-      time: "6 Uhr",
-      text: "die wichtigsten regionalen Tagesnews plus unseren Senf dazu per Mail."
-    },
-    subscribeText: "jetzt anmelden und immer<br />bestens informiert sein!",
-    mainBackgroundColor: "#feeae3",
-    leadColor: "black",
-    images: {
-      header: HeaderImage,
-      ready: ReadyImage,
-      independent: IndependentImage,
-      footer: FooterImage,
-    },
+    logo: fasnachtLogo,
+    title: "Das Wichtigste zur Fasnacht",
+    subtitle: "Du willst rund ums Jahr übers fasnächtliche Geschehen informiert sein, ohne alle Zeitungen und Online-Portale zu lesen? Dann ist das Fasnachts-Briefing genau das Richtige für dich!",
+    image: bajourIphone,
+    listItems: [
+      "Alle Fasnachts-News",
+      "unabhängig und kostenlos",
+      "Nützlich dank Insider-Tipps",
+      "erscheint 12x im Jahr",
+      "Für Aktive und zum Mitreden",
+    ],
+    testimonials: [
+      {
+        quote: "Das Fasnachts-Briefing ist kurz und prägnant. Sozusagen das Wichtigste zur Fasnacht in Kürze. Perfekt für die kurze Zugfahrt zur Arbeit!!",
+        author: "Salome (Bruderholz)",
+      },
+      {
+        quote: "Ich freue mich jedes Mal aufs Briefing und bin gespannt, was es rund um die Fasnacht zu berichten gibt.",
+        author: "Moritz (Gelterkinden)",
+      },
+      {
+        quote: "Das Fasnachts-Briefing gibt mir die Möglichkeit, mitreden zu können – ob Cliquen, Sujets oder Insider-Tipps. Makes me feel part of Basel!",
+        author: "Sarah (Gellert)",
+      },
+    ],
     formConfig: {
-      autoFocus: false,
-      interests: [baselBriefingId],
+      autoFocus: true,
+      interests: ["5269ccc161"],
       steps: [
         {
           inputs: [
@@ -53,19 +41,16 @@ export default async function BaselBriefing() {
               label: "E-Mail",
               type: "email",
               required: true,
-            },
-            {
-              name: "LNAME",
-              label: "Nachname",
-              type: "text",
-              required: true,
-            },
-            {
-              name: "FNAME",
-              label: "Vorname",
-              type: "text",
-              required: true,
             }
+          ],
+        },
+        {skipIfFieldsFilled: ["VORNAME"],
+          inputs: [
+            {
+              name: "VORNAME",
+              label: "Wie dürfen wir dich ansprechen (Vorname)?",
+              required: true,
+            },
           ],
         },
         {
@@ -74,8 +59,8 @@ export default async function BaselBriefing() {
               description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
-                { id: fcbBriefingId, name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },
-                { id: fasnachtsBriefingId, name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
+                { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
+                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
               ]
             }
           ],
@@ -94,7 +79,7 @@ export default async function BaselBriefing() {
           ],
         },
       ],
-      listId,
+      listId: "bed6b33c61",
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
@@ -125,7 +110,7 @@ export default async function BaselBriefing() {
 
   return (
     <>
-      <BajourLayoutLarge {...briefingProps} />
+      <BajourLayoutSmall {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );
