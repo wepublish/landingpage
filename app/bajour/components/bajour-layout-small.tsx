@@ -5,6 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import { Roboto_Condensed } from "next/font/google";
 import MetaPixel from "@/components/meta-pixel";
 import TikTokPixel from "@/components/tiktok-pixel";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const robotoCondensed = Roboto_Condensed({
     subsets: ["latin"]
@@ -32,6 +33,8 @@ export default function BajourLayoutSmall(props: BajourLayoutSmallProps) {
         <>
             <MetaPixel pixelId="2225762180979586" />
             <TikTokPixel token="D650C03C77U5GADIKCUG" />
+            <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+            <GoogleTagManager gtmId="GTM-MQDHF8V" />
             <main className={`${robotoCondensed.className} min-h-screen bg-[#feeae3]`}>
             <div className="px-4 mx-auto lg:w-1/3 flex flex-col items-center">
                 <Image src={props.logo} alt="Logo" className="w-1/2 my-4" />

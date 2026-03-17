@@ -1,5 +1,3 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
-
 
 import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
@@ -55,13 +53,13 @@ export default async function BaselBriefing() {
               required: true,
             },
             {
-              name: "LNAME",
+              name: "NACHNAME",
               label: "Nachname",
               type: "text",
               required: true,
             },
             {
-              name: "FNAME",
+              name: "VORNAME",
               label: "Vorname",
               type: "text",
               required: true,
@@ -124,7 +122,6 @@ export default async function BaselBriefing() {
   return (
     <>
       <BajourLayoutLarge {...briefingProps} />
-      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );
 }

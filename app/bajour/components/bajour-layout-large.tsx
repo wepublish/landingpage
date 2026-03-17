@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import MailchimpForm from "@/components/mailchimp-form";
 import MetaPixel from "@/components/meta-pixel";
 import TikTokPixel from "@/components/tiktok-pixel";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 // Font Configuration
 const roboto = Roboto({
@@ -65,6 +66,8 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
     <>
       <MetaPixel pixelId="2225762180979586" />
       <TikTokPixel token="D650C03C77U5GADIKCUG" />
+      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+      <GoogleTagManager gtmId="GTM-MQDHF8V" />
       <div className={`
         ${robotoCondensed.className} font-bold tracking-[-0.03rem] overflow-x-hidden w-full
         text-[1.05rem] leading-[1.1rem]
