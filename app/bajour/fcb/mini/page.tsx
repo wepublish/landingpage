@@ -5,7 +5,7 @@ import BajourLayoutSmall from "../../components/bajour-layout-small";
 import { resolveBajourConfig } from "../../config";
 
 export default async function BaselBriefingSuperlight() {
-  const { listId, baselBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
+  const { listId, baselBriefingId, fasnachtsBriefingId, fcbBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     logo: fcbLogo,
@@ -37,7 +37,7 @@ export default async function BaselBriefingSuperlight() {
     ],
     formConfig: {
       autoFocus: true,
-      interests: [baselBriefingId],
+      interests: [fcbBriefingId],
       steps: [
         {
           inputs: [

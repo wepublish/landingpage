@@ -5,7 +5,7 @@ import BajourLayoutMedium from "../../components/bajour-layout-medium";
 import { resolveBajourConfig } from "../../config";
 
 export default async function BaselBriefingLight() {
-  const { listId, baselBriefingId, fcbBriefingId } = await resolveBajourConfig();
+  const { listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     logo: fasnachtLogo,
@@ -14,7 +14,7 @@ export default async function BaselBriefingLight() {
     image: bajourIphone,
     formConfig: {
       autoFocus: true,
-      interests: [baselBriefingId],
+      interests: [fasnachtsBriefingId],
       steps: [
         {
           inputs: [

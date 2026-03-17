@@ -99,8 +99,8 @@ export default async function BaselBriefing() {
         { name: "UTM_MEDIUM", urlParam: "utm_medium" },
         { name: "UTM_CAMP", urlParam: "utm_campaign" },
         { name: "EMAIL", urlParam: "email" },
-        { name: "FNAME", urlParam: "fname" },
-        { name: "LNAME", urlParam: "lname" },
+        { name: "VORNAME", urlParam: "vorname" },
+        { name: "NACHNAME", urlParam: "nachname" },
         { name: "PLZ", urlParam: "plz" },
       ],
       successPage: {
