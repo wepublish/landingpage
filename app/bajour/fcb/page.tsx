@@ -4,7 +4,7 @@ import HeaderImage from "./assets/fcb-header.webp";
 import ReadyImage from "./assets/fcb-time.webp";
 import IndependentImage from "./assets/fcb-independent.webp";
 import FooterImage from "./assets/fcb-footer.webp";
-import fcbLogo from "./assets/fcb_logo_black.svg";
+import fcbLogo from "./assets/fcb_logo_white.svg";
 import BajourLayoutLarge from "../components/bajour-layout-large";
 
 export default function BaselBriefing() {

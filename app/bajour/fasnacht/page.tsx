@@ -5,7 +5,7 @@ import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
 import IndependentImage from "./assets/independent.webp";
 import FooterImage from "../assets/footer.webp";
-import fasnachtLogo from "./assets/logo_black.svg";
+import fasnachtLogo from "./assets/logo_white.svg";
 import BajourLayoutLarge from "../components/bajour-layout-large";
 
 export default function BaselBriefing() {

@@ -1,11 +1,11 @@
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 
 import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
 import IndependentImage from "./assets/independent.webp";
 import FooterImage from "./assets/footer.webp";
-import bajourLogo from "./assets/logo_black.svg";
+import bajourLogo from "./assets/logo_white.svg";
 import BajourLayoutLarge from "./components/bajour-layout-large";
 
 export default function BaselBriefing() {
@@ -124,7 +124,6 @@ export default function BaselBriefing() {
     <>
       <BajourLayoutLarge {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
-      <GoogleTagManager gtmId={process.env.GOOGLE_TAG_MANAGER_ID!} />
     </>
   );
 }
