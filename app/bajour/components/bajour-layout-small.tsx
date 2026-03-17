@@ -30,6 +30,7 @@ interface BajourLayoutSmallProps {
 export default function BajourLayoutSmall(props: BajourLayoutSmallProps) {
     return (
         <>
+            <title>{props.title}</title>
             <MetaPixel pixelId="2225762180979586" />
             <TikTokPixel token="D650C03C77U5GADIKCUG" />
             <main className={`${robotoCondensed.className} min-h-screen bg-[#feeae3]`}>
