@@ -6,8 +6,11 @@ import ReadyImage from "./assets/bb-ready.jpg";
 import IndependentImage from "./assets/bb-independent.jpg";
 import FooterImage from "./assets/bb-footer.jpg";
 import BajourLayoutLarge from "./components/bajour-layout-large";
+import { resolveBajourConfig } from "./config";
 
-export default function BaselBriefing() {
+export default async function BaselBriefing() {
+  const { listId, baselBriefingId } = await resolveBajourConfig();
+
   const briefingProps = {
     title: "Basel Briefing",
     subtitle: "Das Wichtigste für den Start in den Tag",
@@ -39,7 +42,7 @@ export default function BaselBriefing() {
     },
     formConfig: {
       autoFocus: false,
-      interests: ["47ed10ad9f", "22b72061f1"],
+      interests: [baselBriefingId],
       steps: [
         {
           inputs: [
@@ -75,7 +78,7 @@ export default function BaselBriefing() {
           ],
         },
       ],
-      listId: "851436c80e",
+      listId,
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
