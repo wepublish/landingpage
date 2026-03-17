@@ -39,7 +39,7 @@ export default function BaselBriefing() {
     },
     formConfig: {
       autoFocus: false,
-      interests: ["47ed10ad9f", "22b72061f1"],
+      interests: [],
       steps: [
         {
           inputs: [
@@ -50,13 +50,13 @@ export default function BaselBriefing() {
               required: true,
             },
             {
-              name: "LNAME",
+              name: "NACHNAME",
               label: "Nachname",
               type: "text",
               required: true,
             },
             {
-              name: "FNAME",
+              name: "VORNAME",
               label: "Vorname",
               type: "text",
               required: true,
@@ -75,7 +75,7 @@ export default function BaselBriefing() {
           ],
         },
       ],
-      listId: "851436c80e",
+      listId: "bed6b33c61",
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
