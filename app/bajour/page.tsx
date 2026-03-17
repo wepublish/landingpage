@@ -1,5 +1,3 @@
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-
 
 import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
@@ -126,8 +124,6 @@ export default async function BaselBriefing() {
   return (
     <>
       <BajourLayoutLarge {...briefingProps} />
-      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
-      <GoogleTagManager gtmId={"GTM-MQDHF8V"} />
     </>
   );
 }

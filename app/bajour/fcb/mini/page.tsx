@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
+
 import fcbLogo from "../assets/logo_black.svg";
 import bajourIphone from "../assets/bajour-iphone.png";
 import BajourLayoutSmall from "../../components/bajour-layout-small";
@@ -116,7 +116,6 @@ export default async function BaselBriefingSuperlight() {
   return (
     <>
       <BajourLayoutSmall {...briefingProps} />
-      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );
 }
