@@ -1,14 +1,16 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 
 import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
 import IndependentImage from "./assets/independent.webp";
 import FooterImage from "./assets/footer.webp";
+import bajourLogo from "./assets/logo_black.svg";
 import BajourLayoutLarge from "./components/bajour-layout-large";
 
 export default function BaselBriefing() {
   const briefingProps = {
+    logo: bajourLogo,
     title: "Basel Briefing",
     subtitle: "Das Wichtigste für den Start in den Tag",
     lead: "Du willst wissen, was in Basel läuft, hast aber keine Lust, dich durch die Zeitungen und Online-Portale zu pflügen?",
@@ -117,12 +119,12 @@ export default function BaselBriefing() {
       },
     },
   };
-  
 
   return (
     <>
       <BajourLayoutLarge {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+      <GoogleTagManager gtmId={process.env.GOOGLE_TAG_MANAGER_ID!} />
     </>
   );
 }

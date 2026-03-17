@@ -1,7 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import { Roboto, Roboto_Condensed } from "next/font/google";
 import { FormConfig } from "@/types/types";
-import logoWhite from "./logo_white.svg";
 import { Suspense } from "react";
 import MailchimpForm from "@/components/mailchimp-form";
 
@@ -19,6 +18,7 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 interface BajourLayoutLargeProps {
+  logo: string;
   title: string;
   subtitle: string;
   lead: string;
@@ -85,7 +85,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
         />
         {/* Logo */}
         <Image
-          src={logoWhite}
+          src={props.logo}
           alt="Logo White"
           className="absolute top-[1.5rem]
           w-[max(15vw,72px)]

@@ -1,33 +1,14 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import BajourLayoutSmall from "../components/bajour-layout-small";
-import bajourIphone from "../assets/bajour-iphone.png";
+import bajourIphone from "../assets/bajour-iphone.png"
+import fasnachtLogo from "../assets/logo_black.svg";
+import BajourLayoutMedium from "../../components/bajour-layout-medium";
 
-export default function BaselBriefingSuperlight() {
+export default function BaselBriefingLight() {
   const briefingProps = {
-    title: "Das Wichtigste zur Fasnacht",
-    subtitle: "Du willst rund ums Jahr übers fasnächtliche Geschehen informiert sein, ohne alle Zeitungen und Online-Portale zu lesen? Dann ist das Fasnachts-Briefing genau das Richtige für dich!",
+    logo: fasnachtLogo,
+    title: "Deine fasnächtliche Grundversorgung",
+    subtitle: "Du willst rund ums Jahr übers fasnächtliche Geschehen informiert sein, ohne alle Zeitungen und Online-Portale zu lesen?",
     image: bajourIphone,
-    listItems: [
-      "Alle Fasnachts-News",
-      "unabhängig und kostenlos",
-      "Nützlich dank Insider-Tipps",
-      "erscheint 12x im Jahr",
-      "Für Aktive und zum Mitreden",
-    ],
-    testimonials: [
-      {
-        quote: "Das Fasnachts-Briefing ist kurz und prägnant. Sozusagen das Wichtigste zur Fasnacht in Kürze. Perfekt für die kurze Zugfahrt zur Arbeit!!",
-        author: "Salome (Bruderholz)",
-      },
-      {
-        quote: "Ich freue mich jedes Mal aufs Briefing und bin gespannt, was es rund um die Fasnacht zu berichten gibt.",
-        author: "Moritz (Gelterkinden)",
-      },
-      {
-        quote: "Das Fasnachts-Briefing gibt mir die Möglichkeit, mitreden zu können – ob Cliquen, Sujets oder Insider-Tipps. Makes me feel part of Basel!",
-        author: "Sarah (Gellert)",
-      },
-    ],
     formConfig: {
       autoFocus: true,
       interests: ["5269ccc161"],
@@ -58,7 +39,7 @@ export default function BaselBriefingSuperlight() {
               type: "groups" as const,
               options: [
                 { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
-                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
+                { id: '49a1cf05fb', name: '.⚽FCB-Briefing', description: "Alles rund um den FCB." },
               ]
             }
           ],
@@ -78,7 +59,7 @@ export default function BaselBriefingSuperlight() {
         },
       ],
       listId: "bed6b33c61",
-      // input muss mit mailchimp Zielgruppenfelder übereinstimmen
+      // 
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
         { name: "UTM_MEDIUM", urlParam: "utm_medium" },
@@ -94,7 +75,7 @@ export default function BaselBriefingSuperlight() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen??memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
+            url: "https://bajour.ch/mitmachen?memberPlanBySlug=fasnachts-briefing-member&firstName=|*VORNAME*|&mail=|*EMAIL*|",
           },
           {
             label: "Nein",
@@ -108,7 +89,7 @@ export default function BaselBriefingSuperlight() {
 
   return (
     <>
-      <BajourLayoutSmall {...briefingProps} />
+      <BajourLayoutMedium {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );

@@ -1,12 +1,35 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import bajourIphone from "../assets/bajour-iphone.png"
-import BajourLayoutMedium from "../components/bajour-layout-medium";
+import fcbLogo from "../assets/logo_black.svg";
+import bajourIphone from "../assets/bajour-iphone.png";
+import BajourLayoutSmall from "../../components/bajour-layout-small";
 
-export default function BaselBriefingLight() {
+export default function BaselBriefingSuperlight() {
   const briefingProps = {
-    title: "Deine fasnächtliche Grundversorgung",
-    subtitle: "Du willst rund ums Jahr übers fasnächtliche Geschehen informiert sein, ohne alle Zeitungen und Online-Portale zu lesen?",
+    logo: fcbLogo,
+    title: "Das Wichtigste rund um den FCB",
+    subtitle: "Gut informiert ins Stadion (oder zumindest in der Kaffeepause mitreden): Hol dir das FCB-Briefing mit den wichtigsten News, Geschichten und Tipps rund um rotblau♥️💙. Kuratiert von Spezialist*innen – gelesen in 5 Minuten.",
     image: bajourIphone,
+    listItems: [
+      "Die wichtigsten FCB-News",
+      "unabhängig und kostenlos",
+      "Gewinne ein Saison-Abo",
+      "erscheint vor jedem Spiel",
+      "Für Fans und zum Mitreden",
+    ],
+    testimonials: [
+      {
+        quote: "Endlich weiss ich vor dem Spiel, worüber alle reden. Das FCB-Briefing ist meine Pflichtlektüre auf dem Weg ins Stadion.",
+        author: "Marco (Breite)",
+      },
+      {
+        quote: "Ich bin keine riesige Fussball-Expertin, aber das Briefing erklärt alles so, dass ich bei Gesprächen im Büro locker mithalte.",
+        author: "Yasmin (Gundeli)",
+      },
+      {
+        quote: "Kompakt, informativ und ohne Bullshit. Genau das, was ich vor einem FCB-Match brauche.",
+        author: "Patrick (Muttenz)",
+      },
+    ],
     formConfig: {
       autoFocus: true,
       interests: ["5269ccc161"],
@@ -37,7 +60,7 @@ export default function BaselBriefingLight() {
               type: "groups" as const,
               options: [
                 { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
-                { id: '49a1cf05fb', name: '.⚽FCB-Briefing', description: "Alles rund um den FCB." },
+                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },
               ]
             }
           ],
@@ -57,7 +80,7 @@ export default function BaselBriefingLight() {
         },
       ],
       listId: "bed6b33c61",
-      // 
+      // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
         { name: "UTM_MEDIUM", urlParam: "utm_medium" },
@@ -73,7 +96,7 @@ export default function BaselBriefingLight() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen?memberPlanBySlug=fasnachts-briefing-member&firstName=|*VORNAME*|&mail=|*EMAIL*|",
+            url: "https://bajour.ch/mitmachen?memberPlanBySlug=fcb-briefing-member&firstName=|*VORNAME*|&mail=|*EMAIL*|",
           },
           {
             label: "Nein",
@@ -87,7 +110,7 @@ export default function BaselBriefingLight() {
 
   return (
     <>
-      <BajourLayoutMedium {...briefingProps} />
+      <BajourLayoutSmall {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
     </>
   );

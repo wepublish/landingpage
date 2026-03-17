@@ -1,9 +1,11 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import bajourIphone from "../assets/bajour-iphone.png"
+import bajourLogo from "../assets/logo_black.svg";
 import BajourLayoutMedium from "../components/bajour-layout-medium";
 
 export default function BaselBriefingLight() {
   const briefingProps = {
+    logo: bajourLogo,
     title: "Die beliebtesten Newsletter von Basel!",
     subtitle: "Bestens informiert mit Bajour. Wähle, was dich interessiert.",
     image: bajourIphone,

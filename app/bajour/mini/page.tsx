@@ -1,9 +1,11 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import BajourLayoutSmall from "../components/bajour-layout-small";
 import bajourIphone from "../assets/bajour-iphone.png";
+import bajourLogo from "../assets/logo_black.svg";
 
 export default function BaselBriefingSuperlight() {
   const briefingProps = {
+    logo: bajourLogo,
     title: "Das Wichtigste aus Basel",
     subtitle: "Damit du weisst, was in deiner Stadt passiert: Hol dir das Basel Briefing mit den wichtigsten News, Geschichten und Tipps. Kuratiert bis spät in die Nacht – gelesen in 5 Minuten. Montag bis Freitag um 6 Uhr in deinem Postfach.",
     image: bajourIphone,

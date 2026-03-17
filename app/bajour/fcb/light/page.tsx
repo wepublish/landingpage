@@ -1,9 +1,11 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import bajourIphone from "../assets/bajour-iphone.png"
-import BajourLayoutMedium from "../components/bajour-layout-medium";
+import fcbLogo from "../assets/logo_black.svg";
+import BajourLayoutMedium from "../../components/bajour-layout-medium";
 
 export default function BaselBriefingLight() {
   const briefingProps = {
+    logo: fcbLogo,
     title: "Das Wichtigste vor jedem Spiel",
     subtitle: "Gut informiert ins Stadion (oder zumindest in der Kaffeepause mitreden): Hol dir das FCB-Briefing mit den wichtigsten News, Geschichten und Tipps rund um rotblau♥️💙.",
     image: bajourIphone,

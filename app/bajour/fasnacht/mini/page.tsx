@@ -1,31 +1,33 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import BajourLayoutSmall from "../components/bajour-layout-small";
 import bajourIphone from "../assets/bajour-iphone.png";
+import fasnachtLogo from "../assets/logo_black.svg";
+import BajourLayoutSmall from "../../components/bajour-layout-small";
 
 export default function BaselBriefingSuperlight() {
   const briefingProps = {
-    title: "Das Wichtigste rund um den FCB",
-    subtitle: "Gut informiert ins Stadion (oder zumindest in der Kaffeepause mitreden): Hol dir das FCB-Briefing mit den wichtigsten News, Geschichten und Tipps rund um rotblau♥️💙. Kuratiert von Spezialist*innen – gelesen in 5 Minuten.",
+    logo: fasnachtLogo,
+    title: "Das Wichtigste zur Fasnacht",
+    subtitle: "Du willst rund ums Jahr übers fasnächtliche Geschehen informiert sein, ohne alle Zeitungen und Online-Portale zu lesen? Dann ist das Fasnachts-Briefing genau das Richtige für dich!",
     image: bajourIphone,
     listItems: [
-      "Die wichtigsten FCB-News",
+      "Alle Fasnachts-News",
       "unabhängig und kostenlos",
-      "Gewinne ein Saison-Abo",
-      "erscheint vor jedem Spiel",
-      "Für Fans und zum Mitreden",
+      "Nützlich dank Insider-Tipps",
+      "erscheint 12x im Jahr",
+      "Für Aktive und zum Mitreden",
     ],
     testimonials: [
       {
-        quote: "Endlich weiss ich vor dem Spiel, worüber alle reden. Das FCB-Briefing ist meine Pflichtlektüre auf dem Weg ins Stadion.",
-        author: "Marco (Breite)",
+        quote: "Das Fasnachts-Briefing ist kurz und prägnant. Sozusagen das Wichtigste zur Fasnacht in Kürze. Perfekt für die kurze Zugfahrt zur Arbeit!!",
+        author: "Salome (Bruderholz)",
       },
       {
-        quote: "Ich bin keine riesige Fussball-Expertin, aber das Briefing erklärt alles so, dass ich bei Gesprächen im Büro locker mithalte.",
-        author: "Yasmin (Gundeli)",
+        quote: "Ich freue mich jedes Mal aufs Briefing und bin gespannt, was es rund um die Fasnacht zu berichten gibt.",
+        author: "Moritz (Gelterkinden)",
       },
       {
-        quote: "Kompakt, informativ und ohne Bullshit. Genau das, was ich vor einem FCB-Match brauche.",
-        author: "Patrick (Muttenz)",
+        quote: "Das Fasnachts-Briefing gibt mir die Möglichkeit, mitreden zu können – ob Cliquen, Sujets oder Insider-Tipps. Makes me feel part of Basel!",
+        author: "Sarah (Gellert)",
       },
     ],
     formConfig: {
@@ -58,7 +60,7 @@ export default function BaselBriefingSuperlight() {
               type: "groups" as const,
               options: [
                 { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
-                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },
+                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
               ]
             }
           ],
@@ -94,7 +96,7 @@ export default function BaselBriefingSuperlight() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen?memberPlanBySlug=fcb-briefing-member&firstName=|*VORNAME*|&mail=|*EMAIL*|",
+            url: "https://bajour.ch/mitmachen??memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
           },
           {
             label: "Nein",

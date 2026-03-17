@@ -4,27 +4,29 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
 import IndependentImage from "./assets/independent.webp";
-import FooterImage from "./assets/footer.webp";
-import BajourLayoutLarge from "./components/bajour-layout-large";
+import FooterImage from "../assets/footer.webp";
+import fasnachtLogo from "./assets/logo_black.svg";
+import BajourLayoutLarge from "../components/bajour-layout-large";
 
 export default function BaselBriefing() {
   const briefingProps = {
-    title: "FCB-Briefing",
-    subtitle: "Das Wichtigste vor jedem Spiel",
-    lead: "Du willst gut informiert an den FCB-Match, hast aber keine Lust, dich durch Zeitungen und Online-Portale zu pflügen?",
+    logo: fasnachtLogo,
+    title: "Fasnachts-Briefing",
+    subtitle: "Deine fasnächtliche Grundversorgung",
+    lead: "Du willst rund ums Jahr übers fasnächtliche Geschehen informiert sein, ohne alle Zeitungen und Online-Portale zu lesen?",
     wakeup: {
-      intro: "Wir vom FCB-Briefing-Team übernehmen das für dich. Wir lesen jede Zeile und hören jeden Podcast.",
+      intro: "Wir vom Fasnachts-Briefing-Team übernehmen das für dich. Wir lesen jede Zeile und schauen jede Sendung.",
       leadup: "",
       time: "",
       context: ""
     },
     ready: {
-      intro: "",
+      intro: "erscheint im Fasnachts-Rhythmus",
       time: "",
-      outro: "Jeden Spieltag"
+      outro: ""
     },
     delivery: {
-      intro: "Und schicken dir an jedem Spieltag die Wichtigsten Infos einige Stunden vor Anpfiff per E-Mail zu.",
+      intro: "Und schicken dir monatlich und rund um die Fasnacht auch häufiger die wichtigsten Fasnachts-News per E-Mail zu.",
       time: "",
       text: ""
     },
@@ -66,11 +68,22 @@ export default function BaselBriefing() {
         {
           inputs: [
             {
+              description: "Wo wohnst du? Trage hier deine PLZ ein.",
+              name: "PLZ",
+              label: "Postleitzahl",
+              type: "number",
+              required: true,
+            },
+          ],
+        },
+        {
+          inputs: [
+            {
               description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
                 { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
-                { id: '49a1cf05fb', name: '⚽FCB-Briefing', description: "Alles rund um den FCB." },
+                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
               ]
             }
           ],
@@ -93,7 +106,7 @@ export default function BaselBriefing() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen?firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=fcb-briefing-member",
+            url: "https://bajour.ch/mitmachen?memberPlanBySlug=fasnachts-briefing-member&firstName=|*VORNAME*|&mail=|*EMAIL*|",
           },
           {
             label: "Nein",
