@@ -6,13 +6,10 @@ import ReadyImage from "./assets/bb-ready.jpg";
 import IndependentImage from "./assets/bb-independent.jpg";
 import FooterImage from "./assets/bb-footer.jpg";
 import BajourLayoutLarge from "./components/bajour-layout-large";
-import { resolveListId, resolveInterestIds } from "@/lib/resolve-interests";
+import { resolveBajourConfig } from "./config";
 
 export default async function BaselBriefing() {
-  const listId = await resolveListId("Bajour");
-  const [baselBriefingId] = await resolveInterestIds(listId, [
-    "Basel Briefing (täglich)",
-  ]);
+  const { listId, baselBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     title: "Basel Briefing",

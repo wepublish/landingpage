@@ -1,16 +1,10 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import bajourIphone from "../assets/bajour-iphone.png"
 import BajourLayoutMedium from "../components/bajour-layout-medium";
-import { resolveListId, resolveInterestIds } from "@/lib/resolve-interests";
+import { resolveBajourConfig } from "../config";
 
 export default async function BaselBriefingLight() {
-  const listId = await resolveListId("Bajour");
-  const [baselBriefingId, fcbBriefingId, fasnachtsBriefingId] =
-    await resolveInterestIds(listId, [
-      "Basel Briefing (täglich)",
-      "FCB-Briefing (vor jedem Spiel)",
-      "Fasnachts-Briefing (im Fasnachts-Rhythmus)",
-    ]);
+  const { listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     title: "Das Wichtigste aus Basel!",
