@@ -1,13 +1,16 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-import HeaderImage from "./assets/fcb-header.webp";
-import ReadyImage from "./assets/fcb-time.webp";
-import IndependentImage from "./assets/fcb-independent.webp";
-import FooterImage from "./assets/fcb-footer.webp";
-import fcbLogo from "./assets/fcb_logo_white.svg";
+import HeaderImage from "./assets/header.webp";
+import ReadyImage from "./assets/time.webp";
+import IndependentImage from "./assets/independent.webp";
+import FooterImage from "./assets/footer.webp";
+import fcbLogo from "./assets/logo_white.svg";
 import BajourLayoutLarge from "../components/bajour-layout-large";
+import { resolveBajourConfig } from "../config";
 
-export default function BaselBriefing() {
+export default async function BaselBriefing() {
+  const { listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
+
   const briefingProps = {
     logo: fcbLogo,
     title: "FCB-Briefing",
@@ -40,7 +43,7 @@ export default function BaselBriefing() {
     },
     formConfig: {
       autoFocus: false,
-      interests: ["851436c80e", "22b72061f1"],
+      interests: [fcbBriefingId],
       steps: [
         {
           inputs: [
@@ -70,14 +73,14 @@ export default function BaselBriefing() {
               description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
-                { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
-                { id: '49a1cf05fb', name: '⚽FCB-Briefing', description: "Alles rund um den FCB." },
+                { id: baselBriefingId, name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
+                { id: fasnachtsBriefingId, name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
               ]
             }
           ],
         },
       ],
-      listId: "47ed10ad9f",
+      listId,
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },

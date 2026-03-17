@@ -2,8 +2,11 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import fcbLogo from "../assets/logo_black.svg";
 import bajourIphone from "../assets/bajour-iphone.png";
 import BajourLayoutSmall from "../../components/bajour-layout-small";
+import { resolveBajourConfig } from "../../config";
 
-export default function BaselBriefingSuperlight() {
+export default async function BaselBriefingSuperlight() {
+  const { listId, baselBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
+
   const briefingProps = {
     logo: fcbLogo,
     title: "Das Wichtigste rund um den FCB",
@@ -16,6 +19,8 @@ export default function BaselBriefingSuperlight() {
       "erscheint vor jedem Spiel",
       "Für Fans und zum Mitreden",
     ],
+    subscriberCountBold: "14'907",
+    subscriberCountText: "Basler*innen lesen schon mit.",
     testimonials: [
       {
         quote: "Endlich weiss ich vor dem Spiel, worüber alle reden. Das FCB-Briefing ist meine Pflichtlektüre auf dem Weg ins Stadion.",
@@ -32,7 +37,7 @@ export default function BaselBriefingSuperlight() {
     ],
     formConfig: {
       autoFocus: true,
-      interests: ["5269ccc161"],
+      interests: [baselBriefingId],
       steps: [
         {
           inputs: [
@@ -59,8 +64,8 @@ export default function BaselBriefingSuperlight() {
               description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
-                { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
-                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },
+                { id: baselBriefingId, name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
+                { id: fasnachtsBriefingId, name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
               ]
             }
           ],
@@ -79,7 +84,7 @@ export default function BaselBriefingSuperlight() {
           ],
         },
       ],
-      listId: "bed6b33c61",
+      listId,
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },

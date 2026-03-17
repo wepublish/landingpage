@@ -2,8 +2,11 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import bajourIphone from "../assets/bajour-iphone.png";
 import fasnachtLogo from "../assets/logo_black.svg";
 import BajourLayoutSmall from "../../components/bajour-layout-small";
+import { resolveBajourConfig } from "../../config";
 
-export default function BaselBriefingSuperlight() {
+export default async function BaselBriefingSuperlight() {
+  const { listId, baselBriefingId, fcbBriefingId } = await resolveBajourConfig();
+
   const briefingProps = {
     logo: fasnachtLogo,
     title: "Das Wichtigste zur Fasnacht",
@@ -16,6 +19,8 @@ export default function BaselBriefingSuperlight() {
       "erscheint 12x im Jahr",
       "Für Aktive und zum Mitreden",
     ],
+    subscriberCountBold: "14'907",
+    subscriberCountText: "Basler*innen lesen schon mit.",
     testimonials: [
       {
         quote: "Das Fasnachts-Briefing ist kurz und prägnant. Sozusagen das Wichtigste zur Fasnacht in Kürze. Perfekt für die kurze Zugfahrt zur Arbeit!!",
@@ -32,7 +37,7 @@ export default function BaselBriefingSuperlight() {
     ],
     formConfig: {
       autoFocus: true,
-      interests: ["5269ccc161"],
+      interests: [baselBriefingId],
       steps: [
         {
           inputs: [
@@ -59,8 +64,8 @@ export default function BaselBriefingSuperlight() {
               description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
-                { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
-                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
+                { id: baselBriefingId, name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
+                { id: fcbBriefingId, name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },
               ]
             }
           ],
@@ -79,7 +84,7 @@ export default function BaselBriefingSuperlight() {
           ],
         },
       ],
-      listId: "bed6b33c61",
+      listId,
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },

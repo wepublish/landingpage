@@ -7,8 +7,11 @@ import IndependentImage from "./assets/independent.webp";
 import FooterImage from "../assets/footer.webp";
 import fasnachtLogo from "./assets/logo_white.svg";
 import BajourLayoutLarge from "../components/bajour-layout-large";
+import { resolveBajourConfig } from "../config";
 
-export default function BaselBriefing() {
+export default async function BaselBriefing() {
+  const { listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
+
   const briefingProps = {
     logo: fasnachtLogo,
     title: "Fasnachts-Briefing",
@@ -41,7 +44,7 @@ export default function BaselBriefing() {
     },
     formConfig: {
       autoFocus: false,
-      interests: ["851436c80e", "22b72061f1"],
+      interests: [fasnachtsBriefingId],
       steps: [
         {
           inputs: [
@@ -82,14 +85,14 @@ export default function BaselBriefing() {
               description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
-                { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
-                { id: '088f8f7a77', name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },//sind noch die falschen Nummern. Wäre allenfalls gut, diese Nummern in einer Config zu speichern und wiederzuverwenden.
+                { id: baselBriefingId, name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
+                { id: fcbBriefingId, name: '⚽FCB-Briefing', description: "Up to date vor jedem Spiel." },
               ]
             }
           ],
         },
       ],
-      listId: "47ed10ad9f",
+      listId,
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },

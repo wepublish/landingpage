@@ -2,8 +2,11 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import bajourIphone from "../assets/bajour-iphone.png"
 import fcbLogo from "../assets/logo_black.svg";
 import BajourLayoutMedium from "../../components/bajour-layout-medium";
+import { resolveBajourConfig } from "../../config";
 
-export default function BaselBriefingLight() {
+export default async function BaselBriefingLight() {
+  const { listId, baselBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
+
   const briefingProps = {
     logo: fcbLogo,
     title: "Das Wichtigste vor jedem Spiel",
@@ -11,7 +14,7 @@ export default function BaselBriefingLight() {
     image: bajourIphone,
     formConfig: {
       autoFocus: true,
-      interests: ["5269ccc161"],
+      interests: [baselBriefingId],
       steps: [
         {
           inputs: [
@@ -38,16 +41,16 @@ export default function BaselBriefingLight() {
               description: "Wir haben noch weitere Briefings zu Spezialthemen im Angebot. Interessiert?",
               type: "groups" as const,
               options: [
-                { id: '088f8f7a77', name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
-                { id: '49a1cf05fb', name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
+                { id: baselBriefingId, name: '🏙️Basel-Briefing', description: "Das Wichtigste aus Basel!" },
+                { id: fasnachtsBriefingId, name: '🎉Fasnachts-Briefing', description: "Alles rund um die Basler Fasnacht." },
               ]
             }
           ],
         },
-        
+
       ],
-      listId: "bed6b33c61",
-      // 
+      listId,
+      //
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
         { name: "UTM_MEDIUM", urlParam: "utm_medium" },
