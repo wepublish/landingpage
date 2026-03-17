@@ -64,6 +64,7 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
     // lg: 1.5rem / 1.4rem
     // 2xl: 1.8rem / 1.6rem
     <>
+      <title>{props.title}</title>
       <MetaPixel pixelId="2225762180979586" />
       <TikTokPixel token="D650C03C77U5GADIKCUG" />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
