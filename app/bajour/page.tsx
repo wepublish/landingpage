@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 
 import HeaderImage from "./assets/bb-header.jpg";
@@ -94,6 +94,7 @@ export default function BaselBriefing() {
     <>
       <BajourLayoutLarge {...briefingProps} />
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+      <GoogleTagManager gtmId={"GTM-MQDHF8V"} />
     </>
   );
 }
