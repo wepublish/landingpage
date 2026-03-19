@@ -159,7 +159,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
     };
 
     try {
-      const result = await addMailchimpContact(formConfig.listId, contactData);
+      const result = await addMailchimpContact(formConfig.tenant, formConfig.listId, contactData);
       if (!result.success) {
         setError(result.error || "Ein unbekannter Fehler ist aufgetreten.");
         return;

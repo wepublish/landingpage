@@ -3,7 +3,10 @@
 {
 	"name": "Node.js & TypeScript",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -16,7 +19,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"shardulm94.trailing-spaces"
+				"shardulm94.trailing-spaces",
+				"Anthropic.claude-code"
 			]
 		}
 	}

@@ -5,7 +5,7 @@ import bajourLogo from "../assets/logo_black.svg";
 import { resolveBajourConfig } from "../config";
 
 export default async function BaselBriefingSuperlight() {
-  const { listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
+  const { tenant, listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     logo: bajourLogo,
@@ -84,6 +84,7 @@ export default async function BaselBriefingSuperlight() {
           ],
         },
       ],
+      tenant,
       listId,
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [

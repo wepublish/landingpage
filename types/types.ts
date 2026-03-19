@@ -66,6 +66,7 @@ type Step =
   | StepWithNoConditions;
 
 interface BaseFormConfig {
+  tenant: string;
   listId: string;
   interests: string[];
   mailchimpFields: MailchimpField[];

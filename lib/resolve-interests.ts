@@ -1,13 +1,13 @@
-import { Mailchimp } from "@wepublish/wepublish-mailchimp";
+import { createMailchimpClient } from "@/lib/mailchimp-client";
 import { cache } from "react";
 
-const getMailchimpInfo = cache(async () => {
-  const mailchimp = new Mailchimp(process.env.MAILCHIMP_API_KEY!);
+const getMailchimpInfo = cache(async (tenant: string) => {
+  const mailchimp = createMailchimpClient(tenant);
   return mailchimp.getInfoJson();
 });
 
-export async function resolveListId(listName: string): Promise<string> {
-  const info = await getMailchimpInfo();
+export async function resolveListId(tenant: string, listName: string): Promise<string> {
+  const info = await getMailchimpInfo(tenant);
   const list = info.lists.find((l) => l.name === listName);
   if (!list) {
     const available = info.lists.map((l) => l.name).join(", ");
@@ -19,10 +19,11 @@ export async function resolveListId(listName: string): Promise<string> {
 }
 
 export async function resolveInterestIds(
+  tenant: string,
   listId: string,
   names: string[]
 ): Promise<string[]> {
-  const info = await getMailchimpInfo();
+  const info = await getMailchimpInfo(tenant);
   const list = info.lists.find((l) => l.id === listId);
   if (!list) throw new Error(`Mailchimp list with ID "${listId}" not found`);
 
