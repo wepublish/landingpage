@@ -22,7 +22,7 @@ export default async function BaselBriefing() {
       context: ""
     },
     ready: {
-      intro: "erscheint im Fasnachts-Rhythmus",
+      intro: "im Fasnachts-Rhythmus",
       time: "",
       outro: ""
     },
@@ -51,32 +51,20 @@ export default async function BaselBriefing() {
               label: "E-Mail",
               type: "email",
               required: true,
-            },
-            {
-              name: "NACHNAME",
-              label: "Nachname",
-              type: "text",
-              required: true,
-            },
+            },            
             {
               name: "VORNAME",
               label: "Vorname",
               type: "text",
               required: true,
-            }
-          ],
-        },
-        {
-          inputs: [
-            {
-              description: "Wo wohnst du? Trage hier deine PLZ ein.",
-              name: "PLZ",
-              label: "Postleitzahl",
-              type: "number",
-              required: true,
             },
+          {
+              name: "NACHNAME",
+              label: "Nachname",
+              type: "text",
+            }            
           ],
-        },
+        },        
         {
           inputs: [
             {
@@ -107,12 +95,12 @@ export default async function BaselBriefing() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen?memberPlanBySlug=fasnachts-briefing-member&firstName=|*VORNAME*|&mail=|*EMAIL*|",
+            url: "https://bajour.ch/mitmachen?memberPlanBySlug=fasnachts-briefing-member&firstName=|*VORNAME*|&lastName=|*NACHNAME*|&mail=|*EMAIL*|",
           },
           {
             label: "Nein",
             background: "#bfbfbfff",
-            url: "https://bajour.ch/a/i-basel",
+            url: "https://bajour.ch/willkommen-briefing",
           },
         ],
       },
