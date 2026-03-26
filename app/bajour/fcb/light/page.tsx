@@ -5,7 +5,7 @@ import BajourLayoutMedium from "../../components/bajour-layout-medium";
 import { resolveBajourConfig } from "../../config";
 
 export default async function BaselBriefingLight() {
-  const { listId, baselBriefingId, fasnachtsBriefingId, fcbBriefingId } = await resolveBajourConfig();
+  const { tenant, listId, baselBriefingId, fasnachtsBriefingId, fcbBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     logo: fcbLogo,
@@ -49,6 +49,7 @@ export default async function BaselBriefingLight() {
         },
 
       ],
+      tenant,
       listId,
       //
       mailchimpFields: [

@@ -1,9 +1,10 @@
 "use server";
 
-import { ContactData, Mailchimp } from "@wepublish/wepublish-mailchimp";
+import { ContactData } from "@wepublish/wepublish-mailchimp";
+import { createMailchimpClient } from "@/lib/mailchimp-client";
 
-export async function addMailchimpContact(listId: string, contactData: ContactData) {
-  const mailchimp = new Mailchimp(process.env.MAILCHIMP_API_KEY!);
+export async function addMailchimpContact(tenant: string, listId: string, contactData: ContactData) {
+  const mailchimp = createMailchimpClient(tenant);
 
   try {
     await mailchimp.addContact(listId, contactData);

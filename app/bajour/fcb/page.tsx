@@ -8,7 +8,7 @@ import BajourLayoutLarge from "../components/bajour-layout-large";
 import { resolveBajourConfig } from "../config";
 
 export default async function BaselBriefing() {
-  const { listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
+  const { tenant, listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     logo: fcbLogo,
@@ -79,6 +79,7 @@ export default async function BaselBriefing() {
           ],
         },
       ],
+      tenant,
       listId,
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
