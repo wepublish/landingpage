@@ -52,18 +52,16 @@ export default async function BaselBriefing() {
               type: "email",
               required: true,
             },
-            {
-              name: "NACHNAME",
-              label: "Nachname",
-              type: "text",
-              required: true,
-            },
-            {
+           {
               name: "VORNAME",
               label: "Vorname",
               type: "text",
               required: true,
-            }
+            }, {
+              name: "NACHNAME",
+              label: "Nachname",
+              type: "text",
+            },
           ],
         },
         {
@@ -87,7 +85,6 @@ export default async function BaselBriefing() {
               name: "PLZ",
               label: "Postleitzahl",
               type: "number",
-              required: true,
             },
           ],
         },
@@ -110,12 +107,12 @@ export default async function BaselBriefing() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen??memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
+            url: "https://bajour.ch/mitmachen?memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|&lastName=|*NACHNAME*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
           },
           {
             label: "Nein",
             background: "#bfbfbfff",
-            url: "https://bajour.ch/a/i-basel",
+            url: "https://bajour.ch/willkommen-briefing",
           },
         ],
       },

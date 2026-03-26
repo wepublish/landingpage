@@ -53,16 +53,15 @@ export default async function BaselBriefing() {
               required: true,
             },
             {
-              name: "NACHNAME",
-              label: "Nachname",
-              type: "text",
-              required: true,
-            },
-            {
               name: "VORNAME",
               label: "Vorname",
               type: "text",
               required: true,
+            },
+            {
+              name: "NACHNAME",
+              label: "Nachname",
+              type: "text",
             }
           ],
         },
@@ -97,12 +96,12 @@ export default async function BaselBriefing() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen?firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=fcb-briefing-member",
+            url: "https://bajour.ch/mitmachen?firstName=|*VORNAME*|&lastName=|*NACHNAME*|&mail=|*EMAIL*|&memberPlanBySlug=fcb-briefing-member",
           },
           {
             label: "Nein",
             background: "#bfbfbfff",
-            url: "https://bajour.ch/a/i-basel",
+            url: "https://bajour.ch/willkommen-briefing",
           },
         ],
       },

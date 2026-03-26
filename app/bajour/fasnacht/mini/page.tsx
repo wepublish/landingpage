@@ -70,19 +70,6 @@ export default async function BaselBriefingSuperlight() {
             }
           ],
         },
-        {
-          skipIfFieldsFilled: ["PLZ"],
-
-          inputs: [
-            {
-              description: "Für gewisse Gemeinden ergänzen wir das Briefing mit Lokalnachrichten. Trage hier deine Postleitzahl ein und lass dich überraschen!",
-              name: "PLZ",
-              label: "Postleitzahl",
-              type: "number",
-              required: true,
-            },
-          ],
-        },
       ],
       tenant,
       listId,
@@ -102,12 +89,12 @@ export default async function BaselBriefingSuperlight() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen??memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
+            url: "https://bajour.ch/mitmachen?memberPlanBySlug=fasnachts-briefing-member&firstName=|*VORNAME*|&mail=|*EMAIL*|",
           },
           {
             label: "Nein",
             background: "#bfbfbfff",
-            url: "https://bajour.ch/a/i-basel",
+            url: "https://bajour.ch/willkommen-briefing",
           },
         ],
       },

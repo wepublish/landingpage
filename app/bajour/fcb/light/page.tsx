@@ -72,7 +72,7 @@ export default async function BaselBriefingLight() {
           {
             label: "Nein",
             background: "#bfbfbfff",
-            url: "https://bajour.ch/a/i-basel",
+            url: "https://bajour.ch/willkommen-briefing",
           },
         ],
       },

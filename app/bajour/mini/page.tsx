@@ -79,7 +79,6 @@ export default async function BaselBriefingSuperlight() {
               name: "PLZ",
               label: "Postleitzahl",
               type: "number",
-              required: true,
             },
           ],
         },
@@ -102,12 +101,12 @@ export default async function BaselBriefingSuperlight() {
           {
             label: "Ja",
             background: "#FFD60A",
-            url: "https://bajour.ch/mitmachen??memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|",
+            url: "https://bajour.ch/mitmachen?memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|",
           },
           {
             label: "Nein",
             background: "#bfbfbfff",
-            url: "https://bajour.ch/a/i-basel",
+            url: "https://bajour.ch/willkommen-briefing",
           },
         ],
       },

@@ -70,19 +70,6 @@ export default async function BaselBriefingSuperlight() {
             }
           ],
         },
-        {
-          skipIfFieldsFilled: ["PLZ"],
-
-          inputs: [
-            {
-              description: "Für gewisse Gemeinden ergänzen wir das Briefing mit Lokalnachrichten. Trage hier deine Postleitzahl ein und lass dich überraschen!",
-              name: "PLZ",
-              label: "Postleitzahl",
-              type: "number",
-              required: true,
-            },
-          ],
-        },
       ],
       tenant,
       listId,
@@ -107,7 +94,7 @@ export default async function BaselBriefingSuperlight() {
           {
             label: "Nein",
             background: "#bfbfbfff",
-            url: "https://bajour.ch/a/i-basel",
+            url: "https://bajour.ch/willkommen-briefing",
           },
         ],
       },

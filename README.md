@@ -79,12 +79,18 @@ Einfacher geht es mit dem Befehl `npm run get-all-information`.
 Damit werden alle möglichen Zielgruppen, Zielgruppenfelder sowie die
 Interessensgruppen aufgelistet.
 
+### IDs via Klarnamen auflösen
+
+IDs werden nicht hartcodiert. In `app/bajour/config.ts` werden sie zentral
+per Klarname aus Mailchimp aufgelöst. Neue Briefings dort eintragen und das
+zurückgegebene ID-Objekt in den Page-Komponenten verwenden.
+
 ## Konfigurationsoptionen
 
 ### listId
 
-Die Mailchimp-Zielgruppenliste, in die die Besucher/innen eingetragen werden
-sollen.
+Die Mailchimp-Zielgruppenliste. Wird in `app/bajour/config.ts` via Klarname
+aufgelöst – kein Hartcodieren nötig.
 
 ```js
 listId: "851436c80e"
@@ -115,8 +121,10 @@ Hier kann angegeben werden, zu welcher/n Interessensgruppen die Besucher/innen
 automatisch hinzugefügt werden sollen, unabhängig davon, welche allenfalls
 gegenteiligen Auswahlen die Besucher/innen später im Formular noch treffen.
 
+Die IDs werden via `resolveBajourConfig()` aus `app/bajour/config.ts` bezogen.
+
 ```js
-interests: ["47ed10ad9f", "22b72061f1"],
+interests: [fcbBriefingId],
 ```
 
 ### steps
@@ -311,3 +319,21 @@ successPage: {
   successUrl: "https://bajour.ch/mitmachen?mail=|*EMAIL*|",
 }
 ```
+## Anwendung
+
+URL mit allen möglichen Infos, die über Parameter übergeben werden können: https://briefing.bajour.ch/fasnacht?vorname=Samuel&nachname=Hufschmid&email=shufschmid@gmail.com&plz=4052&utm_source=kino&utm_medium=diashow&utm_campaign=osterhase
+
+Einzelne Ansichten werden folgendermassen angesteuert: 
+
+## Live-Seiten
+
+| Briefing | Standard | Mini | Light |
+|---|---|---|---|
+| Basel | [briefings.bajour.ch](https://briefings.bajour.ch) | [/mini](https://briefings.bajour.ch/mini) | [/light](https://briefings.bajour.ch/light) |
+| FCB | [briefings.bajour.ch/fcb](https://briefings.bajour.ch/fcb) | [/fcb/mini](https://briefings.bajour.ch/fcb/mini) | [/fcb/light](https://briefings.bajour.ch/fcb/light) |
+| Fasnacht | [briefings.bajour.ch/fasnacht](https://briefings.bajour.ch/fasnacht) | [/fasnacht/mini](https://briefings.bajour.ch/fasnacht/mini) | [/fasnacht/light](https://briefings.bajour.ch/fasnacht/light) |
+
+- Basel Briefing: [https://briefings.bajour.ch?email=max.muster%40example.com&vorname=Max&nachname=Muster&plz=4001](https://briefings.bajour.ch?email=max.muster%40example.com&vorname=Max&nachname=Muster&plz=4001)
+- FCB-Briefing / mini: [https://briefings.bajour.ch/fcb/mini?utm_source=newsletter&utm_medium=email](https://briefings.bajour.ch/fcb/mini?utm_source=newsletter&utm_medium=email)
+- Fasnachts-Briefing / light: [https://briefings.bajour.ch/fasnacht/light?utm_campaign=fasnacht25](https://briefings.bajour.ch/fasnacht/light?utm_campaign=fasnacht25)
+
