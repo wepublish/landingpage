@@ -1,4 +1,4 @@
-import { Mailchimp } from "@wepublish/wepublish-mailchimp";
+import { Mailchimp } from "../lib/mailchimp-client";
 import fs from 'fs';
 
 const tenant = process.argv[2]?.toUpperCase();
@@ -17,8 +17,7 @@ async function getMailchimpInfo() {
     const mailchimp = new Mailchimp(apiKey!);
     const infoJson = await mailchimp.getInfoJson();
     fs.writeFileSync('info.json', JSON.stringify(infoJson, null, 2));
-
-    console.log(await mailchimp.getInfoString());
+    console.log(JSON.stringify(infoJson, null, 2));
 }
 
 getMailchimpInfo();

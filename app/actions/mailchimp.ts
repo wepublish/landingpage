@@ -1,7 +1,6 @@
 "use server";
 
-import { ContactData } from "@wepublish/wepublish-mailchimp";
-import { createMailchimpClient } from "@/lib/mailchimp-client";
+import { ContactData, createMailchimpClient } from "@/lib/mailchimp-client";
 
 export async function addMailchimpContact(tenant: string, listId: string, contactData: ContactData) {
   const mailchimp = createMailchimpClient(tenant);
