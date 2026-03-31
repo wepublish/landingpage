@@ -22,6 +22,7 @@ const robotoCondensed = Roboto_Condensed({
 
 interface BajourLayoutLargeProps {
   logo: string;
+  wappen?: string;
   title: string;
   subtitle: string;
   lead: string;
@@ -107,12 +108,15 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           {/* Title & Subtitle - Roboto Font */}
           <div className={`${roboto.className} w-full text-center font-bold`}>
             {/* Title: 4vh -> 6vh -> 8vh */}
-            <h1 className="pt-[1em] leading-[1.1rem]
+            <h1 className="pt-[1em] leading-[1.1rem] flex items-center justify-center gap-[0.4em]
               text-[4vh] lg:text-[4.5rem]
               sm:text-[6vh]
               lg:text-[8vh]"
             >
               {props.title}
+              {props.wappen && (
+                <Image src={props.wappen} alt="Wappen" width={64} height={64} className="h-[1.4em] w-auto self-start -mt-[0.5em]" />
+              )}
             </h1>
             {/* Subtitle: 1em -> 1.2em -> 0.9em */}
             <h2 className="mt-[1em] leading-normal

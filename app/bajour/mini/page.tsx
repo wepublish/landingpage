@@ -3,13 +3,20 @@ import BajourLayoutSmall from "../components/bajour-layout-small";
 import bajourIphone from "../assets/bajour-iphone.png";
 import bajourLogo from "../assets/logo_black.svg";
 import { resolveBajourConfig } from "../config";
+import { PLZ_TO_GEMEINDE } from "../gemeinden-mapping";
 
-export default async function BaselBriefingSuperlight() {
+export default async function BaselBriefingSuperlight({
+  searchParams,
+}: {
+  searchParams: Promise<{ plz?: string }>;
+}) {
+  const { plz } = await searchParams;
+  const gemeinde = plz ? PLZ_TO_GEMEINDE[plz] : undefined;
   const { tenant, listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     logo: bajourLogo,
-    title: "Das Wichtigste aus Basel",
+    title: `Das Wichtigste aus ${gemeinde?.name ?? "Basel"}`,
     subtitle: "Damit du weisst, was in deiner Stadt passiert: Hol dir das Basel Briefing mit den wichtigsten News, Geschichten und Tipps. Kuratiert bis spät in die Nacht – gelesen in 5 Minuten. Montag bis Freitag um 6 Uhr in deinem Postfach.",
     image: bajourIphone,
     listItems: [
