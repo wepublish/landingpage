@@ -329,11 +329,11 @@ Einzelne Ansichten werden folgendermassen angesteuert:
 
 | Briefing | Standard | Mini | Light |
 |---|---|---|---|
-| Basel | [briefings.bajour.ch](https://briefings.bajour.ch) | [/mini](https://briefings.bajour.ch/mini) | [/light](https://briefings.bajour.ch/light) |
-| FCB | [briefings.bajour.ch/fcb](https://briefings.bajour.ch/fcb) | [/fcb/mini](https://briefings.bajour.ch/fcb/mini) | [/fcb/light](https://briefings.bajour.ch/fcb/light) |
-| Fasnacht | [briefings.bajour.ch/fasnacht](https://briefings.bajour.ch/fasnacht) | [/fasnacht/mini](https://briefings.bajour.ch/fasnacht/mini) | [/fasnacht/light](https://briefings.bajour.ch/fasnacht/light) |
+| Basel | [briefing.bajour.ch](https://briefing.bajour.ch) | [/mini](https://briefing.bajour.ch/mini) | [/light](https://briefing.bajour.ch/light) |
+| FCB | [briefing.bajour.ch/fcb](https://briefing.bajour.ch/fcb) | [/fcb/mini](https://briefing.bajour.ch/fcb/mini) | [/fcb/light](https://briefing.bajour.ch/fcb/light) |
+| Fasnacht | [briefing.bajour.ch/fasnacht](https://briefing.bajour.ch/fasnacht) | [/fasnacht/mini](https://briefing.bajour.ch/fasnacht/mini) | [/fasnacht/light](https://briefing.bajour.ch/fasnacht/light) |
 
-- Basel Briefing: [https://briefings.bajour.ch?email=max.muster%40example.com&vorname=Max&nachname=Muster&plz=4001](https://briefings.bajour.ch?email=max.muster%40example.com&vorname=Max&nachname=Muster&plz=4001)
-- FCB-Briefing / mini: [https://briefings.bajour.ch/fcb/mini?utm_source=newsletter&utm_medium=email](https://briefings.bajour.ch/fcb/mini?utm_source=newsletter&utm_medium=email)
-- Fasnachts-Briefing / light: [https://briefings.bajour.ch/fasnacht/light?utm_campaign=fasnacht25](https://briefings.bajour.ch/fasnacht/light?utm_campaign=fasnacht25)
+- Basel Briefing: [https://briefing.bajour.ch?email=max.muster%40example.com&vorname=Max&nachname=Muster&plz=4001](https://briefing.bajour.ch?email=max.muster%40example.com&vorname=Max&nachname=Muster&plz=4001)
+- FCB-Briefing / mini: [https://briefing.bajour.ch/fcb/mini?utm_source=newsletter&utm_medium=email](https://briefing.bajour.ch/fcb/mini?utm_source=newsletter&utm_medium=email)
+- Fasnachts-Briefing / light: [https://briefing.bajour.ch/fasnacht/light?utm_campaign=fasnacht25](https://briefing.bajour.ch/fasnacht/light?utm_campaign=fasnacht25)
 

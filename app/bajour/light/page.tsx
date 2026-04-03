@@ -3,13 +3,20 @@ import bajourIphone from "../assets/bajour-iphone.png"
 import bajourLogo from "../assets/logo_black.svg";
 import BajourLayoutMedium from "../components/bajour-layout-medium";
 import { resolveBajourConfig } from "../config";
+import { PLZ_TO_GEMEINDE } from "../gemeinden-mapping";
 
-export default async function BaselBriefingLight() {
+export default async function BaselBriefingLight({
+  searchParams,
+}: {
+  searchParams: Promise<{ plz?: string }>;
+}) {
+  const { plz } = await searchParams;
+  const gemeinde = plz ? PLZ_TO_GEMEINDE[plz] : undefined;
   const { tenant, listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     logo: bajourLogo,
-    title: "Die beliebtesten Newsletter von Basel!",
+    title: `Die beliebtesten Newsletter von ${gemeinde?.name ?? "Basel"}!`,
     subtitle: "Bestens informiert mit Bajour. Wähle, was dich interessiert.",
     image: bajourIphone,
     formConfig: {

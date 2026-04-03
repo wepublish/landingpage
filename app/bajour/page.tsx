@@ -6,20 +6,28 @@ import FooterImage from "./assets/footer.webp";
 import bajourLogo from "./assets/logo_white.svg";
 import BajourLayoutLarge from "./components/bajour-layout-large";
 import { resolveBajourConfig } from "./config";
+import { PLZ_TO_GEMEINDE } from "./gemeinden-mapping";
 
-export default async function BaselBriefing() {
+export default async function BaselBriefing({
+  searchParams,
+}: {
+  searchParams: Promise<{ plz?: string }>;
+}) {
+  const { plz } = await searchParams;
+  const gemeinde = plz ? PLZ_TO_GEMEINDE[plz] : undefined;
   const { tenant, listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
     logo: bajourLogo,
     title: "Basel Briefing",
-    subtitle: "Das Wichtigste für den Start in den Tag",
-    lead: "Du willst wissen, was in Basel läuft, hast aber keine Lust, dich durch die Zeitungen und Online-Portale zu pflügen?",
+    wappen: gemeinde?.wappen,
+    subtitle: gemeinde ? `Neu mit Lokalnachrichten aus ${gemeinde.name}` : "Das Wichtigste für den Start in den Tag",
+    lead: `Du willst wissen, was in ${gemeinde ? "Basel und der Region" : "Basel"} läuft, hast aber keine Lust, dich durch die Zeitungen und Online-Portale zu pflügen?`,
     wakeup: {
-      intro: "Wir von Bajour nehmen<br>dir diese Arbeit ab.",
-      leadup: "Wir stehen für dich werktags um",
-      time: "3:00",
-      context: "Uhr auf"
+      intro: "Wir von Bajour nehmen<br>dir diese Arbeit ab. Wir arbeiten die Nacht durch, damit du morgens gut informiert in den Tag starten kannst.",
+      leadup: "",
+      time: "",
+      context: ""
     },
     ready: {
       intro: "Jeden Morgen ab",
@@ -35,7 +43,7 @@ export default async function BaselBriefing() {
     mainBackgroundColor: "#feeae3",
     leadColor: "black",
     images: {
-      header: HeaderImage,
+      header: gemeinde?.image ?? HeaderImage,
       ready: ReadyImage,
       independent: IndependentImage,
       footer: FooterImage,

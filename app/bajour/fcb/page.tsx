@@ -1,8 +1,8 @@
 
 import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
-import IndependentImage from "./assets/independent.webp";
-import FooterImage from "./assets/footer.webp";
+import IndependentImage from "./assets/independent.jpg";
+import FooterImage from "./assets/footer.jpg";
 import fcbLogo from "./assets/logo_white.svg";
 import BajourLayoutLarge from "../components/bajour-layout-large";
 import { resolveBajourConfig } from "../config";
