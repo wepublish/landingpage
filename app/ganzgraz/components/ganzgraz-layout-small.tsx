@@ -1,0 +1,98 @@
+import { Suspense } from "react";
+import MailchimpForm from "../../../components/mailchimp-form";
+import { FormConfig } from "@/types/types";
+import Image, { StaticImageData } from "next/image";
+import { Roboto_Condensed } from "next/font/google";
+import MetaPixel from "@/components/meta-pixel";
+import TikTokPixel from "@/components/tiktok-pixel";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+
+const robotoCondensed = Roboto_Condensed({
+    subsets: ["latin"]
+});
+
+interface Testimonial {
+  quote: string;
+  author: string;
+}
+
+interface GanzgrazLayoutSmallProps {
+  logo: string;
+  title: string;
+  subtitle: string;
+  image: StaticImageData;
+  formConfig: FormConfig;
+  listItems: string[];
+  testimonials: Testimonial[];
+  subscriberCountBold: string;
+  subscriberCountText: string;
+}
+
+export default function GanzgrazLayoutSmall(props: GanzgrazLayoutSmallProps) {
+    return (
+        <>
+            <title>{props.title}</title>
+            <MetaPixel pixelId="2225762180979586" />
+            <TikTokPixel token="D650C03C77U5GADIKCUG" />
+            <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
+            <GoogleTagManager gtmId="GTM-MQDHF8V" />
+            <main className={`${robotoCondensed.className} min-h-screen bg-[#feeae3]`}>
+            <div className="px-4 mx-auto lg:w-1/3 flex flex-col items-center">
+                <Image src={props.logo} alt="Logo" className="w-1/2 my-4" />
+                <section className="mb-4">
+                    <section>
+                        <h1 className="text-2xl font-bold mb-4 text-center uppercase">{props.title}</h1>
+                        <p>{props.subtitle}</p>
+                    </section>
+                </section>
+
+                <section className="w-full">
+                    <Suspense fallback={null}>
+                        <MailchimpForm formConfig={props.formConfig} />
+                    </Suspense>
+                    <div className="mt-3 text-center">
+                        <p className="text-xs text-gray-600">Abmeldung jederzeit möglich!</p>
+                        <p className="mt-2 text-lg md:text-xl text-gray-900"><span className="font-bold">{props.subscriberCountBold}</span> {props.subscriberCountText}</p>
+                    </div>
+                </section>
+
+                <section className="w-full mt-6">
+                    <div className="flex items-center gap-2">
+                        <div className="flex-1 min-w-0">
+                            <ul className="list-disc list-inside text-gray-800 space-y-1 pl-4 text-lg md:text-base">
+                                {props.listItems.map((item, index) => (
+                                    <li key={index}>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div className="w-32 sm:w-24 md:w-24 lg:w-36 flex-shrink-0">
+                            <Image src={props.image} alt={"Vorschau Briefing"} className="w-full h-auto object-contain rounded-md" />
+                        </div>
+                    </div>
+                </section>
+
+                <section className="w-full mt-6">
+                    <div className="space-y-4">
+                        {props.testimonials.map((testimonial, index) => (
+                            <div key={index} className="bg-white/60 p-4 rounded-md">
+                                <p className="italic text-gray-800">«{testimonial.quote}»</p>
+                                <p className="mt-2 text-sm font-semibold text-gray-700">{testimonial.author}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <section className="w-full mt-4">
+                    <div className="mt-6 text-center text-xs text-gray-500">
+                        <a href="https://ganzgraz.at/impressum" target="_blank" rel="noopener noreferrer" className="hover:underline">Impressum</a>
+                        <span className="mx-2">|</span>
+                        <a href="https://ganzgraz.at/about" target="_blank" rel="noopener noreferrer" className="hover:underline">über GanzGraz</a>
+                    </div>
+                </section>
+
+            </div>
+            </main>
+        </>
+    );
+}
