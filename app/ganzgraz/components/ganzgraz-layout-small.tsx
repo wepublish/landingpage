@@ -18,7 +18,7 @@ interface Testimonial {
 }
 
 interface GanzgrazLayoutSmallProps {
-  logo: string;
+  logo: StaticImageData;
   title: string;
   subtitle: string;
   image: StaticImageData;
