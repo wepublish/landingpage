@@ -5,8 +5,6 @@ import Image, { StaticImageData } from "next/image";
 import { Roboto_Condensed } from "next/font/google";
 import teamfoto from "../assets/teamfoto.jpg";
 import MetaPixel from "@/components/meta-pixel";
-import TikTokPixel from "@/components/tiktok-pixel";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const robotoCondensed = Roboto_Condensed({
     subsets: ["latin"]
