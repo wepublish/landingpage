@@ -17,12 +17,12 @@ export default async function BaselBriefingSuperlight({
   const briefingProps = {
     logo: bajourLogo,
     title: `Das Wichtigste aus ${gemeinde?.name ?? "Basel"}`,
-    subtitle: "Damit du weisst, was in deiner Stadt passiert: Hol dir das Basel Briefing mit den wichtigsten News, Geschichten und Tipps. Kuratiert bis spät in die Nacht – gelesen in 5 Minuten. Montag bis Freitag um 6 Uhr in deinem Postfach.",
+    subtitle: gemeinde ? `Damit du weisst, was in  ${gemeinde.name} passiert: Hol dir das Basel Briefing mit den wichtigsten News, Geschichten und Tipps aus der Region. Kuratiert bis spät in die Nacht – gelesen in 5 Minuten. Montag bis Freitag um 6 Uhr in deinem Postfach.` : "Damit du weisst, was in deiner Stadt passiert: Hol dir das Basel Briefing mit den wichtigsten News, Geschichten und Tipps. Kuratiert bis spät in die Nacht – gelesen in 5 Minuten. Montag bis Freitag um 6 Uhr in deinem Postfach.",
     image: bajourIphone,
     listItems: [
       "Basel-News des Tages",
+      gemeinde ? `Lokalnachrichten aus ${gemeinde.name}` : "Eventtipps",
       "unabhängig und kostenlos",
-      "Eventtipps",
       "Pünktlich um 6 Uhr",
       "Für Basel-Liebhaber",
     ],
