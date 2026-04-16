@@ -3,6 +3,7 @@ import MailchimpForm from "../../../components/mailchimp-form";
 import { FormConfig } from "@/types/types";
 import Image, { StaticImageData } from "next/image";
 import { Roboto_Condensed } from "next/font/google";
+import teamfoto from "../assets/teamfoto.jpg";
 import MetaPixel from "@/components/meta-pixel";
 import TikTokPixel from "@/components/tiktok-pixel";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
@@ -36,7 +37,7 @@ export default function GanzgrazLayoutSmall(props: GanzgrazLayoutSmallProps) {
             <TikTokPixel token="D650C03C77U5GADIKCUG" />
             <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
             <GoogleTagManager gtmId="GTM-MQDHF8V" />
-            <main className={`${robotoCondensed.className} min-h-screen bg-[#feeae3]`}>
+            <main className={`${robotoCondensed.className} min-h-screen bg-[#f8c99d]`}>
             <div className="px-4 mx-auto lg:w-1/3 flex flex-col items-center">
                 <Image src={props.logo} alt="Logo" className="w-1/2 my-4" />
                 <section className="mb-4">
@@ -52,7 +53,6 @@ export default function GanzgrazLayoutSmall(props: GanzgrazLayoutSmallProps) {
                     </Suspense>
                     <div className="mt-3 text-center">
                         <p className="text-xs text-gray-600">Abmeldung jederzeit möglich!</p>
-                        <p className="mt-2 text-lg md:text-xl text-gray-900"><span className="font-bold">{props.subscriberCountBold}</span> {props.subscriberCountText}</p>
                     </div>
                 </section>
 
@@ -73,21 +73,16 @@ export default function GanzgrazLayoutSmall(props: GanzgrazLayoutSmallProps) {
                 </section>
 
                 <section className="w-full mt-6">
-                    <div className="space-y-4">
-                        {props.testimonials.map((testimonial, index) => (
-                            <div key={index} className="bg-white/60 p-4 rounded-md">
-                                <p className="italic text-gray-800">«{testimonial.quote}»</p>
-                                <p className="mt-2 text-sm font-semibold text-gray-700">{testimonial.author}</p>
-                            </div>
-                        ))}
-                    </div>
+                    <Image src={teamfoto} alt="Das GanzGraz-Team" className="w-full h-auto rounded-md" />
+                    <p className="mt-2 text-center font-bold">Dein ganzgraz-Team!</p>
+                    <p className="text-center text-xs text-gray-500">Credits: Karin Daninger</p>
                 </section>
 
                 <section className="w-full mt-4">
                     <div className="mt-6 text-center text-xs text-gray-500">
                         <a href="https://ganzgraz.at/impressum" target="_blank" rel="noopener noreferrer" className="hover:underline">Impressum</a>
                         <span className="mx-2">|</span>
-                        <a href="https://ganzgraz.at/about" target="_blank" rel="noopener noreferrer" className="hover:underline">über GanzGraz</a>
+                        <a href="https://ganzgraz.at" target="_blank" rel="noopener noreferrer" className="hover:underline">über GanzGraz</a>
                     </div>
                 </section>
 

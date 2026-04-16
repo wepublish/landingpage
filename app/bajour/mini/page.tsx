@@ -1,30 +1,28 @@
 
 import BajourLayoutSmall from "../components/bajour-layout-small";
-import bajourIphone from "../assets/bajour-iphone.png";
-import bajourLogo from "../assets/logo_black.svg";
+import iphone from "../assets/iphone.png";
+import logo from "../assets/logo.webp";
 import { resolveBajourConfig } from "../config";
-import { PLZ_TO_GEMEINDE } from "../gemeinden-mapping";
 
 export default async function BaselBriefingSuperlight({
   searchParams,
 }: {
   searchParams: Promise<{ plz?: string }>;
 }) {
-  const { plz } = await searchParams;
-  const gemeinde = plz ? PLZ_TO_GEMEINDE[plz] : undefined;
+
   const { tenant, listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
-    logo: bajourLogo,
-    title: `Das Wichtigste aus ${gemeinde?.name ?? "Basel"}`,
-    subtitle: "Damit du weisst, was in deiner Stadt passiert: Hol dir das Basel Briefing mit den wichtigsten News, Geschichten und Tipps. Kuratiert bis spät in die Nacht – gelesen in 5 Minuten. Montag bis Freitag um 6 Uhr in deinem Postfach.",
-    image: bajourIphone,
+    logo: logo,
+    title: "Der Graz-Newsletter",
+    subtitle: "Das Wichtigste aus deiner Stadt: Hol dir den Graz-Newsletter mit den besten News, Geschichten und Tipps. Ausgewählt und eingeordnet, morgens um 6 Uhr in deinem Postfach.",
+    image: iphone,
     listItems: [
-      "Basel-News des Tages",
-      "unabhängig und kostenlos",
-      "Eventtipps",
-      "Pünktlich um 6 Uhr",
-      "Für Basel-Liebhaber",
+      "Graz-News des Tages",
+      "persönlich und kostenlos",
+      "Gesichter, Tipps und Überblick",
+      "Relevanz ohne Algorithmus",
+      "pünktlich um 6 Uhr",
     ],
     subscriberCountBold: "14'907",
     subscriberCountText: "Basler*innen lesen schon mit.",

@@ -72,6 +72,7 @@ interface BaseFormConfig {
   mailchimpFields: MailchimpField[];
   steps: Step[];
   autoFocus: boolean;
+  buttonColor?: string;
 }
 
 export interface SuccessPageConfig {

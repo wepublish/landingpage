@@ -261,19 +261,19 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
               )}
 
               {isFirstStep && (
-                <button className="w-full px-6 py-3 text-gray-900 font-semibold bg-[#FFD60A] hover:bg-[#E6C009] active:bg-[#CCA007] rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" type="submit" disabled={isSubmitting}>
+                <button className="w-full px-6 py-3 text-gray-900 font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" style={{ backgroundColor: formConfig.buttonColor ?? '#FFD60A' }} type="submit" disabled={isSubmitting}>
                   Jetzt kostenlos abonnieren {isSubmitting && <Image src={spinner} alt="" width={20} height={20} />}
                 </button>
               )}
 
               {isMiddleStep && (
-                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium bg-[#FFD60A] hover:bg-[#E6C009] rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" type="submit" disabled={isSubmitting}>
+                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" style={{ backgroundColor: formConfig.buttonColor ?? '#FFD60A' }} type="submit" disabled={isSubmitting}>
                   Weiter {isSubmitting && <Image src={spinner} alt="" width={20} height={20} />}
                 </button>
               )}
 
               {isLastStep && !isFirstStep && (
-                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium bg-[#FFD60A] hover:bg-[#E6C009] rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" type="submit" disabled={isSubmitting}>
+                <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" style={{ backgroundColor: formConfig.buttonColor ?? '#FFD60A' }} type="submit" disabled={isSubmitting}>
                   Abschliessen {isSubmitting && <Image src={spinner} alt="" width={20} height={20} />}
                 </button>
               )}
