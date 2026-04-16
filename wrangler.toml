@@ -21,3 +21,7 @@ invocation_logs = true
 enabled = true
 persist = true
 head_sampling_rate = 1
+
+[[routes]]
+pattern = "news.ganzgraz.at"
+custom_domain = true
