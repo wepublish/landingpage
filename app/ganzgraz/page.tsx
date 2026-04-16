@@ -1,8 +1,8 @@
 
-import GanzgrazLayoutSmall from "../components/ganzgraz-layout-small";
+import GanzgrazLayoutSmall from "./components/ganzgraz-layout-small";
 import bajourIphone from "../assets/iphone.png";
 import bajourLogo from "../assets/logo.webp";
-import { resolveConfig } from "../config";
+import { resolveConfig } from "./config";
 
 export default async function GrazBriefingSuperlight() {
   const { tenant, listId } = await resolveConfig();
@@ -59,7 +59,6 @@ export default async function GrazBriefingSuperlight() {
             },
           ],
         }
-        
       ],
       tenant,
       listId,
