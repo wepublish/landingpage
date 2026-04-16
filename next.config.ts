@@ -16,6 +16,16 @@ const nextConfig: NextConfig = {
         ],
         destination: "/bajour/:path*",
       },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "news.ganzgraz.at",
+          },
+        ],
+        destination: "/ganzgraz/:path*",
+      },
     ];
   },
 };
