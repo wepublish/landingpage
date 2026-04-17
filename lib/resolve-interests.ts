@@ -1,10 +1,13 @@
 import { createMailchimpClient } from "@/lib/mailchimp-client";
-import { cache } from "react";
+import { cacheLife } from "next/cache";
 
-const getMailchimpInfo = cache(async (tenant: string) => {
+async function getMailchimpInfo(tenant: string) {
+  "use cache";
+  cacheLife("days");
+  console.log("Fetching Mailchimp Info from API");
   const mailchimp = createMailchimpClient(tenant);
   return mailchimp.getInfoJson();
-});
+}
 
 export async function resolveListId(tenant: string, listName: string): Promise<string> {
   const info = await getMailchimpInfo(tenant);
