@@ -143,7 +143,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
 
     const contactData = {
       email: formData["EMAIL"],
-      status: "subscribed" as const,
+      status: (formConfig.doubleOptIn ? "pending" : "subscribed") as "pending" | "subscribed",
       interests: Object.fromEntries(Object.entries(formConfig.interests.concat(interests)).map(([_, v]) => [v, true])),
       mergeFields: Object.fromEntries(
         Object.entries(formData)
