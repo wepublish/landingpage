@@ -3,7 +3,7 @@ import { cacheLife } from "next/cache";
 
 async function getMailchimpInfo(tenant: string) {
   "use cache";
-  cacheLife("days");
+  cacheLife("hours");
   console.log("Fetching Mailchimp Info from API");
   const mailchimp = createMailchimpClient(tenant);
   return mailchimp.getInfoJson();
