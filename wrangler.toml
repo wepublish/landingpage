@@ -23,7 +23,7 @@ persist = true
 head_sampling_rate = 1
 
 [[kv_namespaces]]
-binding = "NEXT_CACHE_WORKERS_KV"
+binding = "NEXT_INC_CACHE_KV"
 id = "11bb25de909649219cf1c9735356d56a"
 
 [[routes]]
