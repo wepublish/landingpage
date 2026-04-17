@@ -5,10 +5,14 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (host === "briefing.bajour.ch") {
-    return NextResponse.rewrite(new URL(`/bajour${pathname}`, request.url));
+    const url = request.nextUrl.clone();
+    url.pathname = `/bajour${pathname}`;
+    return NextResponse.rewrite(url);
   }
   if (host === "news.ganzgraz.at") {
-    return NextResponse.rewrite(new URL(`/ganzgraz${pathname}`, request.url));
+    const url = request.nextUrl.clone();
+    url.pathname = `/ganzgraz${pathname}`;
+    return NextResponse.rewrite(url);
   }
 }
 
