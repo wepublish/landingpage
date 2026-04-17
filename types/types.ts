@@ -73,6 +73,7 @@ interface BaseFormConfig {
   steps: Step[];
   autoFocus: boolean;
   buttonColor?: string;
+  doubleOptIn?: boolean;
 }
 
 export interface SuccessPageConfig {

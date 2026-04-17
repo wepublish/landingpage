@@ -37,6 +37,7 @@ export default async function GrazBriefingSuperlight() {
     ],
     formConfig: {
       autoFocus: true,
+      doubleOptIn: true,
       interests: [],
       buttonColor: "#FF6600",
       steps: [
@@ -50,10 +51,10 @@ export default async function GrazBriefingSuperlight() {
             }
           ],
         },
-        {skipIfFieldsFilled: ["VORNAME"],
+        {skipIfFieldsFilled: ["FNAME"],
           inputs: [
             {
-              name: "VORNAME",
+              name: "FNAME",
               label: "Wie dürfen wir dich ansprechen (Vorname)?",
               required: true,
             },
