@@ -5,6 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import { Roboto_Condensed } from "next/font/google";
 import teamfoto from "../assets/teamfoto.jpg";
 import MetaPixel from "@/components/meta-pixel";
+import Link from "next/link";
 
 const robotoCondensed = Roboto_Condensed({
     subsets: ["latin"]
@@ -34,7 +35,9 @@ export default function GanzgrazLayoutSmall(props: GanzgrazLayoutSmallProps) {
             <MetaPixel pixelId="1259793032931410" />
             <main className={`${robotoCondensed.className} min-h-screen bg-[#f8c99d]`}>
             <div className="px-4 mx-auto lg:w-1/3 flex flex-col items-center">
-                <Image src={props.logo} alt="Logo" className="w-1/2 my-4" />
+                <Link href="https://ganzgraz.at" target="_blank" rel="noopener noreferrer" className="flex justify-center w-full">
+                    <Image src={props.logo} alt="Logo" className="w-1/2 my-4" />
+                </Link>
                 <section className="mb-4">
                     <section>
                         <h1 className="text-2xl font-bold mb-4 text-center uppercase">{props.title}</h1>

@@ -10,7 +10,7 @@ export default async function GrazBriefingSuperlight() {
   const briefingProps = {
     logo: bajourLogo,
     title: "Der Graz-Newsletter",
-    subtitle: "Das Wichtigste aus deiner Stadt: Hol dir den Graz-Newsletter mit den besten News, Geschichten und Tipps. Ausgewählt und eingeordnet, morgens um 6 Uhr in deinem Postfach.",
+    subtitle: "Das Wichtigste aus deiner Stadt: Hol dir den Graz-Newsletter mit den besten Geschichten, Neuigkeiten und Tipps. Ausgewählt und eingeordnet, morgens um 6 Uhr in deinem Postfach. Von Montag bis Donnerstag. Frisch und kostenlos.",
     image: bajourIphone,
     listItems: [
       "Graz-News des Tages",
