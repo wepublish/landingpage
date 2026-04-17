@@ -4,7 +4,17 @@ import fasnachtLogo from "../assets/logo_black.svg";
 import BajourLayoutSmall from "../../components/bajour-layout-small";
 import { resolveBajourConfig } from "../../config";
 
-export default async function BaselBriefingSuperlight() {
+import { Suspense } from "react";
+
+export default function BaselBriefingSuperlightWrapper() {
+  return (
+    <Suspense fallback={null}>
+      <BaselBriefingSuperlight />
+    </Suspense>
+  );
+}
+
+async function BaselBriefingSuperlight() {
   const { tenant, listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {

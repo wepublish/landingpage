@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 
 import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
@@ -8,7 +9,15 @@ import BajourLayoutLarge from "./components/bajour-layout-large";
 import { resolveBajourConfig } from "./config";
 import { PLZ_TO_GEMEINDE } from "./gemeinden-mapping";
 
-export default async function BaselBriefing({
+export default function BaselBriefingWrapper({ searchParams }: { searchParams: Promise<{ plz?: string }> }) {
+  return (
+    <Suspense fallback={null}>
+      <BaselBriefing searchParams={searchParams} />
+    </Suspense>
+  )
+}
+
+async function BaselBriefing({
   searchParams,
 }: {
   searchParams: Promise<{ plz?: string }>;

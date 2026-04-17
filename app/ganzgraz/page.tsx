@@ -4,7 +4,17 @@ import bajourIphone from "./assets/iphone.png";
 import bajourLogo from "./assets/logo.webp";
 import { resolveConfig } from "./config";
 
-export default async function GrazBriefingSuperlight() {
+import { Suspense } from "react";
+
+export default function GrazBriefingSuperlightWrapper() {
+  return (
+    <Suspense fallback={null}>
+      <GrazBriefingSuperlight />
+    </Suspense>
+  );
+}
+
+async function GrazBriefingSuperlight() {
   const { tenant, listId } = await resolveConfig();
 
   const briefingProps = {

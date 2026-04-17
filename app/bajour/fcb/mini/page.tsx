@@ -4,7 +4,17 @@ import bajourIphone from "../assets/bajour-iphone.png";
 import BajourLayoutSmall from "../../components/bajour-layout-small";
 import { resolveBajourConfig } from "../../config";
 
-export default async function BaselBriefingSuperlight() {
+import { Suspense } from "react";
+
+export default function BaselBriefingSuperlightWrapper() {
+  return (
+    <Suspense fallback={null}>
+      <BaselBriefingSuperlight />
+    </Suspense>
+  );
+}
+
+async function BaselBriefingSuperlight() {
   const { tenant, listId, baselBriefingId, fasnachtsBriefingId, fcbBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {

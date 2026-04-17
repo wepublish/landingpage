@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 
 import bajourIphone from "../assets/bajour-iphone.png"
 import bajourLogo from "../assets/logo_black.svg";
@@ -5,7 +6,15 @@ import BajourLayoutMedium from "../components/bajour-layout-medium";
 import { resolveBajourConfig } from "../config";
 import { PLZ_TO_GEMEINDE } from "../gemeinden-mapping";
 
-export default async function BaselBriefingLight({
+export default function BaselBriefingLightWrapper({ searchParams }: { searchParams: Promise<{ plz?: string }> }) {
+  return (
+    <Suspense fallback={null}>
+      <BaselBriefingLight searchParams={searchParams} />
+    </Suspense>
+  )
+}
+
+async function BaselBriefingLight({
   searchParams,
 }: {
   searchParams: Promise<{ plz?: string }>;
