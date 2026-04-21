@@ -87,6 +87,7 @@ async function BaselBriefingLight({
         { name: "VORNAME", urlParam: "vorname", defaultValue: "Leser*in" },
         { name: "NACHNAME", urlParam: "nachname" },
         { name: "PLZ", urlParam: "plz" },
+        ...(gemeinde ? [{ name: "GEMEINDNWS", value: plz }] : []),
       ],
       successPage: {
         description: "Nun noch eine letzte Frage: Findest du, dass unabhängiger Lokal-Journalismus etwas Kosten sollte?",

@@ -18,8 +18,12 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
   const router = useRouter();
 
   const [formData, setFormData] = useState<Record<string, string>>(formConfig.mailchimpFields.reduce<Record<string, string>>((acc, field) => {
-    const urlParam = searchParams.get(field.urlParam);
-    acc[field.name] = urlParam ? urlParam : "";
+    if (field.value !== undefined) {
+      acc[field.name] = field.value;
+    } else {
+      const urlParam = field.urlParam ? searchParams.get(field.urlParam) : null;
+      acc[field.name] = urlParam ?? "";
+    }
     return acc;
   }, {}));
 
