@@ -20,7 +20,7 @@ async function GrazBriefingSuperlight() {
   const briefingProps = {
     logo: bajourLogo,
     title: "Der Graz-Newsletter",
-    subtitle: "Das Wichtigste aus deiner Stadt: Hol dir den Graz-Newsletter mit den besten Geschichten, Neuigkeiten und Tipps. Ausgewählt und eingeordnet, morgens um 6 Uhr in deinem Postfach. Von Montag bis Donnerstag. Frisch und kostenlos.",
+    subtitle: "Das Wichtigste aus deiner Stadt: Hol dir den Graz-Newsletter mit den besten Geschichten, Neuigkeiten und Tipps. Ausgewählt und eingeordnet, morgens um 6 Uhr in deinem Postfach. Frisch und kostenlos. Von Montag bis Donnerstag. Am 4. Mai geht's los!",
     image: bajourIphone,
     listItems: [
       "Graz-News des Tages",
@@ -83,17 +83,17 @@ async function GrazBriefingSuperlight() {
         { name: "LNAME", urlParam: "nachname" },
       ],
       successPage: {
-        description: "Nun noch eine letzte Frage: Findest du, dass unabhängiger Lokal-Journalismus etwas Kosten sollte?",
+        description: "Nun noch eine letzte Frage: Folgst du uns schon auf Instagram?",
         options: [
           {
             label: "Ja",
             background: "#ff8900",
-            url: "https://ganzgraz.at/mitmachen?firstName=|*FNAME*|&mail=|*EMAIL*|",
+            url: "https://ganzgraz.at",
           },
           {
             label: "Nein",
             background: "#bfbfbfff",
-            url: "https://ganzgraz.at/willkommen-briefing",
+            url: "https://instagram.com/ganzgraz",
           },
         ],
       },
