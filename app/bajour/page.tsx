@@ -30,7 +30,7 @@ async function BaselBriefing({
     logo: bajourLogo,
     title: "Basel Briefing",
     wappen: gemeinde?.wappen,
-    subtitle: gemeinde ? `Neu mit Lokalnachrichten aus ${gemeinde.name}` : "Das Wichtigste für den Start in den Tag",
+    subtitle: gemeinde ? `Mit Lokalnachrichten aus ${gemeinde.name}` : "Das Wichtigste für den Start in den Tag",
     lead: `Du willst wissen, was in ${gemeinde ? `${gemeinde.name} und der Region Basel` : "Basel"} läuft, hast aber keine Lust, dich durch die Zeitungen und Online-Portale zu pflügen?`,
     wakeup: {
       intro: "Wir von Bajour nehmen<br>dir diese Arbeit ab. Wir arbeiten die Nacht durch, damit du morgens gut informiert in den Tag starten kannst.",

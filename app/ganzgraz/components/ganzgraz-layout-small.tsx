@@ -33,7 +33,7 @@ export default function GanzgrazLayoutSmall(props: GanzgrazLayoutSmallProps) {
         <>
             <title>{props.title}</title>
             <MetaPixel pixelId="1259793032931410" />
-            <main className={`${robotoCondensed.className} min-h-screen bg-[#f8c99d]`}>
+            <main className={`${robotoCondensed.className} min-h-screen bg-white`}>
             <div className="px-4 mx-auto lg:w-1/3 flex flex-col items-center">
                 <Link href="https://ganzgraz.at" target="_blank" rel="noopener noreferrer" className="flex justify-center w-full">
                     <Image src={props.logo} alt="Logo" className="w-1/2 my-4" />
