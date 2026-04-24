@@ -4,6 +4,8 @@ import AeschImage from "./assets/gemeinden/4147.jpg";
 import AeschWappen from "./assets/gemeinden/4147.svg";
 import ArlesheimImage from "./assets/gemeinden/4144.jpg";
 import ArlesheimWappen from "./assets/gemeinden/4144.svg";
+import MünchensteinImage from "./assets/gemeinden/4142.jpg";
+import MünchensteinWappen from "./assets/gemeinden/4142.svg";
 
 export interface GemeindeInfo {
   name: string;
@@ -17,7 +19,7 @@ export const PLZ_TO_GEMEINDE: Record<string, GemeindeInfo> = {
   "4144": { name: "Arlesheim", image: ArlesheimImage, wappen: ArlesheimWappen },
   "4102": { name: "Binningen" },
   "4103": { name: "Bottmingen" },
-  "4142": { name: "Münchenstein" },
+  "4142": { name: "Münchenstein", image: MünchensteinImage, wappen: MünchensteinWappen },
   "4132": { name: "Muttenz" },
   "4133": { name: "Pratteln" },
   "4153": { name: "Reinach" },

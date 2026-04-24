@@ -84,17 +84,17 @@ async function GrazBriefingSuperlight() {
         { name: "LNAME", urlParam: "nachname" },
       ],
       successPage: {
-        description: "Nun noch eine letzte Frage: Folgst du uns schon auf Instagram?",
+        description: "Bock auf News aus deiner Stadt?",
         options: [
           {
             label: "Ja",
             background: "#ff8900",
-            url: "https://ganzgraz.at",
+            url: "https://www.ganzgraz.at/willkommen-briefing",
           },
           {
-            label: "Nein",
+            label: "Bin gespannt",
             background: "#bfbfbfff",
-            url: "https://instagram.com/ganzgraz",
+            url: "https://www.ganzgraz.at/willkommen-briefing",
           },
         ],
       },
