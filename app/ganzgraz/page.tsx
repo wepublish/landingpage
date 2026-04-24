@@ -87,14 +87,14 @@ async function GrazBriefingSuperlight() {
         description: "Bock auf News aus deiner Stadt?",
         options: [
           {
-            label: "Ja",
+            label: "Ja!",
             background: "#ff8900",
-            url: "https://www.ganzgraz.at/willkommen-briefing",
+            url: "https://ganzgraz.at/willkommen-briefing",
           },
           {
-            label: "Bin gespannt",
+            label: "Ganz viel!",
             background: "#bfbfbfff",
-            url: "https://www.ganzgraz.at/willkommen-briefing",
+            url: "https://ganzgraz.at/willkommen-briefing",
           },
         ],
       },
