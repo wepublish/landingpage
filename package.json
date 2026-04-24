@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run resolve-config && next dev",
+    "resolve-config": "npx tsx scripts/resolve-config.ts",
+    "build": "npm run resolve-config && next build",
+    "build:cloudflare": "npm run resolve-config && npx @opennextjs/cloudflare build",
     "start": "next start",
-    "build:cloudflare": "npx @opennextjs/cloudflare build",
     "preview:cloudflare": "wrangler dev",
-    "lint": "eslint",
-    "get-all-information": "npx tsx src/info.ts"
+    "lint": "eslint"
   },
   "dependencies": {
     "@next/third-parties": "^16.0.1",
