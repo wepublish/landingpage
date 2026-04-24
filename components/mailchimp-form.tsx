@@ -278,7 +278,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
 
               {isLastStep && !isFirstStep && (
                 <button className="ml-auto px-6 py-2.5 text-gray-900 font-medium rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2" style={{ backgroundColor: formConfig.buttonColor ?? '#FFD60A' }} type="submit" disabled={isSubmitting}>
-                  Abschliessen {isSubmitting && <Image src={spinner} alt="" width={20} height={20} />}
+                  {formConfig.submitButtonLabel ?? "Abschliessen"} {isSubmitting && <Image src={spinner} alt="" width={20} height={20} />}
                 </button>
               )}
             </div>

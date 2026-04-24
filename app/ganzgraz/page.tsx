@@ -50,6 +50,7 @@ async function GrazBriefingSuperlight() {
       doubleOptIn: true,
       interests: [],
       buttonColor: "#FF6600",
+      submitButtonLabel: "Abschließen",
       steps: [
         {
           inputs: [
