@@ -105,7 +105,7 @@ async function BaselBriefingSuperlight({
       mailchimpFields: [
         { name: "UTM_SOURCE", urlParam: "utm_source" },
         { name: "UTM_MEDIUM", urlParam: "utm_medium" },
-        { name: "UTM_CAMP", urlParam: "utm_campaign" },
+        { name: "UTM_CAMPAI", urlParam: "utm_campaign" },
         { name: "EMAIL", urlParam: "email" },
         { name: "VORNAME", urlParam: "vorname", defaultValue: "Leser*in" },
         { name: "NACHNAME", urlParam: "nachname" },
