@@ -6,6 +6,8 @@ import ArlesheimImage from "./assets/gemeinden/4144.jpg";
 import ArlesheimWappen from "./assets/gemeinden/4144.svg";
 import MünchensteinImage from "./assets/gemeinden/4142.jpg";
 import MünchensteinWappen from "./assets/gemeinden/4142.svg";
+import PrattelnImage from "./assets/gemeinden/4133.jpg";
+import PrattelnWappen from "./assets/gemeinden/4133.svg";
 
 export interface GemeindeInfo {
   name: string;
@@ -21,7 +23,7 @@ export const PLZ_TO_GEMEINDE: Record<string, GemeindeInfo> = {
   "4103": { name: "Bottmingen" },
   "4142": { name: "Münchenstein", image: MünchensteinImage, wappen: MünchensteinWappen },
   "4132": { name: "Muttenz" },
-  "4133": { name: "Pratteln" },
+  "4133": { name: "Pratteln", image: PrattelnImage, wappen: PrattelnWappen },
   "4153": { name: "Reinach" },
   "4125": { name: "Riehen" },
 };
