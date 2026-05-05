@@ -9,7 +9,13 @@
 	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+	"features": {
+		"ghcr.io/devcontainers-extra/features/opencode:1": {}
+	},
+
+	"mounts": [
+		"source=${localEnv:HOME}/opencode.json,target=/workspaces/strava/opencode.json,type=bind,readonly"
+	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -20,7 +26,8 @@
 		"vscode": {
 			"extensions": [
 				"shardulm94.trailing-spaces",
-				"Anthropic.claude-code"
+				"Anthropic.claude-code",
+				"sst-dev.opencode"
 			]
 		}
 	}
