@@ -71,7 +71,7 @@ export default function GanzgrazLayoutSmall(props: GanzgrazLayoutSmallProps) {
                 </section>
 
                 <section className="w-full mt-6">
-                    <Image src={teamfoto} alt="Das GanzGraz-Team" className="w-full h-auto rounded-md" />
+                    <Image src={teamfoto} alt="Das ganzgraz-Team" className="w-full h-auto rounded-md" />
                     <p className="mt-2 text-center font-bold">Dein ganzgraz-Team!</p>
                     <p className="text-center text-xs text-gray-500">Credits: Karin Daninger</p>
                 </section>
@@ -80,7 +80,7 @@ export default function GanzgrazLayoutSmall(props: GanzgrazLayoutSmallProps) {
                     <div className="mt-6 text-center text-xs text-gray-500">
                         <a href="https://ganzgraz.at/impressum" target="_blank" rel="noopener noreferrer" className="hover:underline">Impressum</a>
                         <span className="mx-2">|</span>
-                        <a href="https://ganzgraz.at" target="_blank" rel="noopener noreferrer" className="hover:underline">über GanzGraz</a>
+                        <a href="https://ganzgraz.at" target="_blank" rel="noopener noreferrer" className="hover:underline">über ganzgraz</a>
                     </div>
                 </section>
 
