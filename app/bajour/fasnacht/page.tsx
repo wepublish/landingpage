@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Fasnachts-Briefing – Deine fasnächtliche Grundversorgung",
+  description: "Abonniere das Fasnachts-Briefing und bleib rund ums Jahr übers fasnächtliche Geschehen informiert – kostenlos per E-Mail.",
+};
 
 import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
@@ -118,8 +124,21 @@ async function BaselBriefing() {
     },
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Fasnachts-Briefing",
+    "provider": { "@type": "Organization", "name": "Bajour" },
+    "description": "Ein News-Service rund um die Basler Fasnacht – deine fasnächtliche Grundversorgung.",
+    "areaServed": "Basel",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BajourLayoutLarge {...briefingProps} />
     </>
   );
