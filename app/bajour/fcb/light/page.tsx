@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "FCB-Briefing – Das Wichtigste vor jedem Spiel",
+  description: "Abonniere das FCB-Briefing und erhalte an jedem Spieltag die wichtigsten Infos zum FC Basel per E-Mail.",
+};
 
 import bajourIphone from "../assets/bajour-iphone.png"
 import fcbLogo from "../assets/logo_black.svg";
@@ -89,8 +95,21 @@ async function BaselBriefingLight() {
     },
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "FCB-Briefing",
+    "provider": { "@type": "Organization", "name": "Bajour" },
+    "description": "Ein News-Service rund um den FC Basel – vor jedem Spiel in deinem Postfach.",
+    "areaServed": "Basel",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BajourLayoutMedium {...briefingProps} />
     </>
   );

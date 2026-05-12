@@ -1,10 +1,29 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 
 import bajourIphone from "../assets/bajour-iphone.png"
 import bajourLogo from "../assets/logo_black.svg";
 import BajourLayoutMedium from "../components/bajour-layout-medium";
 import { resolveBajourConfig } from "../config";
 import { PLZ_TO_GEMEINDE } from "../gemeinden-mapping";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ plz?: string }>;
+}): Promise<Metadata> {
+  const { plz } = await searchParams;
+  const gemeinde = plz ? PLZ_TO_GEMEINDE[plz] : undefined;
+
+  return {
+    title: gemeinde
+      ? `Basel Briefing – Lokalnachrichten aus ${gemeinde.name}`
+      : "Basel Briefing – Das Wichtigste für den Start in den Tag",
+    description: gemeinde
+      ? `Abonniere das Basel Briefing mit Lokalnachrichten aus ${gemeinde.name} und der Region Basel.`
+      : "Abonniere das Basel Briefing – jeden Morgen die wichtigsten Nachrichten aus der Region Basel.",
+  };
+}
 
 export default function BaselBriefingLightWrapper({ searchParams }: { searchParams: Promise<{ plz?: string }> }) {
   return (
@@ -107,8 +126,26 @@ async function BaselBriefingLight({
     },
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": gemeinde ? `Basel Briefing – Lokalnachrichten aus ${gemeinde.name}` : "Basel Briefing",
+    "provider": {
+      "@type": "Organization",
+      "name": "Bajour",
+    },
+    "description": gemeinde
+      ? `Ein täglicher News-Service für ${gemeinde.name} und die Region Basel.`
+      : "Ein täglicher News-Service für die Region Basel.",
+    "areaServed": gemeinde ? [gemeinde.name, "Basel"] : "Basel",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BajourLayoutMedium {...briefingProps} />
     </>
   );
