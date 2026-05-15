@@ -2,7 +2,7 @@ import { Mailchimp } from "@wepublish/wepublish-mailchimp";
 import fs from "fs";
 import path from "path";
 
-const TENANTS = ["BAJOUR", "GANZGRAZ"];
+const TENANTS = ["BAJOUR", "GANZGRAZ", "MUNOTGLOEGGLI"];
 
 async function resolveConfig() {
   const config: Record<string, unknown> = {};
