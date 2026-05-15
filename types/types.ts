@@ -74,6 +74,7 @@ interface BaseFormConfig {
   steps: Step[];
   autoFocus: boolean;
   buttonColor?: string;
+  buttonFontColor?: string;
   submitButtonLabel?: string;
   doubleOptIn?: boolean;
 }
