@@ -14,7 +14,7 @@
 	},
 
 	"mounts": [
-		"source=${localEnv:HOME}/opencode.json,target=/workspaces/strava/opencode.json,type=bind,readonly"
+		"source=${localEnv:HOME}/opencode.json,target=/workspaces/landingpage/opencode.json,type=bind,readonly"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
