@@ -42,3 +42,4 @@ next-env.d.ts
 /lib/mailchimp-config.json
 .claude
 .opencode
+opencode.json
