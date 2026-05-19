@@ -4,7 +4,7 @@ import { FormConfig } from "@/types/types";
 import Image, { StaticImageData } from "next/image";
 import { Roboto_Condensed } from "next/font/google";
 import localFont from "next/font/local";
-import teamfoto from "../assets/teamfoto.png";
+import teamfoto from "../assets/team.jpg";
 import MetaPixel from "@/components/meta-pixel";
 import Link from "next/link";
 
@@ -53,7 +53,7 @@ export default function MunotgloeggliLayoutSmall(props: MunotgloeggliLayoutSmall
                 <section className="mb-4">
                     <section>
                         <h2 className={`text-xl text-center mt-2 mb-10 text-gray-950/80 ${ttNormsBold.className}`}>{props.subtitle}</h2>
-                        <p className={ttNorms.className}>{props.text}</p>
+                        <p className={ttNorms.className} dangerouslySetInnerHTML={{ __html: props.text }} />
                     </section>
                 </section>
 
@@ -84,7 +84,7 @@ export default function MunotgloeggliLayoutSmall(props: MunotgloeggliLayoutSmall
 
                 <section className="w-full mt-6">
                     <Image src={teamfoto} alt="Das munotgloeggli-Team" className="w-full h-auto rounded-md" />
-                    <p className={`mt-2 text-center font-bold ${ttNorms.className}`}>Dein Munotglöggli-Team!</p>
+                    <p className={`mt-2 text-center font-bold ${ttNorms.className}`}>Dein Munotglöggli-Team</p>
                 </section>
 
                 <section className="w-full mt-4">

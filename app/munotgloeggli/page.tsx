@@ -19,12 +19,12 @@ async function MunotgloeggliSuperlight() {
   const briefingProps = {
     logo: logo,
     title: 'Munotglöggli – der Newsletter für Schaffhausen',
-    subtitle: "Wissen, was (nicht) läuft",
-    text: "Das wichtigste aus Schaffhausen: Hol dir das Munotglöggli mit den wichtigsten News, den spannendsten Geschichten und Allerlei Wissenswertem.\nEin Angebot der Schaffhauser AZ: Kuratiert, ausgewählt und eingeordnet, jeden Montag zu Feierabend in deinem Postfach.\nGratis und Franko. Am 1. Juni geht's los!",
+    subtitle: "Das Montags-Update für Schaffhausen",
+    text: "Hol dir das Munotglöggli mit den wichtigsten News, den spannendsten Geschichten und allerlei Wissenswertem.<br>Ein Angebot der Schaffhauser AZ: kuratiert, ausgewählt und eingeordnet, jeden Montag zu Feierabend in deinem Postfach.<br>Gratis! Am 1. Juni gehts los!",
     image: iphone,
     listItems: [
       "News aus der Region Schaffhausen",
-      "Persönlich und Gratis",
+      "Persönlich und gratis",
       "Hintergründe und Geschichten",
       "Jeden Montag zu Feierabend",
     ],
@@ -84,12 +84,12 @@ async function MunotgloeggliSuperlight() {
           {
             label: "Ja!",
             background: "#ff8900",
-            url: "https://hier.munotgloeggli.ch/willkommen",
+            url: "https://munotgloeggli.ch/success",
           },
           {
             label: "Ganz viel!",
             background: "#bfbfbfff",
-            url: "https://hier.munotgloeggli.ch/willkommen",
+            url: "https://munotgloeggli.ch/success",
           },
         ],
       },
