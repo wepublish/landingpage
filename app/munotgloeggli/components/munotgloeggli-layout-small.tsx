@@ -4,7 +4,7 @@ import { FormConfig } from "@/types/types";
 import Image, { StaticImageData } from "next/image";
 import { Roboto_Condensed } from "next/font/google";
 import localFont from "next/font/local";
-import teamfoto from "../assets/team.jpg";
+import teamfoto from "../assets/team.webp";
 import MetaPixel from "@/components/meta-pixel";
 import Link from "next/link";
 

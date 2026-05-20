@@ -1,6 +1,6 @@
 import MunotgloeggliLayoutSmall from "./components/munotgloeggli-layout-small";
-import iphone from "./assets/iphone.png";
-import logo from "./assets/logo.png";
+import iphone from "./assets/iphone.webp";
+import logo from "./assets/logo.webp";
 import { resolveConfig } from "./config";
 
 import { Suspense } from "react";
