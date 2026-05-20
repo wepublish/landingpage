@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
     }
     return NextResponse.next();
   }
-  if (host === "hier.munotgloeggli.ch") {
+  if (host === "hallo.munotgloeggli.ch") {
     if (!pathname.startsWith("/munotgloeggli")) {
       const url = request.nextUrl.clone();
       url.pathname = `/munotgloeggli${pathname}`;
