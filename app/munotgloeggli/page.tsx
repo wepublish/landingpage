@@ -46,7 +46,6 @@ async function MunotgloeggliSuperlight() {
     ],
     formConfig: {
       autoFocus: true,
-      doubleOptIn: true,
       interests: [],
       buttonColor: "#DC0D15",
       buttonFontColor: "#FFFFFF",
