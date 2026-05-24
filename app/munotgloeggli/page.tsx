@@ -23,7 +23,7 @@ async function MunotgloeggliSuperlight() {
     text: "Hol dir das Munotglöggli mit den wichtigsten News, den spannendsten Geschichten und allerlei Wissenswertem.<br>Ein Angebot der Schaffhauser AZ: kuratiert, ausgewählt und eingeordnet, jeden Montag zu Feierabend in deinem Postfach.<br>Gratis! Am 1. Juni gehts los!",
     image: iphone,
     listItems: [
-      "News aus der Region Schaffhausen",
+      "Lokaljournalismus aus der Region Schaffhausen",
       "Persönlich und gratis",
       "Hintergründe und Geschichten",
       "Jeden Montag zu Feierabend",
@@ -78,17 +78,17 @@ async function MunotgloeggliSuperlight() {
         { name: "LNAME", urlParam: "nachname" },
       ],
       successPage: {
-        description: "Bock auf News aus Schaffhausen?",
+        description: "Bock auf Lokaljournalismus aus Schaffhausen?",
         options: [
           {
             label: "Ja!",
             background: "#ff8900",
-            url: "https://munotgloeggli.ch/success",
+            url: "https://munotgloeggli.ch/sucess_abo",
           },
           {
             label: "Ganz viel!",
-            background: "#bfbfbfff",
-            url: "https://munotgloeggli.ch/success",
+            background: "#DC0D15",
+            url: "https://munotgloeggli.ch/mitmachen?firstName=|*FNAME*|&mail=|*EMAIL*|",
           },
         ],
       },
