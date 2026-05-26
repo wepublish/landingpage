@@ -8,6 +8,8 @@ import MünchensteinImage from "./assets/gemeinden/4142.jpg";
 import MünchensteinWappen from "./assets/gemeinden/4142.svg";
 import PrattelnImage from "./assets/gemeinden/4133.jpg";
 import PrattelnWappen from "./assets/gemeinden/4133.svg";
+import RiehenImage from "./assets/gemeinden/4125.jpg";
+import RiehenWappen from "./assets/gemeinden/4125.svg";
 
 export interface GemeindeInfo {
   name: string;
@@ -25,5 +27,5 @@ export const PLZ_TO_GEMEINDE: Record<string, GemeindeInfo> = {
   "4132": { name: "Muttenz" },
   "4133": { name: "Pratteln", image: PrattelnImage, wappen: PrattelnWappen },
   "4153": { name: "Reinach" },
-  "4125": { name: "Riehen" },
+  "4125": { name: "Riehen", image: RiehenImage, wappen: RiehenWappen },
 };
