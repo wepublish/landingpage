@@ -88,6 +88,7 @@ interface RedirectConfig {
   label: string;
   background: string;
   url: string;
+  mergeField?: { name: string; value: string };
 }
 
 type SuccessOptions =

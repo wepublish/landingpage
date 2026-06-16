@@ -112,6 +112,7 @@ async function BaselBriefing() {
             label: "Ja",
             background: "#FFD60A",
             url: "https://bajour.ch/mitmachen?firstName=|*VORNAME*|&lastName=|*NACHNAME*|&mail=|*EMAIL*|&memberPlanBySlug=fcb-briefing-member",
+            mergeField: { name: "WILL_ABONN", value: "1" },
           },
           {
             label: "Nein",

@@ -145,6 +145,7 @@ async function BaselBriefing({
             label: "Ja",
             background: "#FFD60A",
             url: "https://bajour.ch/mitmachen?memberPlanBySlug=bajour-member&additionalMemberPlans=upsell&firstName=|*VORNAME*|&mail=|*EMAIL*|&lastName=|*NACHNAME*|&memberPlanBySlug=bajour-member&additionalMemberPlans=upsell",
+            mergeField: { name: "WILL_ABONN", value: "1" },
           },
           {
             label: "Nein",

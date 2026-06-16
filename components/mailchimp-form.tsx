@@ -201,7 +201,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
         url: replacePlaceholders(option.url)
       }))
     };
-    return <MailchimpSuccessPage successPage={processedSuccessPage} />;
+    return <MailchimpSuccessPage successPage={processedSuccessPage} email={formData["EMAIL"]} tenant={formConfig.tenant} listId={formConfig.listId} status={formConfig.doubleOptIn ? "pending" : "subscribed"} />;
   }
 
   return (

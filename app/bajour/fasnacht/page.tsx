@@ -113,6 +113,7 @@ async function BaselBriefing() {
             label: "Ja",
             background: "#FFD60A",
             url: "https://bajour.ch/mitmachen?memberPlanBySlug=fasnachts-briefing-member&firstName=|*VORNAME*|&lastName=|*NACHNAME*|&mail=|*EMAIL*|",
+            mergeField: { name: "WILL_ABONN", value: "1" },
           },
           {
             label: "Nein",
