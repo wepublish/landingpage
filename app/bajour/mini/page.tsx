@@ -132,7 +132,7 @@ async function BaselBriefingSuperlight({
         ...(gemeinde ? [{ name: "GEMEINDNWS", value: plz }] : []),
       ],
       successPage: {
-        description: "Nun noch eine letzte Frage: Findest du, dass unabhängiger Lokal-Journalismus etwas Kosten sollte?",
+        description: "Nun noch eine letzte Frage: Findest du, dass unabhängiger Lokal-Journalismus etwas kosten sollte?",
         options: [
           {
             label: "Ja",
