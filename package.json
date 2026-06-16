@@ -9,6 +9,7 @@
     "build:cloudflare": "dotenv -- npm run resolve-config && npx @opennextjs/cloudflare build",
     "start": "next start",
     "preview:cloudflare": "wrangler dev",
+    "print:pdf": "npx tsx scripts/print-pdf.ts",
     "lint": "eslint"
   },
   "dependencies": {
@@ -28,6 +29,8 @@
     "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^25.1.0",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",

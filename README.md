@@ -69,6 +69,36 @@ der Seite und verwendet eines der Layouts. Die Layouts sind in `bajour-layout-la
 Das erlaubt, ein Layout für verschiedene Briefings zu verwenden, ohne Code allzu
 stark duplizieren zu müssen.
 
+## PDF-/Druck-Export
+
+Eine Seite kann als PDF in einer exakten physischen Grösse exportiert werden
+(Standard: 870 × 2170 mm – ein Roll-up-Banner). Der Export läuft lokal über einen
+Headless-Chrome (Puppeteer) und benötigt keine Anpassung der Cloudflare-Deployment.
+
+Das PDF sieht aus wie die Live-Seite (es nutzt die normalen `screen`-Styles). Das
+Skript rendert die Seite in ihrer natürlichen Breite, wählt die Breite so, dass das
+Seitenverhältnis dem Banner entspricht, und skaliert das Vektor-PDF anschliessend
+verlustfrei auf die exakte Zielgrösse.
+
+Standardmässig wird die Live-Seite (`https://briefing.bajour.ch`) exportiert –
+es muss also kein lokaler Server laufen:
+
+```bash
+npm run print:pdf -- --out bajour-banner.pdf
+```
+
+Für eine lokale Vorschau stattdessen den Dev-Server starten und die URL übergeben:
+
+```bash
+npm run dev
+# in einem zweiten Terminal:
+npm run print:pdf -- --url http://localhost:3000/bajour --out bajour-banner.pdf
+```
+
+Optionen: `--url` (Standard: Live-Seite), `--out`, `--width`/`--height` (mm),
+`--min-width`/`--max-width` (px) und `--css` (optionales CSS, das vor dem Export
+injiziert wird).
+
 ## Mailchimp-Integration
 
 Für die Verknüpfung des Formulars ist teilweise die Angabe interner

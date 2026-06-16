@@ -107,11 +107,15 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           />
           {/* Title & Subtitle - Roboto Font */}
           <div className={`${roboto.className} w-full text-center font-bold`}>
-            {/* Title: 4vh -> 6vh -> 8vh */}
+            {/* Title: 8vw -> 7vw -> 10.4vw, capped so it doesn't explode on very
+                wide pages (e.g. the PDF/banner export). Small/medium screens use
+                a larger vw so the title fills the narrow width; the caps equal
+                the vw sizes at a ~1080px-wide window, so normal viewports
+                render identically while wider ones freeze instead of overflowing. */}
             <h1 className="pt-[1em] leading-[1.1rem] flex items-center justify-center gap-[0.4em]
-              text-[4vh] lg:text-[4.5rem]
-              sm:text-[6vh]
-              lg:text-[8vh]"
+              text-[min(8vw,2.7rem)]
+              sm:text-[min(7vw,4.05rem)]
+              lg:text-[min(10.4vw,7rem)]"
             >
               {props.title}
               {props.wappen && (
@@ -186,7 +190,11 @@ export default function BajourLayoutLarge(props: BajourLayoutLargeProps) {
           </section>
           {/* Wakeup Text */}
           {/* Inherits root font size. Time span is 1.2em. */}
-          <section className="absolute bg-gradient-to-br from-[#0758a4] to-[#002f49] text-white pl-[2em] lg:pl-[4rem] pt-[1em] pr-[1em] pb-[4em]
+          {/* Left padding clears the overlapping "ready" image (which sits on
+              top): its right edge is ~5vw past this box's left edge, so pad the
+              text at least that far in. max() keeps the original 2em where it is
+              already larger, so the text only shifts right where needed. */}
+          <section className="absolute bg-gradient-to-br from-[#0758a4] to-[#002f49] text-white pl-[max(2em,6vw)] lg:pl-[4rem] pt-[1em] pr-[1em] pb-[4em]
             lg:text-[2.3rem] lg:leading-[2.3rem]
             3xl:text-[3.5rem] 3xl:leading-[3rem]
             right-0 top-[145px] w-[65vw] h-[170px]
