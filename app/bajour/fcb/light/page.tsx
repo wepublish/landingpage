@@ -1,3 +1,4 @@
+import EmbedOr from "@/components/embed-or";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -111,7 +112,9 @@ async function BaselBriefingLight() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <BajourLayoutMedium {...briefingProps} />
+      <EmbedOr formConfig={briefingProps.formConfig}>
+        <BajourLayoutMedium {...briefingProps} />
+      </EmbedOr>
     </>
   );
 }

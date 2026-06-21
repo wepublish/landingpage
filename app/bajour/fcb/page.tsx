@@ -1,3 +1,4 @@
+import EmbedOr from "@/components/embed-or";
 import type { Metadata } from "next";
 import HeaderImage from "./assets/header.webp";
 import ReadyImage from "./assets/time.webp";
@@ -139,7 +140,9 @@ async function BaselBriefing() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <BajourLayoutLarge {...briefingProps} />
+      <EmbedOr formConfig={briefingProps.formConfig}>
+        <BajourLayoutLarge {...briefingProps} />
+      </EmbedOr>
     </>
   );
 }

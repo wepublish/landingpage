@@ -1,3 +1,4 @@
+import EmbedOr from "@/components/embed-or";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 
@@ -177,7 +178,9 @@ async function BaselBriefing({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <BajourLayoutLarge {...briefingProps} />
+      <EmbedOr formConfig={briefingProps.formConfig}>
+        <BajourLayoutLarge {...briefingProps} />
+      </EmbedOr>
     </>
   );
 }

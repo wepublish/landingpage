@@ -1,3 +1,4 @@
+import EmbedOr from "@/components/embed-or";
 import MunotgloeggliLayoutSmall from "./components/munotgloeggli-layout-small";
 import iphone from "./assets/iphone.webp";
 import logo from "./assets/logo.webp";
@@ -97,7 +98,9 @@ async function MunotgloeggliSuperlight() {
 
   return (
     <>
-      <MunotgloeggliLayoutSmall {...briefingProps} />
+      <EmbedOr formConfig={briefingProps.formConfig}>
+        <MunotgloeggliLayoutSmall {...briefingProps} />
+      </EmbedOr>
     </>
   );
 }

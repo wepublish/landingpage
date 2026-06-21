@@ -1,3 +1,4 @@
+import EmbedOr from "@/components/embed-or";
 
 import GanzgrazLayoutSmall from "./components/ganzgraz-layout-small";
 import bajourIphone from "./assets/iphone.png";
@@ -103,7 +104,9 @@ async function GrazBriefingSuperlight() {
 
   return (
     <>
-      <GanzgrazLayoutSmall {...briefingProps} />
+      <EmbedOr formConfig={briefingProps.formConfig}>
+        <GanzgrazLayoutSmall {...briefingProps} />
+      </EmbedOr>
     </>
   );
 }
