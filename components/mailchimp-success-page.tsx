@@ -2,6 +2,7 @@
 
 import { SuccessPageConfig } from "@/types/types";
 import { addMailchimpContact } from "@/app/actions/mailchimp";
+import { isEmbedded, navigateFinal } from "@/lib/embed";
 
 interface MailchimpSuccessPageProps {
   successPage: SuccessPageConfig;
@@ -13,16 +14,30 @@ interface MailchimpSuccessPageProps {
 
 function MailchimpSuccessPage({ successPage, email, tenant, listId, status }: MailchimpSuccessPageProps) {
   const handleOptionClick = async (e: React.MouseEvent<HTMLAnchorElement>, option: SuccessPageConfig["options"][number]) => {
-    if (option.mergeField) {
+    // When embedded we always break out to the parent window instead of
+    // navigating inside the iframe. We also intercept when a mergeField needs
+    // to be written before navigating.
+    if (option.mergeField || isEmbedded()) {
       e.preventDefault();
+    }
+
+    if (option.mergeField) {
       await addMailchimpContact(tenant, listId, {
         email,
         status,
         mergeFields: { [option.mergeField.name]: option.mergeField.value },
         interests: {},
       });
-      window.location.assign(option.url);
     }
+
+    // Embedded → posts the url to the parent (CMS) page.
+    // Not embedded + mergeField → navigate the page ourselves.
+    // Not embedded + no mergeField → no-op; the default <a> navigation runs.
+    navigateFinal(option.url, () => {
+      if (option.mergeField) {
+        window.location.assign(option.url);
+      }
+    });
   };
 
   return (

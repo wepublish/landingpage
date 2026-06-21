@@ -6,6 +6,7 @@ import { FormConfig } from "@/types/types";
 import MailchimpSuccessPage from "./mailchimp-success-page";
 import MailchimpError from "./mailchimp-error";
 import { addMailchimpContact } from "@/app/actions/mailchimp";
+import { navigateFinal } from "@/lib/embed";
 import Image from "next/image";
 import spinner from "@/app/spinner.svg";
 
@@ -114,7 +115,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
         setIsSubmitted(true);
       } else {
         const processedUrl = replacePlaceholders(formConfig.successUrl);
-        router.push(processedUrl);
+        navigateFinal(processedUrl, () => router.push(processedUrl));
       }
       return;
     }
@@ -189,7 +190,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
       setIsSubmitted(true);
     } else {
       const processedUrl = replacePlaceholders(formConfig.successUrl);
-      router.push(processedUrl);
+      navigateFinal(processedUrl, () => router.push(processedUrl));
     }
   }
 
