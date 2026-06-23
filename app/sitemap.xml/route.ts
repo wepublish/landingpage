@@ -53,6 +53,7 @@ export function GET(request: NextRequest) {
 
   switch (host) {
     case "briefing.bajour.ch":
+    case "baselbriefing.ch":
       domain = "briefing.bajour.ch";
       paths = BAJOUR_PATHS;
       plzParams = PLZ_PARAMS;

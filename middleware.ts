@@ -4,7 +4,7 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const { pathname } = request.nextUrl;
 
-  if (host === "briefing.bajour.ch") {
+  if (host === "briefing.bajour.ch" || host === "baselbriefing.ch") {
     if (!pathname.startsWith("/bajour")) {
       const url = request.nextUrl.clone();
       url.pathname = `/bajour${pathname}`;
