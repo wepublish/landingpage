@@ -104,7 +104,7 @@ async function BaselBriefing() {
         { name: "EMAIL", urlParam: "email" },
         { name: "VORNAME", urlParam: "vorname" },
         { name: "NACHNAME", urlParam: "nachname" },
-        { name: "PLZ", urlParam: "plz" },
+        { name: "GEMEINDNWS", urlParam: "plz" },
       ],
       successPage: {
         description: "Nun noch eine letzte Frage: Findest du, dass unabhängiger Lokal-Journalismus etwas kosten sollte?",

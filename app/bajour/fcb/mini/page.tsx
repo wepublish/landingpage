@@ -98,7 +98,7 @@ async function BaselBriefingSuperlight() {
         { name: "EMAIL", urlParam: "email" },
         { name: "VORNAME", urlParam: "vorname", defaultValue: "Leser*in" },
         { name: "NACHNAME", urlParam: "nachname" },
-        { name: "PLZ", urlParam: "plz" },
+        { name: "GEMEINDNWS", urlParam: "plz" },
       ],
       successPage: {
         description: "Nun noch eine letzte Frage: Findest du, dass unabhängiger Lokal-Journalismus etwas kosten sollte?",

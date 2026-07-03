@@ -107,12 +107,12 @@ async function BaselBriefingSuperlight({
           ],
         },
         {
-          skipIfFieldsFilled: ["PLZ"],
+          skipIfFieldsFilled: ["GEMEINDNWS"],
 
           inputs: [
             {
               description: "Für gewisse Gemeinden ergänzen wir das Briefing mit Lokalnachrichten. Trage hier deine Postleitzahl ein und lass dich überraschen!",
-              name: "PLZ",
+              name: "GEMEINDNWS",
               label: "Postleitzahl",
               type: "number",
             },
@@ -129,7 +129,7 @@ async function BaselBriefingSuperlight({
         { name: "EMAIL", urlParam: "email" },
         { name: "VORNAME", urlParam: "vorname", defaultValue: "Leser*in" },
         { name: "NACHNAME", urlParam: "nachname" },
-        { name: "PLZ", urlParam: "plz" },
+        { name: "GEMEINDNWS", urlParam: "plz" },
         ...(gemeinde ? [{ name: "GEMEINDNWS", value: plz }] : []),
       ],
       successPage: {
