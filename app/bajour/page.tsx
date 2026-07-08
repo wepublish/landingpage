@@ -10,6 +10,7 @@ import bajourLogo from "./assets/logo_white.svg";
 import BajourLayoutLarge from "./components/bajour-layout-large";
 import { resolveBajourConfig } from "./config";
 import { resolveGemeinde } from "./gemeinden-mapping";
+import { briefingMetadata } from "./briefing-metadata";
 
 export async function generateMetadata({
   searchParams,
@@ -18,14 +19,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { gemeinde } = resolveGemeinde(await searchParams);
 
-  return {
-    title: gemeinde
-      ? `Basel Briefing – Lokalnachrichten aus ${gemeinde.name}`
-      : "Basel Briefing – Das Wichtigste für den Start in den Tag",
-    description: gemeinde
-      ? `Abonniere das Basel Briefing mit Lokalnachrichten aus ${gemeinde.name} und der Region Basel.`
-      : "Abonniere das Basel Briefing – jeden Morgen die wichtigsten Nachrichten aus der Region Basel.",
-  };
+  return briefingMetadata(gemeinde);
 }
 
 export default function BaselBriefingWrapper({ searchParams }: { searchParams: Promise<{ plz?: string; tags?: string }> }) {
@@ -42,6 +36,7 @@ async function BaselBriefing({
   searchParams: Promise<{ plz?: string; tags?: string }>;
 }) {
   const { gemeinde, plz } = resolveGemeinde(await searchParams);
+  const metadata = briefingMetadata(gemeinde);
   const { tenant, listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {
@@ -176,7 +171,11 @@ async function BaselBriefing({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <EmbedOr formConfig={briefingProps.formConfig}>
+      <EmbedOr
+        formConfig={briefingProps.formConfig}
+        title={metadata.title}
+        description={metadata.description}
+      >
         <BajourLayoutLarge {...briefingProps} />
       </EmbedOr>
     </>
