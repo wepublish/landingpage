@@ -8,6 +8,7 @@ import bajourLogo from "../assets/logo_black.svg";
 import { resolveBajourConfig } from "../config";
 import { resolveGemeinde } from "../gemeinden-mapping";
 import { briefingMetadata } from "../briefing-metadata";
+import { robotoCondensed } from "../fonts";
 
 export async function generateMetadata({
   searchParams,
@@ -168,6 +169,7 @@ async function BaselBriefingSuperlight({
         formConfig={briefingProps.formConfig}
         title={metadata.title}
         description={metadata.description}
+        className={robotoCondensed.className}
       >
         <BajourLayoutSmall {...briefingProps} />
       </EmbedOr>

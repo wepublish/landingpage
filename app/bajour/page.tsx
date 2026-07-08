@@ -11,6 +11,7 @@ import BajourLayoutLarge from "./components/bajour-layout-large";
 import { resolveBajourConfig } from "./config";
 import { resolveGemeinde } from "./gemeinden-mapping";
 import { briefingMetadata } from "./briefing-metadata";
+import { robotoCondensed } from "./fonts";
 
 export async function generateMetadata({
   searchParams,
@@ -175,6 +176,7 @@ async function BaselBriefing({
         formConfig={briefingProps.formConfig}
         title={metadata.title}
         description={metadata.description}
+        className={robotoCondensed.className}
       >
         <BajourLayoutLarge {...briefingProps} />
       </EmbedOr>

@@ -9,6 +9,8 @@ interface EmbedOrProps {
   formConfig: FormConfig;
   title?: string;
   description?: string;
+  /** applied to the embed wrapper, e.g. a next/font className */
+  className?: string;
   children: React.ReactNode;
 }
 
@@ -20,7 +22,7 @@ interface EmbedOrProps {
  *
  *   https://briefing.bajour.ch/fcb/mini?iframe=true
  */
-export default function EmbedOr({ formConfig, title, description, children }: EmbedOrProps) {
+export default function EmbedOr({ formConfig, title, description, className, children }: EmbedOrProps) {
   const searchParams = useSearchParams();
   const isEmbed = searchParams.get("iframe") === "true";
 
@@ -29,10 +31,10 @@ export default function EmbedOr({ formConfig, title, description, children }: Em
   }
 
   return (
-    <main className="p-4">
+    <main className={className ? `p-4 ${className}` : "p-4"}>
       <IframeResizer />
-      {title && <h1 className="text-2xl font-bold mb-2">{title}</h1>}
-      {description && <p className="mb-4">{description}</p>}
+      {title && <h1 className="text-2xl font-bold mb-2 text-center">{title}</h1>}
+      {description && <p className="mb-4 text-center">{description}</p>}
       <MailchimpForm formConfig={{ ...formConfig, autoFocus: false }} />
     </main>
   );
