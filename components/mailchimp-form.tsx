@@ -41,7 +41,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
 
   useEffect(() => {
     if (currentStep > 0 || autoFocus) {
-      firstInputRef.current?.focus();
+      firstInputRef.current?.focus({ preventScroll: true });
     }
   }, [currentStep, autoFocus]);
 

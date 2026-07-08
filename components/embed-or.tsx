@@ -33,7 +33,7 @@ export default function EmbedOr({ formConfig, title, description, children }: Em
       <IframeResizer />
       {title && <h1 className="text-2xl font-bold mb-2">{title}</h1>}
       {description && <p className="mb-4">{description}</p>}
-      <MailchimpForm formConfig={formConfig} />
+      <MailchimpForm formConfig={{ ...formConfig, autoFocus: false }} />
     </main>
   );
 }
