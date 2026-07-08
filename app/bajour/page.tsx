@@ -9,15 +9,14 @@ import FooterImage from "./assets/footer.webp";
 import bajourLogo from "./assets/logo_white.svg";
 import BajourLayoutLarge from "./components/bajour-layout-large";
 import { resolveBajourConfig } from "./config";
-import { PLZ_TO_GEMEINDE } from "./gemeinden-mapping";
+import { resolveGemeinde } from "./gemeinden-mapping";
 
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<{ plz?: string }>;
+  searchParams: Promise<{ plz?: string; tags?: string }>;
 }): Promise<Metadata> {
-  const { plz } = await searchParams;
-  const gemeinde = plz ? PLZ_TO_GEMEINDE[plz] : undefined;
+  const { gemeinde } = resolveGemeinde(await searchParams);
 
   return {
     title: gemeinde
@@ -29,7 +28,7 @@ export async function generateMetadata({
   };
 }
 
-export default function BaselBriefingWrapper({ searchParams }: { searchParams: Promise<{ plz?: string }> }) {
+export default function BaselBriefingWrapper({ searchParams }: { searchParams: Promise<{ plz?: string; tags?: string }> }) {
   return (
     <Suspense fallback={null}>
       <BaselBriefing searchParams={searchParams} />
@@ -40,10 +39,9 @@ export default function BaselBriefingWrapper({ searchParams }: { searchParams: P
 async function BaselBriefing({
   searchParams,
 }: {
-  searchParams: Promise<{ plz?: string }>;
+  searchParams: Promise<{ plz?: string; tags?: string }>;
 }) {
-  const { plz } = await searchParams;
-  const gemeinde = plz ? PLZ_TO_GEMEINDE[plz] : undefined;
+  const { gemeinde, plz } = resolveGemeinde(await searchParams);
   const { tenant, listId, baselBriefingId, fcbBriefingId, fasnachtsBriefingId } = await resolveBajourConfig();
 
   const briefingProps = {

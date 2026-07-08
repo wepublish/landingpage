@@ -29,3 +29,54 @@ export const PLZ_TO_GEMEINDE: Record<string, GemeindeInfo> = {
   "4153": { name: "Reinach" },
   "4125": { name: "Riehen", image: RiehenImage, wappen: RiehenWappen },
 };
+
+const safeDecode = (value: string) => {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+};
+
+// tolerate raw ("Münchenstein"), encoded ("M%C3%BCnchenstein"), NFD and
+// slugged ("muenchenstein") variants
+const normalize = (value: string) =>
+  safeDecode(value)
+    .normalize("NFC")
+    .toLowerCase()
+    .trim()
+    .replace(/ä/g, "ae")
+    .replace(/ö/g, "oe")
+    .replace(/ü/g, "ue");
+
+const NAME_TO_PLZ: Record<string, string> = Object.fromEntries(
+  Object.entries(PLZ_TO_GEMEINDE).map(([plz, info]) => [normalize(info.name), plz])
+);
+
+/**
+ * Resolves a gemeinde from the `plz` query param or, as a fallback, from the
+ * comma-separated `tags` param the CMS banner appends to the iframe URL.
+ * Also returns the matching PLZ so consumers (e.g. mailchimp fields) always
+ * have one, even when the match came from a tag.
+ */
+export function resolveGemeinde({
+  plz,
+  tags,
+}: {
+  plz?: string;
+  tags?: string;
+}): { gemeinde?: GemeindeInfo; plz?: string } {
+  if (plz && PLZ_TO_GEMEINDE[plz]) {
+    return { gemeinde: PLZ_TO_GEMEINDE[plz], plz };
+  }
+
+  // decode first so a still-encoded value ("Foo%2CBar") splits correctly
+  for (const tag of tags ? safeDecode(tags).split(",") : []) {
+    const matchedPlz = NAME_TO_PLZ[normalize(tag)];
+    if (matchedPlz) {
+      return { gemeinde: PLZ_TO_GEMEINDE[matchedPlz], plz: matchedPlz };
+    }
+  }
+
+  return {};
+}
