@@ -5,6 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import { Roboto_Condensed } from "next/font/google";
 import teamfoto from "../assets/teamfoto.jpg";
 import MetaPixel from "@/components/meta-pixel";
+import ConsentManager from "@/components/consent-manager";
 import Link from "next/link";
 
 const robotoCondensed = Roboto_Condensed({
@@ -32,7 +33,8 @@ export default function GanzgrazLayoutSmall(props: GanzgrazLayoutSmallProps) {
     return (
         <>
             <title>{props.title}</title>
-            <MetaPixel pixelId="1259793032931410" />
+            <ConsentManager cdid="ee45badb726a6" />
+            <MetaPixel pixelId="1259793032931410" consentVendorId="s7" />
             <main className={`${robotoCondensed.className} min-h-screen bg-white`}>
             <div className="px-4 mx-auto lg:w-1/3 flex flex-col items-center">
                 <Link href="https://ganzgraz.at" target="_blank" rel="noopener noreferrer" className="flex justify-center w-full">
