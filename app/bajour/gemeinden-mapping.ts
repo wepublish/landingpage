@@ -4,6 +4,10 @@ import AeschImage from "./assets/gemeinden/4147.jpg";
 import AeschWappen from "./assets/gemeinden/4147.svg";
 import ArlesheimImage from "./assets/gemeinden/4144.jpg";
 import ArlesheimWappen from "./assets/gemeinden/4144.svg";
+import BinningenImage from "./assets/gemeinden/4102.jpg";
+import BinningenWappen from "./assets/gemeinden/4102.svg";
+import BottmingenImage from "./assets/gemeinden/4103.jpg";
+import BottmingenWappen from "./assets/gemeinden/4103.svg";
 import MünchensteinImage from "./assets/gemeinden/4142.jpg";
 import MünchensteinWappen from "./assets/gemeinden/4142.svg";
 import PrattelnImage from "./assets/gemeinden/4133.jpg";
@@ -21,8 +25,8 @@ export const PLZ_TO_GEMEINDE: Record<string, GemeindeInfo> = {
   "4147": { name: "Aesch", image: AeschImage, wappen: AeschWappen },
   "4123": { name: "Allschwil" },
   "4144": { name: "Arlesheim", image: ArlesheimImage, wappen: ArlesheimWappen },
-  "4102": { name: "Binningen" },
-  "4103": { name: "Bottmingen" },
+  "4102": { name: "Binningen", image: BinningenImage, wappen: BinningenWappen },
+  "4103": { name: "Bottmingen", image: BottmingenImage, wappen: BottmingenWappen },
   "4142": { name: "Münchenstein", image: MünchensteinImage, wappen: MünchensteinWappen },
   "4132": { name: "Muttenz" },
   "4133": { name: "Pratteln", image: PrattelnImage, wappen: PrattelnWappen },
