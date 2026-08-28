@@ -3,6 +3,7 @@ interface MailchimpField {
   urlParam?: string;
   defaultValue?: string;
   value?: string;
+  allowedValues?: string[];
 }
 
 interface BaseInput {

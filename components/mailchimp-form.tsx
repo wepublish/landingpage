@@ -14,6 +14,15 @@ interface MailchimpFormProps {
   formConfig: FormConfig;
 }
 
+function resolveAllowedValue(value: string | null, allowedValues?: string[]): string | null {
+  if (!value || !allowedValues) {
+    return value;
+  }
+
+  const normalized = value.trim().toLowerCase();
+  return allowedValues.find((allowed) => allowed.toLowerCase() === normalized) ?? null;
+}
+
 function MailchimpForm({ formConfig }: MailchimpFormProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -23,7 +32,7 @@ function MailchimpForm({ formConfig }: MailchimpFormProps) {
       acc[field.name] = field.value;
     } else {
       const urlParam = field.urlParam ? searchParams.get(field.urlParam) : null;
-      acc[field.name] = urlParam ?? "";
+      acc[field.name] = resolveAllowedValue(urlParam, field.allowedValues) ?? "";
     }
     return acc;
   }, {}));

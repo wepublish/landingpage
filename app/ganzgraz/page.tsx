@@ -7,6 +7,9 @@ import { resolveConfig } from "./config";
 
 import { Suspense } from "react";
 
+const UTM_SOURCES = ["empfehlung", "instagram", "facebook", "website", "print"];
+const UTM_MEDIUMS = ["whatsapp", "mail", "header", "bio", "story", "post"];
+
 export default function GrazBriefingSuperlightWrapper() {
   return (
     <Suspense fallback={null}>
@@ -77,9 +80,9 @@ async function GrazBriefingSuperlight() {
       listId,
       // input muss mit mailchimp Zielgruppenfelder übereinstimmen
       mailchimpFields: [
-        { name: "UTM_SOURCE", urlParam: "utm_source" },
-        { name: "UTM_MEDIUM", urlParam: "utm_medium" },
-        { name: "UTM_CAMP", urlParam: "utm_campaign" },
+        { name: "USOURCE", urlParam: "utm_source", allowedValues: UTM_SOURCES },
+        { name: "UMEDIUM", urlParam: "utm_medium", allowedValues: UTM_MEDIUMS },
+        { name: "UCAMPAIGN", urlParam: "utm_campaign" },
         { name: "EMAIL", urlParam: "email" },
         { name: "FNAME", urlParam: "vorname", defaultValue: "Leser*in" },
         { name: "LNAME", urlParam: "nachname" },
