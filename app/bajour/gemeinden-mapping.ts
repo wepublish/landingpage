@@ -2,6 +2,8 @@ import { StaticImageData } from "next/image";
 
 import AeschImage from "./assets/gemeinden/4147.jpg";
 import AeschWappen from "./assets/gemeinden/4147.svg";
+import AllschwilImage from "./assets/gemeinden/4123.jpg";
+import AllschwilWappen from "./assets/gemeinden/4123.svg";
 import ArlesheimImage from "./assets/gemeinden/4144.jpg";
 import ArlesheimWappen from "./assets/gemeinden/4144.svg";
 import BinningenImage from "./assets/gemeinden/4102.jpg";
@@ -10,8 +12,12 @@ import BottmingenImage from "./assets/gemeinden/4103.jpg";
 import BottmingenWappen from "./assets/gemeinden/4103.svg";
 import MünchensteinImage from "./assets/gemeinden/4142.jpg";
 import MünchensteinWappen from "./assets/gemeinden/4142.svg";
+import MuttenzImage from "./assets/gemeinden/4132.jpg";
+import MuttenzWappen from "./assets/gemeinden/4132.svg";
 import PrattelnImage from "./assets/gemeinden/4133.jpg";
 import PrattelnWappen from "./assets/gemeinden/4133.svg";
+import ReinachImage from "./assets/gemeinden/4153.jpg";
+import ReinachWappen from "./assets/gemeinden/4153.svg";
 import RiehenImage from "./assets/gemeinden/4125.jpg";
 import RiehenWappen from "./assets/gemeinden/4125.svg";
 
@@ -23,14 +29,14 @@ export interface GemeindeInfo {
 
 export const PLZ_TO_GEMEINDE: Record<string, GemeindeInfo> = {
   "4147": { name: "Aesch", image: AeschImage, wappen: AeschWappen },
-  "4123": { name: "Allschwil" },
+  "4123": { name: "Allschwil", image: AllschwilImage, wappen: AllschwilWappen },
   "4144": { name: "Arlesheim", image: ArlesheimImage, wappen: ArlesheimWappen },
   "4102": { name: "Binningen", image: BinningenImage, wappen: BinningenWappen },
   "4103": { name: "Bottmingen", image: BottmingenImage, wappen: BottmingenWappen },
   "4142": { name: "Münchenstein", image: MünchensteinImage, wappen: MünchensteinWappen },
-  "4132": { name: "Muttenz" },
+  "4132": { name: "Muttenz", image: MuttenzImage, wappen: MuttenzWappen },
   "4133": { name: "Pratteln", image: PrattelnImage, wappen: PrattelnWappen },
-  "4153": { name: "Reinach" },
+  "4153": { name: "Reinach", image: ReinachImage, wappen: ReinachWappen },
   "4125": { name: "Riehen", image: RiehenImage, wappen: RiehenWappen },
 };
 
