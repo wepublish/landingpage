@@ -88,7 +88,7 @@ async function GrazBriefingSuperlight() {
         { name: "LNAME", urlParam: "nachname" },
       ],
       successPage: {
-        description: "Nun noch eine letzte Frage: Findest du, dass unabhängiger Lokal-Journalismus etwas kosten sollte?",
+        description: "Willst du jungen Lokaljournalismus aus Graz möglich machen?",
         options: [
           {
             label: "Ja!",
