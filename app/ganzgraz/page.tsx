@@ -83,6 +83,7 @@ async function GrazBriefingSuperlight() {
         { name: "USOURCE", urlParam: "utm_source", allowedValues: UTM_SOURCES },
         { name: "UMEDIUM", urlParam: "utm_medium", allowedValues: UTM_MEDIUMS },
         { name: "UCAMPAIGN", urlParam: "utm_campaign" },
+        { name: "UCONTENT", urlParam: "utm_content" },
         { name: "EMAIL", urlParam: "email" },
         { name: "FNAME", urlParam: "vorname", defaultValue: "Leser*in" },
         { name: "LNAME", urlParam: "nachname" },
