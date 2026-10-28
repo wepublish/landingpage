@@ -170,6 +170,8 @@ export class Mailchimp {
                 headers: {
                     'Authorization': this.authHeader,
                     'Content-Type': 'application/json',
+                    // Cloudflare Workers send no User-Agent by default, which Mailchimp's CDN (Akamai) may block
+                    'User-Agent': 'wepublish-mailchimp',
                 },
                 ...(body ? { body: JSON.stringify(body) } : {}),
             });
