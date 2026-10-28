@@ -1,6 +1,6 @@
 "use server";
 
-import { ContactData } from "@wepublish/wepublish-mailchimp";
+import { ContactData } from "@/lib/mailchimp";
 import { createMailchimpClient } from "@/lib/mailchimp-client";
 
 export async function addMailchimpContact(tenant: string, listId: string, contactData: ContactData) {
@@ -10,8 +10,11 @@ export async function addMailchimpContact(tenant: string, listId: string, contac
     await mailchimp.addContact(listId, contactData);
     return { success: true };
   } catch (error: any) {
-    console.error("Mailchimp error:", error);
-    console.error(JSON.stringify(error, null, 4));
+    // Cloudflare only keeps the stack frames of a logged Error, so log name, message and cause explicitly
+    console.error(`Mailchimp error: ${error?.name}: ${error?.message}`, {
+      cause: error?.cause instanceof Error ? `${error.cause.name}: ${error.cause.message}` : error?.cause,
+      stack: error?.stack,
+    });
 
     let message = "Ein unbekannter Fehler ist aufgetreten.";
 

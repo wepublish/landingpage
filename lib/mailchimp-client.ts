@@ -1,4 +1,4 @@
-import { Mailchimp } from "@wepublish/wepublish-mailchimp";
+import { Mailchimp } from "./mailchimp";
 
 export function getMailchimpApiKey(tenant: string): string {
   const key = process.env[`MAILCHIMP_API_KEY_${tenant}`];

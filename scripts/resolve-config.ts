@@ -1,4 +1,4 @@
-import { Mailchimp } from "@wepublish/wepublish-mailchimp";
+import { Mailchimp } from "../lib/mailchimp";
 import fs from "fs";
 import path from "path";
 
